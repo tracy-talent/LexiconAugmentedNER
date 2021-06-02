@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 from logging import log
 import time
 import datetime
@@ -28,11 +27,13 @@ logger = None
 def data_initialization(data, gaz_file, pinyin_file, train_file, dev_file, test_file):
     data.build_alphabet(train_file)
     data.build_alphabet(dev_file)
-    data.build_alphabet(test_file)
+    if 'msra' not in test_file.lower():
+        data.build_alphabet(test_file)
     data.build_gaz_file(gaz_file)
     data.build_gaz_alphabet(train_file,count=True)
     data.build_gaz_alphabet(dev_file,count=True)
-    data.build_gaz_alphabet(test_file,count=True)
+    if 'msra' not in test_file.lower():
+        data.build_gaz_alphabet(test_file,count=True)
     data.build_pinyin_alphabet(pinyin_file)
     data.fix_alphabet()
     return data
@@ -161,8 +162,8 @@ def evaluate(data, model, name):
             instance = instances[start:end]
             if not instance:
                 continue
-            gaz_list,batch_word, batch_biword, batch_wordlen, batch_label, layer_gaz, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_bert, bert_mask  = batchify_with_label(instance, data.HP_gpu, data.HP_num_layer, True)
-            tag_seq, gaz_match = model(gaz_list,batch_word, batch_biword, batch_wordlen, layer_gaz, gaz_count,gaz_chars, gaz_mask, gazchar_mask, mask, batch_bert, bert_mask)
+            gaz_list,batch_word, batch_biword, batch_wordlen, batch_label, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_bert, bert_mask  = batchify_with_label(instance, data.HP_gpu, data.HP_num_layer, True)
+            tag_seq, gaz_match = model(gaz_list,batch_word, batch_biword, batch_wordlen, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_bert, bert_mask)
 
             gaz_list = [data.gaz_alphabet.get_instance(id) for batchlist in gaz_match if len(batchlist)>0 for id in batchlist ]
             gazes.append( gaz_list)
@@ -393,8 +394,8 @@ def train(data, save_model_dir, seg=True):
             best_test_p = p
             best_test_r = r
 
-        logger.info("Best dev score: p:{}, r:{}, f:{}" % (best_dev_p,best_dev_r,best_dev))
-        logger.info("Test score: p:{}, r:{}, f:{}" % (best_test_p,best_test_r,best_test))
+        logger.info("Best dev score: p:{}, r:{}, f:{}".format(best_dev_p,best_dev_r,best_dev))
+        logger.info("Test score: p:{}, r:{}, f:{}".format(best_test_p,best_test_r,best_test))
         gc.collect()
 
     with open(data.result_file,"a") as f:
@@ -471,10 +472,11 @@ if __name__ == '__main__':
 
     seed_num = args.seed
     set_seed(seed_num)
-
-    train_file = os.path.join('data', args.dataset, 'train.char.bmoes')
-    dev_file = os.path.join('data', args.dataset, 'dev.char.bmoes')
-    test_file = os.path.join('data', args.dataset, 'test.char.bmoes')
+    
+    data_suffix = '.char.clip256.bmoes' if args.dataset in ['msra', 'ontonotes4'] else '.char.bmoes'
+    train_file = os.path.join('dataset', args.dataset, 'train' + data_suffix)
+    dev_file = os.path.join('dataset', args.dataset, 'dev' + data_suffix)
+    test_file = os.path.join('dataset', args.dataset, 'test' + data_suffix)
     raw_file = args.raw
     # model_dir = args.loadmodel
     output_file = args.output
@@ -489,13 +491,14 @@ if __name__ == '__main__':
     os.makedirs(os.path.dirname(args.resultfile), exist_ok=True)
     os.makedirs(os.path.dirname(save_model_dir), exist_ok=True)
     os.makedirs(os.path.dirname(save_data_name), exist_ok=True)
+    os.makedirs(os.path.join(args.logpath, args.dataset), exist_ok=True)
     logger = get_logger(sys.argv, os.path.join(args.logpath, args.dataset, f'{datetime.datetime.now().strftime("%y-%m-%d-%H-%M-%S")}.log'))
     gpu = torch.cuda.is_available()
 
-    char_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.uni.ite50.vec"
-    bichar_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.bi.ite50.vec"
-    pinyin_emb = "../word2vec_num5.1409.50d.vec"
-    gaz_file = "../CNNNERmodel/data/ctb.50d.vec"
+    char_emb = "/home/ghost/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.uni.11k.50d.vec"
+    bichar_emb = "/home/ghost/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.bi.3987k.50d.vec"
+    pinyin_emb = "/home/ghost/NLP/corpus/pinyin/word2vec/word2vec_num5.1409.50d.vec"
+    gaz_file = "/home/ghost/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec"
 
     sys.stdout.flush()
 
@@ -542,11 +545,15 @@ if __name__ == '__main__':
             data_initialization(data, gaz_file, pinyin_emb, train_file, dev_file, test_file)
             data.generate_instance_with_gaz(train_file,'train')
             data.generate_instance_with_gaz(dev_file,'dev')
-            data.generate_instance_with_gaz(test_file,'test')
+            if args.dataset != 'msra':
+                data.generate_instance_with_gaz(test_file,'test')
             data.build_word_pretrain_emb(char_emb)
-            data.build_biword_pretrain_emb(bichar_emb)
             data.build_gaz_pretrain_emb(gaz_file)
-            data.build_pinyin_pretrain_emb(pinyin_emb)
+            print(args.use_pinyin)
+            if args.use_biword:
+                data.build_biword_pretrain_emb(bichar_emb)
+            if args.use_pinyin:
+                data.build_pinyin_pretrain_emb(pinyin_emb)
 
             logger.info('Dumping data')
             with open(save_data_name, 'wb') as f:

@@ -2,6 +2,7 @@
 
 import sys
 import numpy as np
+from gensim.models import KeyedVectors
 from utils.alphabet import Alphabet
 from utils.functions import *
 from utils.gazetteer import Gazetteer
@@ -156,16 +157,9 @@ class Data:
 
 
     def build_pinyin_alphabet(self, embedding_path):
-        self.pinyin_alphabet.add("[UNK]")
-        self.pinyin_alphabet.add("[ENG]")
-        self.pinyin_alphabet.add("[DIGIT]")
-        with open(embedding_path, 'r',encoding="utf-8") as file:
-            for line in file:
-                line = line.strip()
-                if len(line) == 0:
-                    continue
-                pinyin = line.split()[0]
-                self.pinyin_alphabet.add(pinyin)
+        wv = KeyedVectors.load_word2vec_format(embedding_path)
+        for w in wv.vocab:
+            self.pinyin_alphabet.add(w)
 
 
     def build_alphabet(self, input_file):
@@ -294,13 +288,13 @@ class Data:
     def generate_instance_with_gaz(self, input_file, name):
         self.fix_alphabet()
         if name == "train":
-            self.train_texts, self.train_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz, self.word_alphabet, self.biword_alphabet, self.biword_count, self.char_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
+            self.train_texts, self.train_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz, self.word_alphabet, self.biword_alphabet, self.biword_count, self.char_alphabet, self.pinyin_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
         elif name == "dev":
-            self.dev_texts, self.dev_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz,self.word_alphabet, self.biword_alphabet, self.biword_count, self.char_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
+            self.dev_texts, self.dev_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz,self.word_alphabet, self.biword_alphabet, self.biword_count, self.char_alphabet, self.pinyin_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
         elif name == "test":
-            self.test_texts, self.test_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz, self.word_alphabet, self.biword_alphabet, self.biword_count, self.char_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
+            self.test_texts, self.test_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz, self.word_alphabet, self.biword_alphabet, self.biword_count, self.char_alphabet, self.pinyin_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
         elif name == "raw":
-            self.raw_texts, self.raw_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz, self.word_alphabet,self.biword_alphabet, self.biword_count, self.char_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
+            self.raw_texts, self.raw_Ids = read_instance_with_gaz(self.HP_num_layer, input_file, self.gaz, self.word_alphabet,self.biword_alphabet, self.biword_count, self.char_alphabet, self.pinyin_alphabet, self.gaz_alphabet, self.gaz_count, self.gaz_split,  self.label_alphabet, self.number_normalized, self.MAX_SENTENCE_LENGTH)
         else:
             print("Error: you can only generate train/dev/test instance! Illegal input:%s"%(name))
 

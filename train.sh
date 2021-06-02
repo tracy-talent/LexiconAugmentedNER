@@ -1,1 +1,13 @@
-python main.py --train data/demo.train.char --dev data/demo.dev.char --test data/demo.test.char --modelname demo --savedset data/data.dset
+#!/bin/bash
+python main.py \
+    --status train \ 
+    --dataset weibo \
+    --modelname weibo \
+    --savedset data/weibo.dset \
+    --lr 0.05 \
+    --hidden_dim 200 \
+    --resultfile result/weibo.txt \
+    --num_iter 20 \
+    --num_layer 1 \
+    --batch_size 16 \
+    --model_type lstm \

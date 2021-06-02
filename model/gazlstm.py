@@ -84,11 +84,11 @@ class GazLSTM(nn.Module):
             self.NERmodel = NERmodel(model_type='transformer', input_dim=char_feature_dim, hidden_dim=self.hidden_dim, num_layer=self.num_layer, dropout=data.HP_dropout)
 
         self.drop = nn.Dropout(p=data.HP_dropout)
-        self.hidden2tag = nn.Linear(self.hidden_dim, data.label_alphabet_size+2)
-        self.crf = CRF(data.label_alphabet_size, self.gpu)
+        self.hidden2tag = nn.Linear(self.hidden_dim, data.label_alphabet.size()+2)
+        self.crf = CRF(data.label_alphabet.size(), self.gpu)
 
         if self.use_bert:
-            self.bert_encoder = BertModel.from_pretrained('bert-base-chinese')
+            self.bert_encoder = BertModel.from_pretrained('/home/ghost/NLP/corpus/transformers/google-bert-base-chinese')
             for p in self.bert_encoder.parameters():
                 p.requires_grad = False
 
@@ -129,7 +129,7 @@ class GazLSTM(nn.Module):
             gazchar_embeds = self.word_embedding(gaz_chars)
 
             gazchar_mask = gazchar_mask_input.unsqueeze(-1).repeat(1,1,1,1,1,self.word_emb_dim)
-            gazchar_embeds = gazchar_embeds.data.masked_fill_(gazchar_mask.data, 0)  #(b,l,4,gl,cl,ce)
+            gazchar_embeds = gazchar_embeds.data.masked_fill_(gazchar_mask.bool(), 0)  #(b,l,4,gl,cl,ce)
 
             # gazchar_mask_input:(b,l,4,gl,cl)
             gaz_charnum = (gazchar_mask_input == 0).sum(dim=-1, keepdim=True).float()  #(b,l,4,gl,1)
@@ -151,7 +151,7 @@ class GazLSTM(nn.Module):
 
             gaz_mask = gaz_mask_input.unsqueeze(-1).repeat(1,1,1,1,self.gaz_emb_dim)
 
-            gaz_embeds = gaz_embeds_d.data.masked_fill_(gaz_mask.data, 0)  #(b,l,4,g,ge)  ge:gaz_embed_dim
+            gaz_embeds = gaz_embeds_d.data.masked_fill_(gaz_mask.bool(), 0)  #(b,l,4,g,ge)  ge:gaz_embed_dim
 
         if self.use_pinyin:
             gaz_pinyin_embeds = self.pinyin_embedding(layer_gaz_pinyin)
@@ -160,7 +160,7 @@ class GazLSTM(nn.Module):
                 gaz_pinyin_embeds = self.drop(gaz_pinyin_embeds)
 
             gaz_mask = gaz_mask_input.unsqueeze(-1).repeat(1,1,1,1,self.pinyin_emb_dim)
-            gaz_pinyin_embeds.masked_fill_(gaz_mask, 0)
+            gaz_pinyin_embeds.masked_fill_(gaz_mask.bool(), 0)
             gaz_embeds = torch.cat([gaz_pinyin_embeds, gaz_embeds], dim=-1)
 
         if self.use_count:
@@ -199,9 +199,9 @@ class GazLSTM(nn.Module):
 
 
 
-    def neg_log_likelihood_loss(self, gaz_list, word_inputs, biword_inputs, word_seq_lengths, layer_gaz, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_label, batch_bert, bert_mask):
+    def neg_log_likelihood_loss(self, gaz_list, word_inputs, biword_inputs, word_seq_lengths, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_label, batch_bert, bert_mask):
 
-        tags, _ = self.get_tags(gaz_list, word_inputs, biword_inputs, layer_gaz, gaz_count,gaz_chars, gaz_mask, gazchar_mask, mask, word_seq_lengths, batch_bert, bert_mask)
+        tags, _ = self.get_tags(gaz_list, word_inputs, biword_inputs, layer_gaz, layer_gaz_pinyin, gaz_count,gaz_chars, gaz_mask, gazchar_mask, mask, word_seq_lengths, batch_bert, bert_mask)
 
         total_loss = self.crf.neg_log_likelihood_loss(tags, mask, batch_label)
         scores, tag_seq = self.crf._viterbi_decode(tags, mask)
@@ -210,9 +210,9 @@ class GazLSTM(nn.Module):
 
 
 
-    def forward(self, gaz_list, word_inputs, biword_inputs, word_seq_lengths,layer_gaz, gaz_count,gaz_chars, gaz_mask,gazchar_mask, mask, batch_bert, bert_mask):
+    def forward(self, gaz_list, word_inputs, biword_inputs, word_seq_lengths,layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask,gazchar_mask, mask, batch_bert, bert_mask):
 
-        tags, gaz_match = self.get_tags(gaz_list, word_inputs, biword_inputs, layer_gaz, gaz_count,gaz_chars, gaz_mask, gazchar_mask, mask, word_seq_lengths, batch_bert, bert_mask)
+        tags, gaz_match = self.get_tags(gaz_list, word_inputs, biword_inputs, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, word_seq_lengths, batch_bert, bert_mask)
 
         scores, tag_seq = self.crf._viterbi_decode(tags, mask)
 

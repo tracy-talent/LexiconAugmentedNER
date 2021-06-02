@@ -4,6 +4,7 @@ import sys
 import numpy as np
 import re
 import unicodedata
+from gensim.models import KeyedVectors
 from utils.alphabet import Alphabet
 from transformers.tokenization_bert import BertTokenizer
 from pypinyin import lazy_pinyin, Style
@@ -42,12 +43,12 @@ def get_pinyin(word, p):
                 else:
                     raise ValueError('pinyin length not exceed 7')
     except:
-        pinyin = '[UNK]'
+        pinyin = '</unk>'
 
 
 def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alphabet, biword_count, char_alphabet, pinyin_alphabet, gaz_alphabet, gaz_count, gaz_split, label_alphabet, number_normalized, max_sent_length, char_padding_size=-1, char_padding_symbol = '</pad>'):
 
-    tokenizer = BertTokenizer.from_pretrained('bert-base-chinese', do_lower_case=True)
+    tokenizer = BertTokenizer.from_pretrained('/home/ghost/NLP/corpus/transformers/google-bert-base-chinese', do_lower_case=True)
 
     in_lines = open(input_file,'r',encoding="utf-8").readlines()
     instence_texts = []
@@ -243,7 +244,7 @@ def build_pretrain_embedding(embedding_path, word_alphabet, embedd_dim=100, norm
         else:
             pretrain_emb[index,:] = np.random.uniform(-scale, scale, [1, embedd_dim])
             not_match += 1
-    pretrained_size = len(embedd_dict)
+    pretrained_size = len(embedd_dict.vocab)
     print("Embedding:\n     pretrain word:%s, prefect match:%s, case_match:%s, oov:%s, oov%%:%s"%(pretrained_size, perfect_match, case_match, not_match, (not_match+0.)/word_alphabet.size()))
     return pretrain_emb, embedd_dim
 
@@ -253,20 +254,7 @@ def norm2one(vec):
     return vec/root_sum_square
 
 def load_pretrain_emb(embedding_path):
-    embedd_dim = -1
-    embedd_dict = dict()
-    with open(embedding_path, 'r',encoding="utf-8") as file:
-        for line in file:
-            line = line.strip()
-            if len(line) == 0:
-                continue
-            tokens = line.split()
-            if embedd_dim < 0:
-                embedd_dim = len(tokens) - 1
-            else:
-                assert (embedd_dim + 1 == len(tokens))
-            embedd = np.empty([1, embedd_dim])
-            embedd[:] = tokens[1:]
-            embedd_dict[tokens[0]] = embedd
+    embedd_dict = KeyedVectors.load_word2vec_format(embedding_path)
+    embedd_dim = embedd_dict.vector_size
     return embedd_dict, embedd_dim
 
