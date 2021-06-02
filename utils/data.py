@@ -17,13 +17,16 @@ class Data:
         self.MAX_SENTENCE_LENGTH = 250
         self.MAX_WORD_LENGTH = -1
         self.number_normalized = True
+        self.norm_char_emb = True
         self.norm_word_emb = True
         self.norm_biword_emb = True
         self.norm_gaz_emb = False
+        self.norm_pinyin_emb = True
+        self.char_alphabet = Alphabet('character')
         self.word_alphabet = Alphabet('word')
         self.biword_alphabet = Alphabet('biword')
-        self.char_alphabet = Alphabet('character')
         self.label_alphabet = Alphabet('label', True)
+        self.pinyin_alphabet = Alphabet('pinyin')
         self.gaz_lower = False
         self.gaz = Gazetteer(self.gaz_lower)
         self.gaz_alphabet = Alphabet('gaz')
@@ -52,19 +55,17 @@ class Data:
         self.dev_split_index = []
 
         self.use_bigram = True
+        self.char_emb_dim = 50
         self.word_emb_dim = 50
         self.biword_emb_dim = 50
-        self.char_emb_dim = 30
+        self.pinyin_emb_dim = 50
         self.gaz_emb_dim = 50
         self.gaz_dropout = 0.5
+        self.pretrain_char_embedding = None
         self.pretrain_word_embedding = None
         self.pretrain_biword_embedding = None
         self.pretrain_gaz_embedding = None
-        self.label_size = 0
-        self.word_alphabet_size = 0
-        self.biword_alphabet_size = 0
-        self.char_alphabet_size = 0
-        self.label_alphabet_size = 0
+        self.pretrain_pinyin_embedding = None
         ### hyperparameters
         self.HP_iteration = 100
         self.HP_batch_size = 10
@@ -74,8 +75,9 @@ class Data:
         self.HP_lstm_layer = 1
         self.HP_bilstm = True
         self.HP_use_char = False
+        self.HP_use_pinyin = False
         self.HP_gpu = True
-        self.HP_lr = 0.015
+        self.HP_lr = 0.0015
         self.HP_lr_decay = 0.05
         self.HP_clip = 5.0
         self.HP_momentum = 0
@@ -90,11 +92,12 @@ class Data:
         print("     MAX   WORD   LENGTH: %s"%(self.MAX_WORD_LENGTH))
         print("     Number   normalized: %s"%(self.number_normalized))
         print("     Use          bigram: %s"%(self.use_bigram))
-        print("     Word  alphabet size: %s"%(self.word_alphabet_size))
-        print("     Biword alphabet size: %s"%(self.biword_alphabet_size))
-        print("     Char  alphabet size: %s"%(self.char_alphabet_size))
+        print("     Word  alphabet size: %s"%(self.word_alphabet.size()))
+        print("     Biword alphabet size: %s"%(self.biword_alphabet.size()))
+        print("     Char  alphabet size: %s"%(self.char_alphabet.size()))
         print("     Gaz   alphabet size: %s"%(self.gaz_alphabet.size()))
-        print("     Label alphabet size: %s"%(self.label_alphabet_size))
+        print("     Pinyin  alphabet size: %s"%(self.pinyin_alphabet.size()))
+        print("     Label alphabet size: %s"%(self.label_alphabet.size()))
         print("     Word embedding size: %s"%(self.word_emb_dim))
         print("     Biword embedding size: %s"%(self.biword_emb_dim))
         print("     Char embedding size: %s"%(self.char_emb_dim))
@@ -152,6 +155,19 @@ class Data:
         print("Refresh label alphabet finished: old:%s -> new:%s"%(old_size, self.label_alphabet_size))
 
 
+    def build_pinyin_alphabet(self, embedding_path):
+        self.pinyin_alphabet.add("[UNK]")
+        self.pinyin_alphabet.add("[ENG]")
+        self.pinyin_alphabet.add("[DIGIT]")
+        with open(embedding_path, 'r',encoding="utf-8") as file:
+            for line in file:
+                line = line.strip()
+                if len(line) == 0:
+                    continue
+                pinyin = line.split()[0]
+                self.pinyin_alphabet.add(pinyin)
+
+
     def build_alphabet(self, input_file):
         in_lines = open(input_file,'r',encoding="utf-8").readlines()
         seqlen = 0
@@ -179,10 +195,6 @@ class Data:
             else:
                 seqlen = 0
 
-        self.word_alphabet_size = self.word_alphabet.size()
-        self.biword_alphabet_size = self.biword_alphabet.size()
-        self.char_alphabet_size = self.char_alphabet.size()
-        self.label_alphabet_size = self.label_alphabet.size()
         startS = False
         startB = False
         for label,_ in self.label_alphabet.iteritems():
@@ -256,6 +268,11 @@ class Data:
         self.char_alphabet.close()
         self.label_alphabet.close() 
         self.gaz_alphabet.close()
+        self.pinyin_alphabet.close()
+
+    def build_char_pretrain_emb(self, emb_path):
+        print ("build char pretrain emb...")
+        self.pretrain_char_embedding, self.char_emb_dim = build_pretrain_embedding(emb_path, self.char_alphabet, self.char_emb_dim, self.norm_char_emb)
 
     def build_word_pretrain_emb(self, emb_path):
         print ("build word pretrain emb...")
@@ -265,10 +282,13 @@ class Data:
         print ("build biword pretrain emb...")
         self.pretrain_biword_embedding, self.biword_emb_dim = build_pretrain_embedding(emb_path, self.biword_alphabet, self.biword_emb_dim, self.norm_biword_emb)
 
-
     def build_gaz_pretrain_emb(self, emb_path):
         print ("build gaz pretrain emb...")
         self.pretrain_gaz_embedding, self.gaz_emb_dim = build_pretrain_embedding(emb_path, self.gaz_alphabet,  self.gaz_emb_dim, self.norm_gaz_emb)
+    
+    def build_pinyin_pretrain_emb(self, emb_path):
+        print ("build pinyin pretrain emb...")
+        self.pretrain_pinyin_embedding, self.pinyin_emb_dim = build_pretrain_embedding(emb_path, self.pinyin_alphabet, self.pinyin_emb_dim, self.norm_pinyin_emb)
 
 
     def generate_instance_with_gaz(self, input_file, name):

@@ -3,8 +3,10 @@
 import sys
 import numpy as np
 import re
+import unicodedata
 from utils.alphabet import Alphabet
 from transformers.tokenization_bert import BertTokenizer
+from pypinyin import lazy_pinyin, Style
 NULLKEY = "-null-"
 
 def normalize_word(word):
@@ -16,8 +18,34 @@ def normalize_word(word):
             new_word += char
     return new_word
 
+def strip_accents(text):
+    """Strips accents from a piece of text, such as café"""
+    text = unicodedata.normalize("NFD", text)
+    output = []
+    for char in text:
+        cat = unicodedata.category(char)
+        if cat == "Mn":
+            continue
+        output.append(char)
+    return "".join(output)
 
-def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alphabet, biword_count, char_alphabet, gaz_alphabet, gaz_count, gaz_split, label_alphabet, number_normalized, max_sent_length, char_padding_size=-1, char_padding_symbol = '</pad>'):
+def get_pinyin(word, p):
+    try:
+        pinyin = lazy_pinyin(word, style=Style.TONE3, nuetral_tone_with_five=True)[p]
+        if len(pinyin) > 7:
+            if pinyin.isnumeric():
+                pinyin = '[DIGIT]'
+            else:
+                pinyin = strip_accents(pinyin)
+                if pinyin.encode('utf-8').isalpha():
+                    pinyin = '[ENG]'
+                else:
+                    raise ValueError('pinyin length not exceed 7')
+    except:
+        pinyin = '[UNK]'
+
+
+def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alphabet, biword_count, char_alphabet, pinyin_alphabet, gaz_alphabet, gaz_count, gaz_split, label_alphabet, number_normalized, max_sent_length, char_padding_size=-1, char_padding_symbol = '</pad>'):
 
     tokenizer = BertTokenizer.from_pretrained('bert-base-chinese', do_lower_case=True)
 
@@ -76,6 +104,7 @@ def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alp
                 w_length = len(words)
 
                 gazs = [ [[] for i in range(4)] for _ in range(w_length)]  # gazs:[c1,c2,...,cn]  ci:[B,M,E,S]  B/M/E/S :[w_id1,w_id2,...]  None:0
+                gazs_pinyin = [ [[] for i in range(4)] for _ in range(w_length)]
                 gazs_count = [ [[] for i in range(4)] for _ in range(w_length)]
 
                 gaz_char_Id = [ [[] for i in range(4)] for _ in range(w_length)]  ## gazs:[c1,c2,...,cn]  ci:[B,M,E,S]  B/M/E/S :[[w1c1,w1c2,...],[],...]
@@ -100,18 +129,22 @@ def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alp
 
                         if matched_length[w] == 1:  ## Single
                             gazs[idx][3].append(matched_Id[w])
+                            gazs_pinyin[idx][3].append(pinyin_alphabet.get_index(get_pinyin(matched_list[w], 0)))
                             gazs_count[idx][3].append(1)
                             gaz_char_Id[idx][3].append(gaz_chars)
                         else:
                             gazs[idx][0].append(matched_Id[w])   ## Begin
+                            gazs_pinyin[idx][0].append(pinyin_alphabet.get_index(get_pinyin(matched_list[w], 0)))
                             gazs_count[idx][0].append(gaz_count[matched_Id[w]])
                             gaz_char_Id[idx][0].append(gaz_chars)
                             wlen = matched_length[w]
                             gazs[idx+wlen-1][2].append(matched_Id[w])  ## End
+                            gazs_pinyin[idx+wlen-1][2].append(pinyin_alphabet.get_index(get_pinyin(matched_list[w], wlen - 1)))
                             gazs_count[idx+wlen-1][2].append(gaz_count[matched_Id[w]])
                             gaz_char_Id[idx+wlen-1][2].append(gaz_chars)
                             for l in range(wlen-2):
                                 gazs[idx+l+1][1].append(matched_Id[w])  ## Middle
+                                gazs_pinyin[idx+l+1][1].append(pinyin_alphabet.get_index(get_pinyin(matched_list[w], l + 1)))
                                 gazs_count[idx+l+1][1].append(gaz_count[matched_Id[w]])
                                 gaz_char_Id[idx+l+1][1].append(gaz_chars)
 
@@ -120,12 +153,12 @@ def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alp
                     for label in range(4):
                         if not gazs[idx][label]:
                             gazs[idx][label].append(0)
+                            gazs_pinyin[idx][label].append(0)
                             gazs_count[idx][label].append(1)
                             gaz_char_Id[idx][label].append([0])
 
                         max_gazlist = max(len(gazs[idx][label]),max_gazlist)
 
-                    matched_Id  = [gaz_alphabet.get_index(entity) for entity in matched_list]  #词号
                     if matched_Id:
                         gaz_Ids.append([matched_Id, matched_length])
                     else:
@@ -146,6 +179,7 @@ def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alp
                         mask += (max_gazlist-label_len)*[1]
 
                         gazs[idx][label] += (max_gazlist-label_len)*[0]  ## padding
+                        gazs_pinyin[idx][label] += (max_gazlist-label_len)*[0]  ## padding
                         gazs_count[idx][label] += (max_gazlist-label_len)*[0]  ## padding
 
                         char_mask = []
@@ -168,7 +202,7 @@ def read_instance_with_gaz(num_layer, input_file, gaz, word_alphabet, biword_alp
 
 
                 instence_texts.append([words, biwords, chars, gazs, labels])
-                instence_Ids.append([word_Ids, biword_Ids, char_Ids, gaz_Ids, label_Ids, gazs, gazs_count, gaz_char_Id, layergazmasks,gazchar_masks, bert_text_ids])
+                instence_Ids.append([word_Ids, biword_Ids, char_Ids, gaz_Ids, label_Ids, gazs, gazs_count, gaz_char_Id, layergazmasks,gazchar_masks, bert_text_ids, gazs_pinyin])
 
             words = []
             biwords = []

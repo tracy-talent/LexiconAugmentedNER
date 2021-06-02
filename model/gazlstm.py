@@ -16,9 +16,11 @@ class GazLSTM(nn.Module):
         self.hidden_dim = data.HP_hidden_dim
         self.gaz_alphabet = data.gaz_alphabet
         self.gaz_emb_dim = data.gaz_emb_dim
+        self.pinyin_emb_dim = data.pinyin_emb_dim
         self.word_emb_dim = data.word_emb_dim
         self.biword_emb_dim = data.biword_emb_dim
         self.use_char = data.HP_use_char
+        self.use_pinyin = data.HP_use_pinyin
         self.bilstm_flag = data.HP_bilstm
         self.lstm_layer = data.HP_lstm_layer
         self.use_count = data.HP_use_count
@@ -26,28 +28,29 @@ class GazLSTM(nn.Module):
         self.model_type = data.model_type
         self.use_bert = data.use_bert
 
-        scale = np.sqrt(3.0 / self.gaz_emb_dim)
-        data.pretrain_gaz_embedding[0,:] = np.random.uniform(-scale, scale, [1, self.gaz_emb_dim])
-
-        if self.use_char:
-            scale = np.sqrt(3.0 / self.word_emb_dim)
-            data.pretrain_word_embedding[0,:] = np.random.uniform(-scale, scale, [1, self.word_emb_dim])
-
         self.gaz_embedding = nn.Embedding(data.gaz_alphabet.size(), self.gaz_emb_dim)
         self.word_embedding = nn.Embedding(data.word_alphabet.size(), self.word_emb_dim)
         if self.use_biword:
             self.biword_embedding = nn.Embedding(data.biword_alphabet.size(), self.biword_emb_dim)
+        if self.use_pinyin:
+            self.pinyin_embedding = nn.Embedding(data.pinyin_alphabet.size(), self.pinyin_emb_dim)
 
         if data.pretrain_gaz_embedding is not None:
             self.gaz_embedding.weight.data.copy_(torch.from_numpy(data.pretrain_gaz_embedding))
         else:
             self.gaz_embedding.weight.data.copy_(torch.from_numpy(self.random_embedding(data.gaz_alphabet.size(), self.gaz_emb_dim)))
 
+        if self.use_pinyin:
+            if data.pretrain_pinyin_embedding is not None:
+                self.pinyin_embedding.weight.data.copy_(torch.from_numpy(data.pretrain_pinyin_embedding))
+            else:
+                self.pinyin_embedding.weight.data.copy_(torch.from_numpy(self.random_embedding(data.pinyin_alphabet.size(), self.pinyin_emb_dim)))
 
         if data.pretrain_word_embedding is not None:
             self.word_embedding.weight.data.copy_(torch.from_numpy(data.pretrain_word_embedding))
         else:
             self.word_embedding.weight.data.copy_(torch.from_numpy(self.random_embedding(data.word_alphabet.size(), self.word_emb_dim)))
+
         if self.use_biword:
             if data.pretrain_biword_embedding is not None:
                 self.biword_embedding.weight.data.copy_(torch.from_numpy(data.pretrain_biword_embedding))
@@ -58,6 +61,9 @@ class GazLSTM(nn.Module):
         char_feature_dim = self.word_emb_dim + 4*self.gaz_emb_dim
         if self.use_biword:
             char_feature_dim += self.biword_emb_dim
+
+        if self.use_pinyin:
+            char_feature_dim += 4 * self.pinyin_emb_dim
 
         if self.use_bert:
             char_feature_dim = char_feature_dim + 768
@@ -91,6 +97,8 @@ class GazLSTM(nn.Module):
             self.word_embedding = self.word_embedding.cuda()
             if self.use_biword:
                 self.biword_embedding = self.biword_embedding.cuda()
+            if self.use_pinyin:
+                self.pinyin_embedding = self.pinyin_embedding.cuda()
             self.NERmodel = self.NERmodel.cuda()
             self.hidden2tag = self.hidden2tag.cuda()
             self.crf = self.crf.cuda()
@@ -98,7 +106,7 @@ class GazLSTM(nn.Module):
             if self.use_bert:
                 self.bert_encoder = self.bert_encoder.cuda()
 
-    def get_tags(self,gaz_list, word_inputs, biword_inputs, layer_gaz, gaz_count, gaz_chars, gaz_mask_input, gazchar_mask_input, mask, word_seq_lengths, batch_bert, bert_mask):
+    def get_tags(self,gaz_list, word_inputs, biword_inputs, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask_input, gazchar_mask_input, mask, word_seq_lengths, batch_bert, bert_mask):
 
         batch_size = word_inputs.size()[0]
         seq_len = word_inputs.size()[1]
@@ -145,6 +153,15 @@ class GazLSTM(nn.Module):
 
             gaz_embeds = gaz_embeds_d.data.masked_fill_(gaz_mask.data, 0)  #(b,l,4,g,ge)  ge:gaz_embed_dim
 
+        if self.use_pinyin:
+            gaz_pinyin_embeds = self.pinyin_embedding(layer_gaz_pinyin)
+
+            if self.model_type != 'transformer':
+                gaz_pinyin_embeds = self.drop(gaz_pinyin_embeds)
+
+            gaz_mask = gaz_mask_input.unsqueeze(-1).repeat(1,1,1,1,self.pinyin_emb_dim)
+            gaz_pinyin_embeds.masked_fill_(gaz_mask, 0)
+            gaz_embeds = torch.cat([gaz_pinyin_embeds, gaz_embeds], dim=-1)
 
         if self.use_count:
             count_sum = torch.sum(gaz_count, dim=3, keepdim=True)  #(b,l,4,gn)

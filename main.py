@@ -22,7 +22,7 @@ from utils.data import Data
 
 
 
-def data_initialization(data, gaz_file, train_file, dev_file, test_file):
+def data_initialization(data, gaz_file, pinyin_file, train_file, dev_file, test_file):
     data.build_alphabet(train_file)
     data.build_alphabet(dev_file)
     data.build_alphabet(test_file)
@@ -30,6 +30,7 @@ def data_initialization(data, gaz_file, train_file, dev_file, test_file):
     data.build_gaz_alphabet(train_file,count=True)
     data.build_gaz_alphabet(dev_file,count=True)
     data.build_gaz_alphabet(test_file,count=True)
+    data.build_pinyin_alphabet(pinyin_file)
     data.fix_alphabet()
     return data
 
@@ -122,6 +123,8 @@ def set_seed(seed_num=1023):
     random.seed(seed_num)
     torch.manual_seed(seed_num)
     np.random.seed(seed_num)
+    torch.cuda.manual_seed_all(seed_num)
+    torch.backends.cudnn.deterministic=True
 
 
 def evaluate(data, model, name):
@@ -193,6 +196,7 @@ def batchify_with_label(input_batch_list, gpu, num_layer, volatile_flag=False):
     gazs = [sent[3] for sent in input_batch_list]
     labels = [sent[4] for sent in input_batch_list]
     layer_gazs = [sent[5] for sent in input_batch_list]
+    layer_gazs_pinyin = [sent[-1] for sent in input_batch_list]
     gaz_count = [sent[6] for sent in input_batch_list]
     gaz_chars = [sent[7] for sent in input_batch_list]
     gaz_mask = [sent[8] for sent in input_batch_list]
@@ -213,6 +217,7 @@ def batchify_with_label(input_batch_list, gpu, num_layer, volatile_flag=False):
     gaz_num = [len(layer_gazs[i][0][0]) for i in range(batch_size)]
     max_gaz_num = max(gaz_num)
     layer_gaz_tensor = torch.zeros(batch_size, max_seq_len, 4, max_gaz_num).long()
+    layer_gaz_pinyin_tensor = torch.zeros(batch_size, max_seq_len, 4, max_gaz_num).long()
     gaz_count_tensor = torch.zeros(batch_size, max_seq_len, 4, max_gaz_num).float()
     gaz_len = [len(gaz_chars[i][0][0][0]) for i in range(batch_size)]
     max_gaz_len = max(gaz_len)
@@ -220,12 +225,13 @@ def batchify_with_label(input_batch_list, gpu, num_layer, volatile_flag=False):
     gaz_mask_tensor = torch.ones(batch_size, max_seq_len, 4, max_gaz_num).byte()
     gazchar_mask_tensor = torch.ones(batch_size, max_seq_len, 4, max_gaz_num, max_gaz_len).byte()
 
-    for b, (seq, bert_id, biseq, label, seqlen, layergaz, gazmask, gazcount, gazchar, gazchar_mask, gaznum, gazlen) in enumerate(zip(words, bert_ids, biwords, labels, word_seq_lengths, layer_gazs, gaz_mask, gaz_count, gaz_chars, gazchar_mask, gaz_num, gaz_len)):
+    for b, (seq, bert_id, biseq, label, seqlen, layergaz, layergazpinyin, gazmask, gazcount, gazchar, gazchar_mask, gaznum, gazlen) in enumerate(zip(words, bert_ids, biwords, labels, word_seq_lengths, layer_gazs, layer_gazs_pinyin, gaz_mask, gaz_count, gaz_chars, gazchar_mask, gaz_num, gaz_len)):
 
         word_seq_tensor[b, :seqlen] = torch.LongTensor(seq)
         biword_seq_tensor[b, :seqlen] = torch.LongTensor(biseq)
         label_seq_tensor[b, :seqlen] = torch.LongTensor(label)
         layer_gaz_tensor[b, :seqlen, :, :gaznum] = torch.LongTensor(layergaz)
+        layer_gaz_pinyin_tensor[b, :seqlen, :, :gaznum] = torch.LongTensor(layergazpinyin)
         mask[b, :seqlen] = torch.Tensor([1]*int(seqlen))
         bert_mask[b, :seqlen+2] = torch.LongTensor([1]*int(seqlen+2))
         gaz_mask_tensor[b, :seqlen, :, :gaznum] = torch.ByteTensor(gazmask)
@@ -244,6 +250,7 @@ def batchify_with_label(input_batch_list, gpu, num_layer, volatile_flag=False):
         word_seq_lengths = word_seq_lengths.cuda()
         label_seq_tensor = label_seq_tensor.cuda()
         layer_gaz_tensor = layer_gaz_tensor.cuda()
+        layer_gaz_pinyin_tensor = layer_gaz_pinyin_tensor.cuda()
         gaz_chars_tensor = gaz_chars_tensor.cuda()
         gaz_mask_tensor = gaz_mask_tensor.cuda()
         gazchar_mask_tensor = gazchar_mask_tensor.cuda()
@@ -253,7 +260,7 @@ def batchify_with_label(input_batch_list, gpu, num_layer, volatile_flag=False):
         bert_mask = bert_mask.cuda()
 
     # print(bert_seq_tensor.type())
-    return gazs, word_seq_tensor, biword_seq_tensor, word_seq_lengths, label_seq_tensor, layer_gaz_tensor, gaz_count_tensor,gaz_chars_tensor, gaz_mask_tensor, gazchar_mask_tensor, mask, bert_seq_tensor, bert_mask
+    return gazs, word_seq_tensor, biword_seq_tensor, word_seq_lengths, label_seq_tensor, layer_gaz_tensor, layer_gaz_pinyin_tensor, gaz_count_tensor, gaz_chars_tensor, gaz_mask_tensor, gazchar_mask_tensor, mask, bert_seq_tensor, bert_mask
 
 
 
@@ -310,10 +317,10 @@ def train(data, save_model_dir, seg=True):
             if not instance:
                 continue
 
-            gaz_list,  batch_word, batch_biword, batch_wordlen, batch_label, layer_gaz, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_bert, bert_mask = batchify_with_label(instance, data.HP_gpu,data.HP_num_layer)
+            gaz_list,  batch_word, batch_biword, batch_wordlen, batch_label, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_bert, bert_mask = batchify_with_label(instance, data.HP_gpu,data.HP_num_layer)
 
             instance_count += 1
-            loss, tag_seq = model.neg_log_likelihood_loss(gaz_list, batch_word, batch_biword, batch_wordlen, layer_gaz, gaz_count,gaz_chars, gaz_mask, gazchar_mask, mask, batch_label, batch_bert, bert_mask)
+            loss, tag_seq = model.neg_log_likelihood_loss(gaz_list, batch_word, batch_biword, batch_wordlen, layer_gaz, layer_gaz_pinyin, gaz_count, gaz_chars, gaz_mask, gazchar_mask, mask, batch_label, batch_bert, bert_mask)
 
             right, whole = predict_check(tag_seq, batch_label, mask)
             right_token += right
@@ -441,6 +448,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_iter',default=100,type=int)
     parser.add_argument('--num_layer', default=4, type=int)
     parser.add_argument('--lr', type=float, default=0.0015)
+    parser.add_argument('--lr_decay', type=float, default=0.05)
     parser.add_argument('--batch_size', type=int, default=1)
     parser.add_argument('--hidden_dim', type=int, default=300)
     parser.add_argument('--model_type', default='lstm')
@@ -452,6 +460,7 @@ if __name__ == '__main__':
     # parser.set_defaults(use_biword=False)
     parser.add_argument('--use_count', action='store_true', default=True)
     parser.add_argument('--use_bert', action='store_true', default=False)
+    parser.add_argument('--use_pinyin', action='store_true', default=False)
 
     args = parser.parse_args()
 
@@ -472,10 +481,14 @@ if __name__ == '__main__':
 
     save_model_dir = args.modelpath+args.modelname
     save_data_name = args.savedset
+    os.makedirs(os.path.dirname(args.resultfile), exist_ok=True)
+    os.makedirs(os.path.dirname(save_model_dir), exist_ok=True)
+    os.makedirs(os.path.dirname(save_data_name), exist_ok=True)
     gpu = torch.cuda.is_available()
 
     char_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.uni.ite50.vec"
     bichar_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.bi.ite50.vec"
+    pinyin_emb = "../word2vec_num5.1409.50d.vec"
     gaz_file = "../CNNNERmodel/data/ctb.50d.vec"
 
     sys.stdout.flush()
@@ -491,8 +504,10 @@ if __name__ == '__main__':
             data.label_comment = args.labelcomment
             data.result_file = args.resultfile
             data.HP_lr = args.lr
+            data.HP_lr_decay = args.lr_decay
             data.use_bigram = args.use_biword
             data.HP_use_char = args.use_char
+            data.HP_use_pinyin = args.use_pinyin
             data.HP_hidden_dim = args.hidden_dim
             data.HP_dropout = args.drop
             data.HP_use_count = args.use_count
@@ -502,6 +517,7 @@ if __name__ == '__main__':
             data = Data()
             data.HP_gpu = gpu
             data.HP_use_char = args.use_char
+            data.HP_use_pinyin = args.use_pinyin
             data.HP_batch_size = args.batch_size
             data.HP_num_layer = args.num_layer
             data.HP_iteration = args.num_iter
@@ -512,17 +528,19 @@ if __name__ == '__main__':
             data.label_comment = args.labelcomment
             data.result_file = args.resultfile
             data.HP_lr = args.lr
+            data.HP_lr_decay = args.lr_decay
             data.HP_hidden_dim = args.hidden_dim
             data.HP_use_count = args.use_count
             data.model_type = args.model_type
             data.use_bert = args.use_bert
-            data_initialization(data, gaz_file, train_file, dev_file, test_file)
+            data_initialization(data, gaz_file, pinyin_emb, train_file, dev_file, test_file)
             data.generate_instance_with_gaz(train_file,'train')
             data.generate_instance_with_gaz(dev_file,'dev')
             data.generate_instance_with_gaz(test_file,'test')
             data.build_word_pretrain_emb(char_emb)
             data.build_biword_pretrain_emb(bichar_emb)
             data.build_gaz_pretrain_emb(gaz_file)
+            data.build_pinyin_pretrain_emb(pinyin_emb)
 
             print('Dumping data')
             with open(save_data_name, 'wb') as f:
