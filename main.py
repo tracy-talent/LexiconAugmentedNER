@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
 
+from logging import log
 import time
+import datetime
 import sys
 import argparse
 import random
 import copy
+from numpy.core.function_base import logspace
 import torch
 import gc
 import pickle
@@ -16,11 +19,11 @@ import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
 from utils.metric import get_ner_fmeasure
+from utils.log import get_logger
 from model.gazlstm import GazLSTM as SeqModel
 from utils.data import Data
 
-
-
+logger = None
 
 def data_initialization(data, gaz_file, pinyin_file, train_file, dev_file, test_file):
     data.build_alphabet(train_file)
@@ -102,19 +105,19 @@ def save_data_setting(data, save_file):
     ## save data settings
     with open(save_file, 'wb') as fp:
         pickle.dump(new_data, fp)
-    print( "Data setting saved to file: ", save_file)
+    logger.info( "Data setting saved to file: {}".format(save_file))
 
 
 def load_data_setting(save_file):
     with open(save_file, 'rb') as fp:
         data = pickle.load(fp)
-    print( "Data setting loaded from file: ", save_file)
+    logger.info( "Data setting loaded from file: {}".format(save_file))
     data.show_data_summary()
     return data
 
 def lr_decay(optimizer, epoch, decay_rate, init_lr):
     lr = init_lr * ((1-decay_rate)**epoch)
-    print( " Learning rate is setted as:", lr)
+    logger.info( " Learning rate is setted as: {}".format(lr))
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
     return optimizer
@@ -137,7 +140,7 @@ def evaluate(data, model, name):
     elif name == 'raw':
         instances = data.raw_Ids
     else:
-        print( "Error: wrong evaluate name,", name)
+        logger.info( "Error: wrong evaluate name, {}".format(name))
     right_token = 0
     whole_token = 0
     pred_results = []
@@ -259,20 +262,20 @@ def batchify_with_label(input_batch_list, gpu, num_layer, volatile_flag=False):
         bert_seq_tensor = bert_seq_tensor.cuda()
         bert_mask = bert_mask.cuda()
 
-    # print(bert_seq_tensor.type())
+    # logger.info(bert_seq_tensor.type())
     return gazs, word_seq_tensor, biword_seq_tensor, word_seq_lengths, label_seq_tensor, layer_gaz_tensor, layer_gaz_pinyin_tensor, gaz_count_tensor, gaz_chars_tensor, gaz_mask_tensor, gazchar_mask_tensor, mask, bert_seq_tensor, bert_mask
 
 
 
 def train(data, save_model_dir, seg=True):
 
-    print("Training with {} model.".format(data.model_type))
+    logger.info("Training with {} model.".format(data.model_type))
 
     #data.show_data_summary()
 
 
     model = SeqModel(data)
-    print( "finish building model.")
+    logger.info( "finish building model.")
 
     parameters = filter(lambda p: p.requires_grad, model.parameters())
     optimizer = optim.Adamax(parameters, lr=data.HP_lr)
@@ -290,7 +293,7 @@ def train(data, save_model_dir, seg=True):
     for idx in range(data.HP_iteration):
         epoch_start = time.time()
         temp_start = epoch_start
-        print(("Epoch: %s/%s" %(idx,data.HP_iteration)))
+        logger.info(("Epoch: %s/%s" %(idx,data.HP_iteration)))
         optimizer = lr_decay(optimizer, idx, data.HP_lr_decay, data.HP_lr)
         instance_count = 0
         sample_loss = 0
@@ -333,7 +336,7 @@ def train(data, save_model_dir, seg=True):
                 temp_time = time.time()
                 temp_cost = temp_time - temp_start
                 temp_start = temp_time
-                print(("     Instance: %s; Time: %.2fs; loss: %.4f; acc: %s/%s=%.4f"%(end, temp_cost, sample_loss, right_token, whole_token,(right_token+0.)/whole_token)))
+                logger.info(("     Instance: %s; Time: %.2fs; loss: %.4f; acc: %s/%s=%.4f"%(end, temp_cost, sample_loss, right_token, whole_token,(right_token+0.)/whole_token)))
                 sys.stdout.flush()
                 sample_loss = 0
             if end%data.HP_batch_size == 0:
@@ -344,10 +347,10 @@ def train(data, save_model_dir, seg=True):
 
         temp_time = time.time()
         temp_cost = temp_time - temp_start
-        print(("     Instance: %s; Time: %.2fs; loss: %.4f; acc: %s/%s=%.4f"%(end, temp_cost, sample_loss, right_token, whole_token,(right_token+0.)/whole_token))       )
+        logger.info(("     Instance: %s; Time: %.2fs; loss: %.4f; acc: %s/%s=%.4f"%(end, temp_cost, sample_loss, right_token, whole_token,(right_token+0.)/whole_token))       )
         epoch_finish = time.time()
         epoch_cost = epoch_finish - epoch_start
-        print(("Epoch: %s training finished. Time: %.2fs, speed: %.2fst/s,  total loss: %s"%(idx, epoch_cost, train_num/epoch_cost, total_loss)))
+        logger.info(("Epoch: %s training finished. Time: %.2fs, speed: %.2fst/s,  total loss: %s"%(idx, epoch_cost, train_num/epoch_cost, total_loss)))
 
         speed, acc, p, r, f, pred_labels, gazs = evaluate(data, model, "dev")
         dev_finish = time.time()
@@ -355,17 +358,17 @@ def train(data, save_model_dir, seg=True):
 
         if seg:
             current_score = f
-            print(("Dev: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(dev_cost, speed, acc, p, r, f)))
+            logger.info(("Dev: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(dev_cost, speed, acc, p, r, f)))
         else:
             current_score = acc
-            print(("Dev: time: %.2fs speed: %.2fst/s; acc: %.4f"%(dev_cost, speed, acc)))
+            logger.info(("Dev: time: %.2fs speed: %.2fst/s; acc: %.4f"%(dev_cost, speed, acc)))
 
         if current_score > best_dev:
             if seg:
-                print( "Exceed previous best f score:", best_dev)
+                logger.info( "Exceed previous best f score: {}".format(best_dev))
 
             else:
-                print( "Exceed previous best acc score:", best_dev)
+                logger.info( "Exceed previous best acc score: {}".format(best_dev))
 
             model_name = save_model_dir
             torch.save(model.state_dict(), model_name)
@@ -379,10 +382,10 @@ def train(data, save_model_dir, seg=True):
         test_cost = test_finish - dev_finish
         if seg:
             current_test_score = f
-            print(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(test_cost, speed, acc, p, r, f)))
+            logger.info(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(test_cost, speed, acc, p, r, f)))
         else:
             current_test_score = acc
-            print(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f"%(test_cost, speed, acc)))
+            logger.info(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f"%(test_cost, speed, acc)))
 
         if current_score > best_dev:
             best_dev = current_score
@@ -390,8 +393,8 @@ def train(data, save_model_dir, seg=True):
             best_test_p = p
             best_test_r = r
 
-        print("Best dev score: p:{}, r:{}, f:{}".format(best_dev_p,best_dev_r,best_dev))
-        print("Test score: p:{}, r:{}, f:{}".format(best_test_p,best_test_r,best_test))
+        logger.info("Best dev score: p:{}, r:{}, f:{}" % (best_dev_p,best_dev_r,best_dev))
+        logger.info("Test score: p:{}, r:{}, f:{}" % (best_test_p,best_test_r,best_test))
         gc.collect()
 
     with open(data.result_file,"a") as f:
@@ -402,20 +405,20 @@ def train(data, save_model_dir, seg=True):
 
 def load_model_decode(model_dir, data, name, gpu, seg=True):
     data.HP_gpu = gpu
-    print( "Load Model from file: ", model_dir)
+    logger.info( "Load Model from file: {}".format(model_dir))
     model = SeqModel(data)
 
     model.load_state_dict(torch.load(model_dir))
 
-    print(("Decode %s data ..."%(name)))
+    logger.info(("Decode %s data ..."%(name)))
     start_time = time.time()
     speed, acc, p, r, f, pred_results, gazs = evaluate(data, model, name)
     end_time = time.time()
     time_cost = end_time - start_time
     if seg:
-        print(("%s: time:%.2fs, speed:%.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(name, time_cost, speed, acc, p, r, f)))
+        logger.info(("%s: time:%.2fs, speed:%.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(name, time_cost, speed, acc, p, r, f)))
     else:
-        print(("%s: time:%.2fs, speed:%.2fst/s; acc: %.4f"%(name, time_cost, speed, acc)))
+        logger.info(("%s: time:%.2fs, speed:%.2fst/s; acc: %.4f"%(name, time_cost, speed, acc)))
 
     return pred_results
 
@@ -432,6 +435,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--embedding',  help='Embedding for words', default='None')
     parser.add_argument('--status', choices=['train', 'test'], help='update algorithm', default='train')
+    parser.add_argument('--dataset', choices=['msra', 'ontonotes4', 'resume', 'weibo'])
+    parser.add_argument('--logpath', default='logs/pinyin')
     parser.add_argument('--modelpath', default="save_model/")
     parser.add_argument('--modelname', default="model")
     parser.add_argument('--savedset', help='Dir of saved data setting', default="data/save.dset")
@@ -467,9 +472,9 @@ if __name__ == '__main__':
     seed_num = args.seed
     set_seed(seed_num)
 
-    train_file = args.train
-    dev_file = args.dev
-    test_file = args.test
+    train_file = os.path.join('data', args.dataset, 'train.char.bmoes')
+    dev_file = os.path.join('data', args.dataset, 'dev.char.bmoes')
+    test_file = os.path.join('data', args.dataset, 'test.char.bmoes')
     raw_file = args.raw
     # model_dir = args.loadmodel
     output_file = args.output
@@ -484,6 +489,7 @@ if __name__ == '__main__':
     os.makedirs(os.path.dirname(args.resultfile), exist_ok=True)
     os.makedirs(os.path.dirname(save_model_dir), exist_ok=True)
     os.makedirs(os.path.dirname(save_data_name), exist_ok=True)
+    logger = get_logger(sys.argv, os.path.join(args.logpath, args.dataset, f'{datetime.datetime.now().strftime("%y-%m-%d-%H-%M-%S")}.log'))
     gpu = torch.cuda.is_available()
 
     char_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.uni.ite50.vec"
@@ -495,7 +501,7 @@ if __name__ == '__main__':
 
     if status == 'train':
         if os.path.exists(save_data_name):
-            print('Loading processed data')
+            logger.info('Loading processed data')
             with open(save_data_name, 'rb') as fp:
                 data = pickle.load(fp)
             data.HP_num_layer = args.num_layer
@@ -542,14 +548,14 @@ if __name__ == '__main__':
             data.build_gaz_pretrain_emb(gaz_file)
             data.build_pinyin_pretrain_emb(pinyin_emb)
 
-            print('Dumping data')
+            logger.info('Dumping data')
             with open(save_data_name, 'wb') as f:
                 pickle.dump(data, f)
             set_seed(seed_num)
-        print('data.use_biword=',data.use_bigram)
+        logger.info('data.use_biword={}'.format(data.use_bigram))
         train(data, save_model_dir, seg)
     elif status == 'test':
-        print('Loading processed data')
+        logger.info('Loading processed data')
         with open(save_data_name, 'rb') as fp:
             data = pickle.load(fp)
         data.HP_num_layer = args.num_layer
@@ -567,7 +573,7 @@ if __name__ == '__main__':
         load_model_decode(save_model_dir, data, 'test', gpu, seg)
 
     else:
-        print( "Invalid argument! Please use valid arguments! (train/test/decode)")
+        logger.info( "Invalid argument! Please use valid arguments! (train/test/decode)")
 
 
 
