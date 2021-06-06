@@ -376,26 +376,28 @@ def train(data, save_model_dir, seg=True):
             #best_dev = current_score
             best_dev_p = p
             best_dev_r = r
+        
+        if len(data.test_texts) != 0:
+            # ## decode test
+            speed, acc, p, r, f, pred_labels, gazs = evaluate(data, model, "test")
+            test_finish = time.time()
+            test_cost = test_finish - dev_finish
+            if seg:
+                current_test_score = f
+                logger.info(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(test_cost, speed, acc, p, r, f)))
+            else:
+                current_test_score = acc
+                logger.info(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f"%(test_cost, speed, acc)))
 
-        # ## decode test
-        speed, acc, p, r, f, pred_labels, gazs = evaluate(data, model, "test")
-        test_finish = time.time()
-        test_cost = test_finish - dev_finish
-        if seg:
-            current_test_score = f
-            logger.info(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(test_cost, speed, acc, p, r, f)))
-        else:
-            current_test_score = acc
-            logger.info(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f"%(test_cost, speed, acc)))
+            if current_score > best_dev:
+                best_test = current_test_score
+                best_test_p = p
+                best_test_r = r
+            logger.info("Test score: p:{}, r:{}, f:{}".format(best_test_p,best_test_r,best_test))
 
         if current_score > best_dev:
             best_dev = current_score
-            best_test = current_test_score
-            best_test_p = p
-            best_test_r = r
-
         logger.info("Best dev score: p:{}, r:{}, f:{}".format(best_dev_p,best_dev_r,best_dev))
-        logger.info("Test score: p:{}, r:{}, f:{}".format(best_test_p,best_test_r,best_test))
         gc.collect()
 
     with open(data.result_file,"a") as f:
@@ -495,10 +497,10 @@ if __name__ == '__main__':
     logger = get_logger(sys.argv, os.path.join(args.logpath, args.dataset, f'{datetime.datetime.now().strftime("%y-%m-%d-%H-%M-%S")}.log'))
     gpu = torch.cuda.is_available()
 
-    char_emb = "/home/ghost/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.uni.11k.50d.vec"
-    bichar_emb = "/home/ghost/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.bi.3987k.50d.vec"
-    pinyin_emb = "/home/ghost/NLP/corpus/pinyin/word2vec/word2vec_num5.1409.50d.vec"
-    gaz_file = "/home/ghost/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec"
+    char_emb = "/home/mist/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.uni.11k.50d.vec"
+    bichar_emb = "/home/mist/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.bi.3987k.50d.vec"
+    pinyin_emb = "/home/mist/NLP/corpus/pinyin/word2vec/word2vec_num5.1409.50d.vec"
+    gaz_file = "/home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec"
 
     sys.stdout.flush()
 
