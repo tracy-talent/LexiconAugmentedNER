@@ -1,0 +1,183 @@
+nohup: ignoring input
+2021-06-06 13:05:18.298221: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+build batched crf...
+gold_num =  389  pred_num =  0  right_num =  0
+gold_num =  413  pred_num =  0  right_num =  0
+gold_num =  389  pred_num =  124  right_num =  81
+gold_num =  413  pred_num =  64  right_num =  41
+gold_num =  389  pred_num =  223  right_num =  136
+gold_num =  413  pred_num =  153  right_num =  100
+gold_num =  389  pred_num =  225  right_num =  146
+gold_num =  413  pred_num =  156  right_num =  105
+gold_num =  389  pred_num =  262  right_num =  164
+gold_num =  413  pred_num =  191  right_num =  130
+gold_num =  389  pred_num =  267  right_num =  179
+gold_num =  413  pred_num =  197  right_num =  135
+gold_num =  389  pred_num =  270  right_num =  180
+gold_num =  413  pred_num =  216  right_num =  149
+gold_num =  389  pred_num =  284  right_num =  187
+gold_num =  413  pred_num =  225  right_num =  157
+gold_num =  389  pred_num =  307  right_num =  192
+gold_num =  413  pred_num =  260  right_num =  171
+gold_num =  389  pred_num =  306  right_num =  198
+gold_num =  413  pred_num =  258  right_num =  174
+gold_num =  389  pred_num =  285  right_num =  191
+gold_num =  413  pred_num =  235  right_num =  157
+gold_num =  389  pred_num =  334  right_num =  213
+gold_num =  413  pred_num =  301  right_num =  188
+gold_num =  389  pred_num =  297  right_num =  203
+gold_num =  413  pred_num =  258  right_num =  177
+gold_num =  389  pred_num =  296  right_num =  204
+gold_num =  413  pred_num =  262  right_num =  176
+gold_num =  389  pred_num =  304  right_num =  207
+gold_num =  413  pred_num =  257  right_num =  178
+gold_num =  389  pred_num =  309  right_num =  209
+gold_num =  413  pred_num =  274  right_num =  190
+gold_num =  389  pred_num =  295  right_num =  204
+gold_num =  413  pred_num =  253  right_num =  174
+gold_num =  389  pred_num =  354  right_num =  221
+gold_num =  413  pred_num =  320  right_num =  198
+gold_num =  389  pred_num =  319  right_num =  211
+gold_num =  413  pred_num =  284  right_num =  192
+gold_num =  389  pred_num =  316  right_num =  213
+gold_num =  413  pred_num =  290  right_num =  194
+gold_num =  389  pred_num =  305  right_num =  210
+gold_num =  413  pred_num =  272  right_num =  188
+gold_num =  389  pred_num =  316  right_num =  216
+gold_num =  413  pred_num =  282  right_num =  192
+gold_num =  389  pred_num =  333  right_num =  220
+gold_num =  413  pred_num =  298  right_num =  201
+gold_num =  389  pred_num =  306  right_num =  216
+gold_num =  413  pred_num =  280  right_num =  196
+gold_num =  389  pred_num =  294  right_num =  214
+gold_num =  413  pred_num =  256  right_num =  188
+gold_num =  389  pred_num =  319  right_num =  223
+gold_num =  413  pred_num =  287  right_num =  201
+gold_num =  389  pred_num =  325  right_num =  215
+gold_num =  413  pred_num =  299  right_num =  205
+gold_num =  389  pred_num =  313  right_num =  220
+gold_num =  413  pred_num =  285  right_num =  205
+gold_num =  389  pred_num =  338  right_num =  226
+gold_num =  413  pred_num =  312  right_num =  211
+gold_num =  389  pred_num =  310  right_num =  220
+gold_num =  413  pred_num =  274  right_num =  198
+2021-06-06 13:18:45.558878: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 11224
+gaz alphabet size: 11909
+gaz alphabet size: 12583
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:1884, case_match:0, oov:10, oov%:0.005277044854881266
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:12581, case_match:0, oov:1, oov%:7.947230390209013e-05
+True
+build pinyin pretrain emb...
+Embedding:
+     pretrain word:1409, prefect match:1409, case_match:0, oov:1, oov%:0.0007087172218284905
+build batched crf...
+gold_num =  1497  pred_num =  1405  right_num =  1008
+gold_num =  1630  pred_num =  1547  right_num =  1172
+gold_num =  1497  pred_num =  1473  right_num =  1192
+gold_num =  1630  pred_num =  1588  right_num =  1351
+gold_num =  1497  pred_num =  1443  right_num =  1210
+gold_num =  1630  pred_num =  1585  right_num =  1401
+gold_num =  1497  pred_num =  1483  right_num =  1266
+gold_num =  1630  pred_num =  1621  right_num =  1441
+gold_num =  1497  pred_num =  1513  right_num =  1297
+gold_num =  1630  pred_num =  1634  right_num =  1451
+gold_num =  1497  pred_num =  1466  right_num =  1289
+gold_num =  1630  pred_num =  1610  right_num =  1461
+gold_num =  1497  pred_num =  1496  right_num =  1309
+gold_num =  1630  pred_num =  1629  right_num =  1473
+gold_num =  1497  pred_num =  1492  right_num =  1318
+gold_num =  1630  pred_num =  1623  right_num =  1480
+gold_num =  1497  pred_num =  1499  right_num =  1320
+gold_num =  1630  pred_num =  1627  right_num =  1485
+gold_num =  1497  pred_num =  1480  right_num =  1323
+gold_num =  1630  pred_num =  1608  right_num =  1488
+gold_num =  1497  pred_num =  1488  right_num =  1334
+gold_num =  1630  pred_num =  1624  right_num =  1495
+gold_num =  1497  pred_num =  1497  right_num =  1350
+gold_num =  1630  pred_num =  1634  right_num =  1507
+gold_num =  1497  pred_num =  1491  right_num =  1354
+gold_num =  1630  pred_num =  1622  right_num =  1509
+gold_num =  1497  pred_num =  1477  right_num =  1350
+gold_num =  1630  pred_num =  1624  right_num =  1517
+gold_num =  1497  pred_num =  1474  right_num =  1357
+gold_num =  1630  pred_num =  1623  right_num =  1508
+gold_num =  1497  pred_num =  1482  right_num =  1360
+gold_num =  1630  pred_num =  1626  right_num =  1509
+gold_num =  1497  pred_num =  1486  right_num =  1364
+gold_num =  1630  pred_num =  1623  right_num =  1513
+gold_num =  1497  pred_num =  1490  right_num =  1362
+gold_num =  1630  pred_num =  1626  right_num =  1515
+gold_num =  1497  pred_num =  1483  right_num =  1363
+gold_num =  1630  pred_num =  1625  right_num =  1514
+gold_num =  1497  pred_num =  1484  right_num =  1376
+gold_num =  1630  pred_num =  1625  right_num =  1509
+gold_num =  1497  pred_num =  1486  right_num =  1377
+gold_num =  1630  pred_num =  1623  right_num =  1510
+gold_num =  1497  pred_num =  1486  right_num =  1366
+gold_num =  1630  pred_num =  1627  right_num =  1515
+gold_num =  1497  pred_num =  1492  right_num =  1366
+gold_num =  1630  pred_num =  1630  right_num =  1518
+gold_num =  1497  pred_num =  1494  right_num =  1375
+gold_num =  1630  pred_num =  1629  right_num =  1524
+gold_num =  1497  pred_num =  1497  right_num =  1377
+gold_num =  1630  pred_num =  1628  right_num =  1520
+gold_num =  1497  pred_num =  1493  right_num =  1376
+gold_num =  1630  pred_num =  1626  right_num =  1519
+gold_num =  1497  pred_num =  1491  right_num =  1381
+gold_num =  1630  pred_num =  1623  right_num =  1516
+gold_num =  1497  pred_num =  1495  right_num =  1380
+gold_num =  1630  pred_num =  1627  right_num =  1523
+gold_num =  1497  pred_num =  1488  right_num =  1372
+gold_num =  1630  pred_num =  1626  right_num =  1522
+gold_num =  1497  pred_num =  1493  right_num =  1373
+gold_num =  1630  pred_num =  1630  right_num =  1526
+2021-06-06 13:47:02.229928: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 44324
+gaz alphabet size: 59468
+gaz alphabet size: 70987
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:4063, case_match:0, oov:76, oov%:0.018357487922705314
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:70985, case_match:0, oov:1, oov%:1.4087086367926522e-05
+True
+build pinyin pretrain emb...
+Embedding:
+     pretrain word:1409, prefect match:1409, case_match:0, oov:1, oov%:0.0007087172218284905
+build batched crf...
+gold_num =  6950  pred_num =  5366  right_num =  3590
+gold_num =  7684  pred_num =  6012  right_num =  4021
+gold_num =  6950  pred_num =  6293  right_num =  4227
+gold_num =  7684  pred_num =  7022  right_num =  4769
+gold_num =  6950  pred_num =  5964  right_num =  4245
+gold_num =  7684  pred_num =  6721  right_num =  4833
+gold_num =  6950  pred_num =  6383  right_num =  4510
+gold_num =  7684  pred_num =  7132  right_num =  5096
+gold_num =  6950  pred_num =  5849  right_num =  4338
+gold_num =  7684  pred_num =  6551  right_num =  4978
+gold_num =  6950  pred_num =  6266  right_num =  4633
+gold_num =  7684  pred_num =  6980  right_num =  5288
+gold_num =  6950  pred_num =  6786  right_num =  4765
+gold_num =  7684  pred_num =  7584  right_num =  5513
+gold_num =  6950  pred_num =  6303  right_num =  4751
+gold_num =  7684  pred_num =  7049  right_num =  5418
+gold_num =  6950  pred_num =  6694  right_num =  4863
+gold_num =  7684  pred_num =  7557  right_num =  5599
+gold_num =  6950  pred_num =  6562  right_num =  4887
+gold_num =  7684  pred_num =  7275  right_num =  5555
+gold_num =  6950  pred_num =  6445  right_num =  4870
+gold_num =  7684  pred_num =  7204  right_num =  5546
+gold_num =  6950  pred_num =  6643  right_num =  4948
+gold_num =  7684  pred_num =  7404  right_num =  5627
+gold_num =  6950  pred_num =  6479  right_num =  4938
+gold_num =  7684  pred_num =  7253  right_num =  5575
+gold_num =  6950  pred_num =  6540  right_num =  4913
+gold_num =  7684  pred_num =  7354  right_num =  5629

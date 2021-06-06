@@ -25,11 +25,13 @@ from utils.data import Data
 def data_initialization(data, gaz_file, train_file, dev_file, test_file):
     data.build_alphabet(train_file)
     data.build_alphabet(dev_file)
-    data.build_alphabet(test_file)
+    if os.path.exist(test_file):
+        data.build_alphabet(test_file)
     data.build_gaz_file(gaz_file)
     data.build_gaz_alphabet(train_file,count=True)
     data.build_gaz_alphabet(dev_file,count=True)
-    data.build_gaz_alphabet(test_file,count=True)
+    if os.path.exist(test_file):
+        data.build_gaz_alphabet(test_file,count=True)
     data.fix_alphabet()
     return data
 
@@ -366,25 +368,27 @@ def train(data, save_model_dir, seg=True):
             best_dev_p = p
             best_dev_r = r
 
-        # ## decode test
-        speed, acc, p, r, f, pred_labels, gazs = evaluate(data, model, "test")
-        test_finish = time.time()
-        test_cost = test_finish - dev_finish
-        if seg:
-            current_test_score = f
-            print(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(test_cost, speed, acc, p, r, f)))
-        else:
-            current_test_score = acc
-            print(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f"%(test_cost, speed, acc)))
+        if len(data.test_texts) != 0:
+            # ## decode test
+            speed, acc, p, r, f, pred_labels, gazs = evaluate(data, model, "test")
+            test_finish = time.time()
+            test_cost = test_finish - dev_finish
+            if seg:
+                current_test_score = f
+                print(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f, p: %.4f, r: %.4f, f: %.4f"%(test_cost, speed, acc, p, r, f)))
+            else:
+                current_test_score = acc
+                print(("Test: time: %.2fs, speed: %.2fst/s; acc: %.4f"%(test_cost, speed, acc)))
+
+            if current_score > best_dev:
+                best_test = current_test_score
+                best_test_p = p
+                best_test_r = r
+            print("Test score: p:{}, r:{}, f:{}".format(best_test_p,best_test_r,best_test))
 
         if current_score > best_dev:
             best_dev = current_score
-            best_test = current_test_score
-            best_test_p = p
-            best_test_r = r
-
         print("Best dev score: p:{}, r:{}, f:{}".format(best_dev_p,best_dev_r,best_dev))
-        print("Test score: p:{}, r:{}, f:{}".format(best_test_p,best_test_r,best_test))
         gc.collect()
 
     with open(data.result_file,"a") as f:
@@ -474,9 +478,9 @@ if __name__ == '__main__':
     save_data_name = args.savedset
     gpu = torch.cuda.is_available()
 
-    char_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.uni.ite50.vec"
-    bichar_emb = "../CNNNERmodel/data/gigaword_chn.all.a2b.bi.ite50.vec"
-    gaz_file = "../CNNNERmodel/data/ctb.50d.vec"
+    char_emb = "/home/mist/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.uni.11k.50d.vec"
+    bichar_emb = "/home/mist/NLP/corpus/embedding/chinese/lexicon/gigaword_chn.all.a2b.bi.3987k.50d.vec"
+    gaz_file = "/home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec"
 
     sys.stdout.flush()
 
@@ -519,9 +523,11 @@ if __name__ == '__main__':
             data_initialization(data, gaz_file, train_file, dev_file, test_file)
             data.generate_instance_with_gaz(train_file,'train')
             data.generate_instance_with_gaz(dev_file,'dev')
-            data.generate_instance_with_gaz(test_file,'test')
+            if os.path.exist(test_file):
+                data.generate_instance_with_gaz(test_file,'test')
             data.build_word_pretrain_emb(char_emb)
-            data.build_biword_pretrain_emb(bichar_emb)
+            if args.use_biword:
+                data.build_biword_pretrain_emb(bichar_emb)
             data.build_gaz_pretrain_emb(gaz_file)
 
             print('Dumping data')

@@ -82,7 +82,7 @@ class GazLSTM(nn.Module):
         self.crf = CRF(data.label_alphabet_size, self.gpu)
 
         if self.use_bert:
-            self.bert_encoder = BertModel.from_pretrained('bert-base-chinese')
+            self.bert_encoder = BertModel.from_pretrained('/home/mist/NLP/corpus/transformers/google-bert-base-chinese')
             for p in self.bert_encoder.parameters():
                 p.requires_grad = False
 
@@ -121,7 +121,7 @@ class GazLSTM(nn.Module):
             gazchar_embeds = self.word_embedding(gaz_chars)
 
             gazchar_mask = gazchar_mask_input.unsqueeze(-1).repeat(1,1,1,1,1,self.word_emb_dim)
-            gazchar_embeds = gazchar_embeds.data.masked_fill_(gazchar_mask.data, 0)  #(b,l,4,gl,cl,ce)
+            gazchar_embeds = gazchar_embeds.data.masked_fill_(gazchar_mask.data.bool(), 0)  #(b,l,4,gl,cl,ce)
 
             # gazchar_mask_input:(b,l,4,gl,cl)
             gaz_charnum = (gazchar_mask_input == 0).sum(dim=-1, keepdim=True).float()  #(b,l,4,gl,1)
@@ -143,7 +143,7 @@ class GazLSTM(nn.Module):
 
             gaz_mask = gaz_mask_input.unsqueeze(-1).repeat(1,1,1,1,self.gaz_emb_dim)
 
-            gaz_embeds = gaz_embeds_d.data.masked_fill_(gaz_mask.data, 0)  #(b,l,4,g,ge)  ge:gaz_embed_dim
+            gaz_embeds = gaz_embeds_d.data.masked_fill_(gaz_mask.data.bool(), 0)  #(b,l,4,g,ge)  ge:gaz_embed_dim
 
 
         if self.use_count:

@@ -92,12 +92,12 @@ class CRF(nn.Module):
             mask_idx = mask[idx, :].view(batch_size, 1).expand(batch_size, tag_size)
             
             ## effective updated partition part, only keep the partition value of mask value = 1
-            masked_cur_partition = cur_partition.masked_select(mask_idx)
+            masked_cur_partition = cur_partition.masked_select(mask_idx.bool())
             ## let mask_idx broadcastable, to disable warning
             mask_idx = mask_idx.contiguous().view(batch_size, tag_size, 1)
 
             ## replace the partition where the maskvalue=1, other partition value keeps the same
-            partition.masked_scatter_(mask_idx, masked_cur_partition)  
+            partition.masked_scatter_(mask_idx.bool(), masked_cur_partition)  
         # until the last state, add transition score for all partition (and do log_sum_exp) then select the value in STOP_TAG
         cur_values = self.transitions.view(1,tag_size, tag_size).expand(batch_size, tag_size, tag_size) + partition.contiguous().view(batch_size, tag_size, 1).expand(batch_size, tag_size, tag_size)
         cur_partition = log_sum_exp(cur_values, tag_size)  #(batch_size,hidden_dim)
@@ -156,7 +156,7 @@ class CRF(nn.Module):
             partition_history.append(partition.unsqueeze(2))
             ## cur_bp: (batch_size, tag_size) max source score position in current tag
             ## set padded label as 0, which will be filtered in post processing
-            cur_bp.masked_fill_(mask[idx].view(batch_size, 1).expand(batch_size, tag_size), 0) 
+            cur_bp.masked_fill_(mask[idx].view(batch_size, 1).expand(batch_size, tag_size).bool(), 0) 
             back_points.append(cur_bp)
         ### add score to final STOP_TAG
         partition_history = torch.cat(partition_history,dim=0).view(seq_len, batch_size,-1).transpose(1,0).contiguous() ## (batch_size, seq_len, tag_size)
@@ -242,7 +242,7 @@ class CRF(nn.Module):
         ### need convert tags id to search from 400 positions of scores
         tg_energy = torch.gather(scores.view(seq_len, batch_size, -1), 2, new_tags).view(seq_len, batch_size)  # seq_len * bat_size
         ## mask transpose to (seq_len, batch_size)
-        tg_energy = tg_energy.masked_select(mask.transpose(1,0))
+        tg_energy = tg_energy.masked_select(mask.transpose(1,0).bool())
         
         # ## calculate the score from START_TAG to first label
         # start_transition = self.transitions[START_TAG,:].view(1, tag_size).expand(batch_size, tag_size)
