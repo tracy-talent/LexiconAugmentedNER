@@ -1,0 +1,16 @@
+nohup: ignoring input
+2021-06-06 16:43:57.496894: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 112458
+gaz alphabet size: 116562
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:4750, case_match:0, oov:70, oov%:0.014519809168222361
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:116560, case_match:0, oov:1, oov%:8.579125272387228e-06
+True
+build pinyin pretrain emb...
+Embedding:
+     pretrain word:1409, prefect match:1409, case_match:0, oov:1, oov%:0.0007087172218284905
+build batched crf...

@@ -345,6 +345,7 @@ def train(data, save_model_dir, seg=True):
                 optimizer.step()
                 model.zero_grad()
                 batch_loss = 0
+            sys.stdout.flush()
 
         temp_time = time.time()
         temp_cost = temp_time - temp_start
