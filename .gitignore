@@ -3,3 +3,5 @@
 /save_model
 /logs
 /result
+*.out
+*.pyc

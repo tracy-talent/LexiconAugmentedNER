@@ -1,2 +1,2267 @@
 nohup: ignoring input
-2021-06-06 14:58:50.352971: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-06-06 17:07:05.057068: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 13613
+gaz alphabet size: 15184
+gaz alphabet size: 16689
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:3281, case_match:0, oov:75, oov%:0.022341376228775692
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:16687, case_match:0, oov:1, oov%:5.991970759182695e-05
+Dumping data
+data.use_biword= False
+Training with lstm model.
+build batched crf...
+finish building model.
+Epoch: 0/30
+ Learning rate is setted as: 0.005
+     Instance: 1350; Time: 25.20s; loss: 33098.4453; acc: 67954.0/73778.0=0.9211
+Epoch: 0 training finished. Time: 25.20s, speed: 53.58st/s,  total loss: tensor(33098.4453, device='cuda:0')
+gold_num =  389  pred_num =  0  right_num =  0
+Dev: time: 3.64s, speed: 74.51st/s; acc: 0.9331, p: -1.0000, r: 0.0000, f: -1.0000
+gold_num =  413  pred_num =  0  right_num =  0
+Test: time: 3.69s, speed: 73.47st/s; acc: 0.9274, p: -1.0000, r: 0.0000, f: -1.0000
+Test score: p:-1, r:-1, f:-1
+Best dev score: p:-1, r:-1, f:-1
+Epoch: 1/30
+ Learning rate is setted as: 0.00475
+     Instance: 1350; Time: 25.11s; loss: 20486.0508; acc: 69102.0/73778.0=0.9366
+Epoch: 1 training finished. Time: 25.11s, speed: 53.77st/s,  total loss: tensor(20486.0508, device='cuda:0')
+gold_num =  389  pred_num =  164  right_num =  94
+Dev: time: 3.63s, speed: 74.81st/s; acc: 0.9462, p: 0.5732, r: 0.2416, f: 0.3400
+Exceed previous best f score: -1
+gold_num =  413  pred_num =  92  right_num =  47
+Test: time: 3.70s, speed: 73.57st/s; acc: 0.9348, p: 0.5109, r: 0.1138, f: 0.1861
+Test score: p:0.5108695652173914, r:0.11380145278450363, f:0.18613861386138617
+Best dev score: p:0.573170731707317, r:0.2416452442159383, f:0.33996383363471966
+Epoch: 2/30
+ Learning rate is setted as: 0.0045125
+     Instance: 1350; Time: 23.20s; loss: 16190.5645; acc: 69566.0/73778.0=0.9429
+Epoch: 2 training finished. Time: 23.20s, speed: 58.19st/s,  total loss: tensor(16190.5645, device='cuda:0')
+gold_num =  389  pred_num =  253  right_num =  146
+Dev: time: 3.61s, speed: 75.21st/s; acc: 0.9520, p: 0.5771, r: 0.3753, f: 0.4548
+Exceed previous best f score: 0.33996383363471966
+gold_num =  413  pred_num =  187  right_num =  108
+Test: time: 3.71s, speed: 73.32st/s; acc: 0.9436, p: 0.5775, r: 0.2615, f: 0.3600
+Test score: p:0.5775401069518716, r:0.26150121065375304, f:0.36
+Best dev score: p:0.5770750988142292, r:0.37532133676092544, f:0.45482866043613707
+Epoch: 3/30
+ Learning rate is setted as: 0.004286875
+     Instance: 1350; Time: 25.00s; loss: 13648.7656; acc: 69969.0/73778.0=0.9484
+Epoch: 3 training finished. Time: 25.00s, speed: 53.99st/s,  total loss: tensor(13648.7656, device='cuda:0')
+gold_num =  389  pred_num =  340  right_num =  190
+Dev: time: 3.67s, speed: 73.98st/s; acc: 0.9537, p: 0.5588, r: 0.4884, f: 0.5213
+Exceed previous best f score: 0.45482866043613707
+gold_num =  413  pred_num =  299  right_num =  166
+Test: time: 3.86s, speed: 70.51st/s; acc: 0.9475, p: 0.5552, r: 0.4019, f: 0.4663
+Test score: p:0.5551839464882943, r:0.4019370460048426, f:0.46629213483146065
+Best dev score: p:0.5588235294117647, r:0.4884318766066838, f:0.5212620027434842
+Epoch: 4/30
+ Learning rate is setted as: 0.00407253125
+     Instance: 1350; Time: 25.37s; loss: 13340.0361; acc: 70175.0/73778.0=0.9512
+Epoch: 4 training finished. Time: 25.37s, speed: 53.21st/s,  total loss: tensor(13340.0361, device='cuda:0')
+gold_num =  389  pred_num =  252  right_num =  165
+Dev: time: 3.56s, speed: 76.25st/s; acc: 0.9540, p: 0.6548, r: 0.4242, f: 0.5148
+gold_num =  413  pred_num =  182  right_num =  129
+Test: time: 3.64s, speed: 74.43st/s; acc: 0.9468, p: 0.7088, r: 0.3123, f: 0.4336
+Test score: p:0.5551839464882943, r:0.4019370460048426, f:0.46629213483146065
+Best dev score: p:0.5588235294117647, r:0.4884318766066838, f:0.5212620027434842
+Epoch: 5/30
+ Learning rate is setted as: 0.003868904687499999
+     Instance: 1350; Time: 24.76s; loss: 11713.2930; acc: 70311.0/73778.0=0.9530
+Epoch: 5 training finished. Time: 24.76s, speed: 54.53st/s,  total loss: tensor(11713.2930, device='cuda:0')
+gold_num =  389  pred_num =  253  right_num =  170
+Dev: time: 3.62s, speed: 74.88st/s; acc: 0.9548, p: 0.6719, r: 0.4370, f: 0.5296
+Exceed previous best f score: 0.5212620027434842
+gold_num =  413  pred_num =  190  right_num =  134
+Test: time: 3.78s, speed: 71.86st/s; acc: 0.9473, p: 0.7053, r: 0.3245, f: 0.4444
+Test score: p:0.7052631578947368, r:0.324455205811138, f:0.4444444444444444
+Best dev score: p:0.6719367588932806, r:0.4370179948586118, f:0.5295950155763239
+Epoch: 6/30
+ Learning rate is setted as: 0.003675459453124999
+     Instance: 1350; Time: 24.85s; loss: 10836.9775; acc: 70400.0/73778.0=0.9542
+Epoch: 6 training finished. Time: 24.85s, speed: 54.32st/s,  total loss: tensor(10836.9775, device='cuda:0')
+gold_num =  389  pred_num =  263  right_num =  175
+Dev: time: 3.59s, speed: 75.63st/s; acc: 0.9552, p: 0.6654, r: 0.4499, f: 0.5368
+Exceed previous best f score: 0.5295950155763239
+gold_num =  413  pred_num =  215  right_num =  150
+Test: time: 3.70s, speed: 73.76st/s; acc: 0.9493, p: 0.6977, r: 0.3632, f: 0.4777
+Test score: p:0.6976744186046512, r:0.36319612590799033, f:0.47770700636942676
+Best dev score: p:0.6653992395437263, r:0.4498714652956298, f:0.5368098159509203
+Epoch: 7/30
+ Learning rate is setted as: 0.003491686480468749
+     Instance: 1350; Time: 25.61s; loss: 10382.2051; acc: 70469.0/73778.0=0.9551
+Epoch: 7 training finished. Time: 25.61s, speed: 52.71st/s,  total loss: tensor(10382.2051, device='cuda:0')
+gold_num =  389  pred_num =  274  right_num =  181
+Dev: time: 3.60s, speed: 75.36st/s; acc: 0.9558, p: 0.6606, r: 0.4653, f: 0.5460
+Exceed previous best f score: 0.5368098159509203
+gold_num =  413  pred_num =  224  right_num =  158
+Test: time: 3.66s, speed: 74.32st/s; acc: 0.9510, p: 0.7054, r: 0.3826, f: 0.4961
+Test score: p:0.7053571428571429, r:0.38256658595641646, f:0.49607535321821045
+Best dev score: p:0.6605839416058394, r:0.4652956298200514, f:0.5460030165912518
+Epoch: 8/30
+ Learning rate is setted as: 0.0033171021564453113
+     Instance: 1350; Time: 25.38s; loss: 9794.2969; acc: 70629.0/73778.0=0.9573
+Epoch: 8 training finished. Time: 25.38s, speed: 53.19st/s,  total loss: tensor(9794.2969, device='cuda:0')
+gold_num =  389  pred_num =  284  right_num =  185
+Dev: time: 3.64s, speed: 74.47st/s; acc: 0.9558, p: 0.6514, r: 0.4756, f: 0.5498
+Exceed previous best f score: 0.5460030165912518
+gold_num =  413  pred_num =  249  right_num =  167
+Test: time: 3.72s, speed: 73.11st/s; acc: 0.9509, p: 0.6707, r: 0.4044, f: 0.5045
+Test score: p:0.6706827309236948, r:0.4043583535108959, f:0.5045317220543807
+Best dev score: p:0.6514084507042254, r:0.4755784061696658, f:0.5497771173848439
+Epoch: 9/30
+ Learning rate is setted as: 0.0031512470486230455
+     Instance: 1350; Time: 25.72s; loss: 9441.3770; acc: 70615.0/73778.0=0.9571
+Epoch: 9 training finished. Time: 25.72s, speed: 52.48st/s,  total loss: tensor(9441.3770, device='cuda:0')
+gold_num =  389  pred_num =  279  right_num =  185
+Dev: time: 3.60s, speed: 75.39st/s; acc: 0.9562, p: 0.6631, r: 0.4756, f: 0.5539
+Exceed previous best f score: 0.5497771173848439
+gold_num =  413  pred_num =  241  right_num =  166
+Test: time: 3.70s, speed: 73.48st/s; acc: 0.9506, p: 0.6888, r: 0.4019, f: 0.5076
+Test score: p:0.6887966804979253, r:0.4019370460048426, f:0.5076452599388379
+Best dev score: p:0.6630824372759857, r:0.4755784061696658, f:0.5538922155688623
+Epoch: 10/30
+ Learning rate is setted as: 0.0029936846961918936
+     Instance: 1350; Time: 25.52s; loss: 8994.7539; acc: 70736.0/73778.0=0.9588
+Epoch: 10 training finished. Time: 25.52s, speed: 52.91st/s,  total loss: tensor(8994.7539, device='cuda:0')
+gold_num =  389  pred_num =  301  right_num =  192
+Dev: time: 3.64s, speed: 74.56st/s; acc: 0.9562, p: 0.6379, r: 0.4936, f: 0.5565
+Exceed previous best f score: 0.5538922155688623
+gold_num =  413  pred_num =  250  right_num =  170
+Test: time: 3.72s, speed: 73.19st/s; acc: 0.9509, p: 0.6800, r: 0.4116, f: 0.5128
+Test score: p:0.68, r:0.4116222760290557, f:0.5128205128205129
+Best dev score: p:0.6378737541528239, r:0.493573264781491, f:0.5565217391304347
+Epoch: 11/30
+ Learning rate is setted as: 0.0028440004613822984
+     Instance: 1350; Time: 25.45s; loss: 8642.7773; acc: 70699.0/73778.0=0.9583
+Epoch: 11 training finished. Time: 25.45s, speed: 53.05st/s,  total loss: tensor(8642.7773, device='cuda:0')
+gold_num =  389  pred_num =  304  right_num =  199
+Dev: time: 3.57s, speed: 75.99st/s; acc: 0.9576, p: 0.6546, r: 0.5116, f: 0.5743
+Exceed previous best f score: 0.5565217391304347
+gold_num =  413  pred_num =  269  right_num =  179
+Test: time: 3.70s, speed: 73.62st/s; acc: 0.9524, p: 0.6654, r: 0.4334, f: 0.5249
+Test score: p:0.6654275092936803, r:0.43341404358353514, f:0.5249266862170088
+Best dev score: p:0.6546052631578947, r:0.5115681233933161, f:0.5743145743145743
+Epoch: 12/30
+ Learning rate is setted as: 0.0027018004383131834
+     Instance: 1350; Time: 25.26s; loss: 8286.1396; acc: 70736.0/73778.0=0.9588
+Epoch: 12 training finished. Time: 25.26s, speed: 53.44st/s,  total loss: tensor(8286.1396, device='cuda:0')
+gold_num =  389  pred_num =  311  right_num =  203
+Dev: time: 3.62s, speed: 74.86st/s; acc: 0.9578, p: 0.6527, r: 0.5219, f: 0.5800
+Exceed previous best f score: 0.5743145743145743
+gold_num =  413  pred_num =  274  right_num =  181
+Test: time: 3.68s, speed: 73.87st/s; acc: 0.9522, p: 0.6606, r: 0.4383, f: 0.5269
+Test score: p:0.6605839416058394, r:0.43825665859564167, f:0.5269286754002912
+Best dev score: p:0.6527331189710611, r:0.5218508997429306, f:0.5800000000000001
+Epoch: 13/30
+ Learning rate is setted as: 0.002566710416397524
+     Instance: 1350; Time: 25.55s; loss: 7926.3662; acc: 70927.0/73778.0=0.9614
+Epoch: 13 training finished. Time: 25.55s, speed: 52.83st/s,  total loss: tensor(7926.3662, device='cuda:0')
+gold_num =  389  pred_num =  326  right_num =  210
+Dev: time: 3.61s, speed: 75.14st/s; acc: 0.9572, p: 0.6442, r: 0.5398, f: 0.5874
+Exceed previous best f score: 0.5800000000000001
+gold_num =  413  pred_num =  288  right_num =  184
+Test: time: 3.69s, speed: 73.80st/s; acc: 0.9519, p: 0.6389, r: 0.4455, f: 0.5250
+Test score: p:0.6388888888888888, r:0.44552058111380144, f:0.5249643366619116
+Best dev score: p:0.6441717791411042, r:0.5398457583547558, f:0.5874125874125873
+Epoch: 14/30
+ Learning rate is setted as: 0.0024383748955776477
+     Instance: 1350; Time: 25.14s; loss: 7680.8389; acc: 70962.0/73778.0=0.9618
+Epoch: 14 training finished. Time: 25.14s, speed: 53.70st/s,  total loss: tensor(7680.8389, device='cuda:0')
+gold_num =  389  pred_num =  303  right_num =  203
+Dev: time: 3.57s, speed: 75.90st/s; acc: 0.9584, p: 0.6700, r: 0.5219, f: 0.5867
+gold_num =  413  pred_num =  268  right_num =  183
+Test: time: 3.64s, speed: 74.49st/s; acc: 0.9524, p: 0.6828, r: 0.4431, f: 0.5374
+Test score: p:0.6388888888888888, r:0.44552058111380144, f:0.5249643366619116
+Best dev score: p:0.6441717791411042, r:0.5398457583547558, f:0.5874125874125873
+Epoch: 15/30
+ Learning rate is setted as: 0.002316456150798765
+     Instance: 1350; Time: 24.73s; loss: 7444.6318; acc: 71028.0/73778.0=0.9627
+Epoch: 15 training finished. Time: 24.73s, speed: 54.59st/s,  total loss: tensor(7444.6318, device='cuda:0')
+gold_num =  389  pred_num =  321  right_num =  209
+Dev: time: 3.63s, speed: 74.71st/s; acc: 0.9581, p: 0.6511, r: 0.5373, f: 0.5887
+Exceed previous best f score: 0.5874125874125873
+gold_num =  413  pred_num =  287  right_num =  187
+Test: time: 3.68s, speed: 73.99st/s; acc: 0.9526, p: 0.6516, r: 0.4528, f: 0.5343
+Test score: p:0.6515679442508711, r:0.45278450363196127, f:0.5342857142857143
+Best dev score: p:0.6510903426791277, r:0.5372750642673522, f:0.5887323943661973
+Epoch: 16/30
+ Learning rate is setted as: 0.0022006333432588268
+     Instance: 1350; Time: 24.79s; loss: 7242.3203; acc: 70987.0/73778.0=0.9622
+Epoch: 16 training finished. Time: 24.79s, speed: 54.47st/s,  total loss: tensor(7242.3203, device='cuda:0')
+gold_num =  389  pred_num =  309  right_num =  200
+Dev: time: 3.57s, speed: 75.94st/s; acc: 0.9578, p: 0.6472, r: 0.5141, f: 0.5731
+gold_num =  413  pred_num =  281  right_num =  186
+Test: time: 3.60s, speed: 75.30st/s; acc: 0.9528, p: 0.6619, r: 0.4504, f: 0.5360
+Test score: p:0.6515679442508711, r:0.45278450363196127, f:0.5342857142857143
+Best dev score: p:0.6510903426791277, r:0.5372750642673522, f:0.5887323943661973
+Epoch: 17/30
+ Learning rate is setted as: 0.0020906016760958855
+     Instance: 1350; Time: 24.53s; loss: 7069.5986; acc: 71047.0/73778.0=0.9630
+Epoch: 17 training finished. Time: 24.53s, speed: 55.04st/s,  total loss: tensor(7069.5986, device='cuda:0')
+gold_num =  389  pred_num =  320  right_num =  212
+Dev: time: 3.41s, speed: 79.68st/s; acc: 0.9592, p: 0.6625, r: 0.5450, f: 0.5980
+Exceed previous best f score: 0.5887323943661973
+gold_num =  413  pred_num =  300  right_num =  193
+Test: time: 3.47s, speed: 78.46st/s; acc: 0.9529, p: 0.6433, r: 0.4673, f: 0.5414
+Test score: p:0.6433333333333333, r:0.46731234866828086, f:0.541374474053296
+Best dev score: p:0.6625, r:0.5449871465295629, f:0.5980253878702397
+Epoch: 18/30
+ Learning rate is setted as: 0.001986071592291091
+     Instance: 1350; Time: 23.05s; loss: 6781.1909; acc: 71047.0/73778.0=0.9630
+Epoch: 18 training finished. Time: 23.05s, speed: 58.57st/s,  total loss: tensor(6781.1909, device='cuda:0')
+gold_num =  389  pred_num =  302  right_num =  207
+Dev: time: 3.54s, speed: 76.57st/s; acc: 0.9604, p: 0.6854, r: 0.5321, f: 0.5991
+Exceed previous best f score: 0.5980253878702397
+gold_num =  413  pred_num =  281  right_num =  188
+Test: time: 3.67s, speed: 74.14st/s; acc: 0.9531, p: 0.6690, r: 0.4552, f: 0.5418
+Test score: p:0.6690391459074733, r:0.4552058111380145, f:0.5417867435158501
+Best dev score: p:0.6854304635761589, r:0.532133676092545, f:0.5991316931982633
+Epoch: 19/30
+ Learning rate is setted as: 0.0018867680126765363
+     Instance: 1350; Time: 24.83s; loss: 6601.6050; acc: 71169.0/73778.0=0.9646
+Epoch: 19 training finished. Time: 24.83s, speed: 54.38st/s,  total loss: tensor(6601.6050, device='cuda:0')
+gold_num =  389  pred_num =  297  right_num =  207
+Dev: time: 3.71s, speed: 73.21st/s; acc: 0.9602, p: 0.6970, r: 0.5321, f: 0.6035
+Exceed previous best f score: 0.5991316931982633
+gold_num =  413  pred_num =  271  right_num =  188
+Test: time: 3.69s, speed: 73.71st/s; acc: 0.9538, p: 0.6937, r: 0.4552, f: 0.5497
+Test score: p:0.6937269372693727, r:0.4552058111380145, f:0.5497076023391813
+Best dev score: p:0.696969696969697, r:0.532133676092545, f:0.6034985422740525
+Epoch: 20/30
+ Learning rate is setted as: 0.0017924296120427094
+     Instance: 1350; Time: 25.19s; loss: 6327.4922; acc: 71216.0/73778.0=0.9653
+Epoch: 20 training finished. Time: 25.19s, speed: 53.60st/s,  total loss: tensor(6327.4922, device='cuda:0')
+gold_num =  389  pred_num =  307  right_num =  213
+Dev: time: 3.53s, speed: 76.77st/s; acc: 0.9607, p: 0.6938, r: 0.5476, f: 0.6121
+Exceed previous best f score: 0.6034985422740525
+gold_num =  413  pred_num =  285  right_num =  195
+Test: time: 3.69s, speed: 73.68st/s; acc: 0.9550, p: 0.6842, r: 0.4722, f: 0.5587
+Test score: p:0.6842105263157895, r:0.4721549636803874, f:0.5587392550143266
+Best dev score: p:0.6938110749185668, r:0.5475578406169666, f:0.6120689655172414
+Epoch: 21/30
+ Learning rate is setted as: 0.001702808131440574
+     Instance: 1350; Time: 25.60s; loss: 6146.9985; acc: 71170.0/73778.0=0.9647
+Epoch: 21 training finished. Time: 25.60s, speed: 52.74st/s,  total loss: tensor(6146.9985, device='cuda:0')
+gold_num =  389  pred_num =  309  right_num =  213
+Dev: time: 3.61s, speed: 75.08st/s; acc: 0.9611, p: 0.6893, r: 0.5476, f: 0.6103
+gold_num =  413  pred_num =  288  right_num =  197
+Test: time: 3.70s, speed: 73.35st/s; acc: 0.9547, p: 0.6840, r: 0.4770, f: 0.5621
+Test score: p:0.6842105263157895, r:0.4721549636803874, f:0.5587392550143266
+Best dev score: p:0.6938110749185668, r:0.5475578406169666, f:0.6120689655172414
+Epoch: 22/30
+ Learning rate is setted as: 0.0016176677248685451
+     Instance: 1350; Time: 24.88s; loss: 6070.5376; acc: 71149.0/73778.0=0.9644
+Epoch: 22 training finished. Time: 24.88s, speed: 54.27st/s,  total loss: tensor(6070.5376, device='cuda:0')
+gold_num =  389  pred_num =  325  right_num =  218
+Dev: time: 3.61s, speed: 75.19st/s; acc: 0.9608, p: 0.6708, r: 0.5604, f: 0.6106
+gold_num =  413  pred_num =  302  right_num =  196
+Test: time: 3.66s, speed: 74.09st/s; acc: 0.9534, p: 0.6490, r: 0.4746, f: 0.5483
+Test score: p:0.6842105263157895, r:0.4721549636803874, f:0.5587392550143266
+Best dev score: p:0.6938110749185668, r:0.5475578406169666, f:0.6120689655172414
+Epoch: 23/30
+ Learning rate is setted as: 0.001536784338625118
+     Instance: 1350; Time: 25.44s; loss: 5757.2188; acc: 71347.0/73778.0=0.9670
+Epoch: 23 training finished. Time: 25.44s, speed: 53.07st/s,  total loss: tensor(5757.2188, device='cuda:0')
+gold_num =  389  pred_num =  323  right_num =  217
+Dev: time: 3.56s, speed: 76.25st/s; acc: 0.9604, p: 0.6718, r: 0.5578, f: 0.6096
+gold_num =  413  pred_num =  297  right_num =  194
+Test: time: 3.63s, speed: 74.68st/s; acc: 0.9525, p: 0.6532, r: 0.4697, f: 0.5465
+Test score: p:0.6842105263157895, r:0.4721549636803874, f:0.5587392550143266
+Best dev score: p:0.6938110749185668, r:0.5475578406169666, f:0.6120689655172414
+Epoch: 24/30
+ Learning rate is setted as: 0.001459945121693862
+     Instance: 1350; Time: 25.14s; loss: 5652.5264; acc: 71406.0/73778.0=0.9678
+Epoch: 24 training finished. Time: 25.14s, speed: 53.70st/s,  total loss: tensor(5652.5264, device='cuda:0')
+gold_num =  389  pred_num =  300  right_num =  214
+Dev: time: 3.54s, speed: 76.60st/s; acc: 0.9614, p: 0.7133, r: 0.5501, f: 0.6212
+Exceed previous best f score: 0.6120689655172414
+gold_num =  413  pred_num =  271  right_num =  189
+Test: time: 3.75s, speed: 72.61st/s; acc: 0.9535, p: 0.6974, r: 0.4576, f: 0.5526
+Test score: p:0.6974169741697417, r:0.4576271186440678, f:0.5526315789473685
+Best dev score: p:0.7133333333333334, r:0.5501285347043702, f:0.6211901306240929
+Epoch: 25/30
+ Learning rate is setted as: 0.001386947865609169
+     Instance: 1350; Time: 26.11s; loss: 5584.6099; acc: 71322.0/73778.0=0.9667
+Epoch: 25 training finished. Time: 26.11s, speed: 51.71st/s,  total loss: tensor(5584.6099, device='cuda:0')
+gold_num =  389  pred_num =  300  right_num =  215
+Dev: time: 3.54s, speed: 76.73st/s; acc: 0.9622, p: 0.7167, r: 0.5527, f: 0.6241
+Exceed previous best f score: 0.6211901306240929
+gold_num =  413  pred_num =  274  right_num =  194
+Test: time: 3.63s, speed: 75.05st/s; acc: 0.9547, p: 0.7080, r: 0.4697, f: 0.5648
+Test score: p:0.708029197080292, r:0.46973365617433416, f:0.5647743813682679
+Best dev score: p:0.7166666666666667, r:0.5526992287917738, f:0.6240928882438317
+Epoch: 26/30
+ Learning rate is setted as: 0.0013176004723287101
+     Instance: 1350; Time: 25.36s; loss: 5452.6436; acc: 71348.0/73778.0=0.9671
+Epoch: 26 training finished. Time: 25.36s, speed: 53.24st/s,  total loss: tensor(5452.6436, device='cuda:0')
+gold_num =  389  pred_num =  315  right_num =  219
+Dev: time: 3.52s, speed: 77.01st/s; acc: 0.9617, p: 0.6952, r: 0.5630, f: 0.6222
+gold_num =  413  pred_num =  289  right_num =  195
+Test: time: 3.57s, speed: 75.94st/s; acc: 0.9534, p: 0.6747, r: 0.4722, f: 0.5556
+Test score: p:0.708029197080292, r:0.46973365617433416, f:0.5647743813682679
+Best dev score: p:0.7166666666666667, r:0.5526992287917738, f:0.6240928882438317
+Epoch: 27/30
+ Learning rate is setted as: 0.0012517204487122746
+     Instance: 1350; Time: 25.40s; loss: 5356.4492; acc: 71335.0/73778.0=0.9669
+Epoch: 27 training finished. Time: 25.40s, speed: 53.16st/s,  total loss: tensor(5356.4492, device='cuda:0')
+gold_num =  389  pred_num =  310  right_num =  217
+Dev: time: 3.63s, speed: 74.64st/s; acc: 0.9620, p: 0.7000, r: 0.5578, f: 0.6209
+gold_num =  413  pred_num =  289  right_num =  196
+Test: time: 3.68s, speed: 73.68st/s; acc: 0.9542, p: 0.6782, r: 0.4746, f: 0.5584
+Test score: p:0.708029197080292, r:0.46973365617433416, f:0.5647743813682679
+Best dev score: p:0.7166666666666667, r:0.5526992287917738, f:0.6240928882438317
+Epoch: 28/30
+ Learning rate is setted as: 0.0011891344262766608
+     Instance: 1350; Time: 26.00s; loss: 5253.5791; acc: 71412.0/73778.0=0.9679
+Epoch: 28 training finished. Time: 26.00s, speed: 51.91st/s,  total loss: tensor(5253.5791, device='cuda:0')
+gold_num =  389  pred_num =  346  right_num =  228
+Dev: time: 3.60s, speed: 75.39st/s; acc: 0.9600, p: 0.6590, r: 0.5861, f: 0.6204
+gold_num =  413  pred_num =  337  right_num =  215
+Test: time: 3.67s, speed: 73.98st/s; acc: 0.9528, p: 0.6380, r: 0.5206, f: 0.5733
+Test score: p:0.708029197080292, r:0.46973365617433416, f:0.5647743813682679
+Best dev score: p:0.7166666666666667, r:0.5526992287917738, f:0.6240928882438317
+Epoch: 29/30
+ Learning rate is setted as: 0.0011296777049628279
+     Instance: 1350; Time: 25.87s; loss: 5190.6646; acc: 71419.0/73778.0=0.9680
+Epoch: 29 training finished. Time: 25.87s, speed: 52.19st/s,  total loss: tensor(5190.6646, device='cuda:0')
+gold_num =  389  pred_num =  317  right_num =  219
+Dev: time: 3.53s, speed: 76.75st/s; acc: 0.9610, p: 0.6909, r: 0.5630, f: 0.6204
+gold_num =  413  pred_num =  305  right_num =  204
+Test: time: 3.60s, speed: 75.34st/s; acc: 0.9538, p: 0.6689, r: 0.4939, f: 0.5682
+Test score: p:0.708029197080292, r:0.46973365617433416, f:0.5647743813682679
+Best dev score: p:0.7166666666666667, r:0.5526992287917738, f:0.6240928882438317
+2021-06-06 17:26:16.721789: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 11224
+gaz alphabet size: 11909
+gaz alphabet size: 12583
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:1884, case_match:0, oov:10, oov%:0.005277044854881266
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:12581, case_match:0, oov:1, oov%:7.947230390209013e-05
+Dumping data
+data.use_biword= False
+Training with lstm model.
+build batched crf...
+finish building model.
+Epoch: 0/30
+ Learning rate is setted as: 0.0015
+     Instance: 2000; Time: 27.99s; loss: 72943.8984; acc: 44416.0/65089.0=0.6824
+     Instance: 3821; Time: 25.41s; loss: 39690.0742; acc: 91139.0/124099.0=0.7344
+Epoch: 0 training finished. Time: 53.40s, speed: 71.55st/s,  total loss: tensor(112633.9922, device='cuda:0')
+gold_num =  1497  pred_num =  1277  right_num =  749
+Dev: time: 4.08s, speed: 114.16st/s; acc: 0.8462, p: 0.5865, r: 0.5003, f: 0.5400
+Exceed previous best f score: -1
+gold_num =  1630  pred_num =  1458  right_num =  871
+Test: time: 4.35s, speed: 110.66st/s; acc: 0.8538, p: 0.5974, r: 0.5344, f: 0.5641
+Test score: p:0.5973936899862826, r:0.5343558282208589, f:0.564119170984456
+Best dev score: p:0.586530931871574, r:0.5003340013360054, f:0.5400144196106705
+Epoch: 1/30
+ Learning rate is setted as: 0.001425
+     Instance: 2000; Time: 27.26s; loss: 34422.4805; acc: 54042.0/64929.0=0.8323
+     Instance: 3821; Time: 24.70s; loss: 26752.1777; acc: 104885.0/124099.0=0.8452
+Epoch: 1 training finished. Time: 51.97s, speed: 73.53st/s,  total loss: tensor(61174.6367, device='cuda:0')
+gold_num =  1497  pred_num =  1380  right_num =  996
+Dev: time: 4.03s, speed: 115.59st/s; acc: 0.8974, p: 0.7217, r: 0.6653, f: 0.6924
+Exceed previous best f score: 0.5400144196106705
+gold_num =  1630  pred_num =  1529  right_num =  1146
+Test: time: 4.30s, speed: 111.99st/s; acc: 0.8996, p: 0.7495, r: 0.7031, f: 0.7255
+Test score: p:0.749509483322433, r:0.7030674846625767, f:0.7255460588793923
+Best dev score: p:0.7217391304347827, r:0.6653306613226453, f:0.6923879040667362
+Epoch: 2/30
+ Learning rate is setted as: 0.00135375
+     Instance: 2000; Time: 25.14s; loss: 26232.6270; acc: 58194.0/66544.0=0.8745
+     Instance: 3821; Time: 25.23s; loss: 19693.1777; acc: 109556.0/124099.0=0.8828
+Epoch: 2 training finished. Time: 50.37s, speed: 75.86st/s,  total loss: tensor(45925.7969, device='cuda:0')
+gold_num =  1497  pred_num =  1397  right_num =  1109
+Dev: time: 3.95s, speed: 117.95st/s; acc: 0.9227, p: 0.7938, r: 0.7408, f: 0.7664
+Exceed previous best f score: 0.6923879040667362
+gold_num =  1630  pred_num =  1558  right_num =  1258
+Test: time: 4.32s, speed: 111.50st/s; acc: 0.9183, p: 0.8074, r: 0.7718, f: 0.7892
+Test score: p:0.8074454428754814, r:0.7717791411042945, f:0.7892095357590966
+Best dev score: p:0.7938439513242663, r:0.7408149632598531, f:0.7664132688320664
+Epoch: 3/30
+ Learning rate is setted as: 0.0012860624999999999
+     Instance: 2000; Time: 25.85s; loss: 19612.6152; acc: 57873.0/64096.0=0.9029
+     Instance: 3821; Time: 20.85s; loss: 17137.4355; acc: 112321.0/124099.0=0.9051
+Epoch: 3 training finished. Time: 46.70s, speed: 81.82st/s,  total loss: tensor(36750.0352, device='cuda:0')
+gold_num =  1497  pred_num =  1407  right_num =  1168
+Dev: time: 4.07s, speed: 114.54st/s; acc: 0.9372, p: 0.8301, r: 0.7802, f: 0.8044
+Exceed previous best f score: 0.7664132688320664
+gold_num =  1630  pred_num =  1559  right_num =  1320
+Test: time: 4.31s, speed: 111.59st/s; acc: 0.9330, p: 0.8467, r: 0.8098, f: 0.8278
+Test score: p:0.846696600384862, r:0.8098159509202454, f:0.8278457196613357
+Best dev score: p:0.830135039090263, r:0.7802271209084837, f:0.8044077134986226
+Epoch: 4/30
+ Learning rate is setted as: 0.0012217593749999998
+     Instance: 2000; Time: 28.15s; loss: 17609.2344; acc: 59068.0/64798.0=0.9116
+     Instance: 3821; Time: 24.81s; loss: 13599.2461; acc: 113754.0/124099.0=0.9166
+Epoch: 4 training finished. Time: 52.96s, speed: 72.15st/s,  total loss: tensor(31208.4805, device='cuda:0')
+gold_num =  1497  pred_num =  1475  right_num =  1200
+Dev: time: 4.07s, speed: 114.55st/s; acc: 0.9377, p: 0.8136, r: 0.8016, f: 0.8075
+Exceed previous best f score: 0.8044077134986226
+gold_num =  1630  pred_num =  1643  right_num =  1383
+Test: time: 4.30s, speed: 112.00st/s; acc: 0.9342, p: 0.8418, r: 0.8485, f: 0.8451
+Test score: p:0.8417528910529519, r:0.8484662576687116, f:0.8450962419798349
+Best dev score: p:0.8135593220338984, r:0.8016032064128257, f:0.8075370121130553
+Epoch: 5/30
+ Learning rate is setted as: 0.0011606714062499996
+     Instance: 2000; Time: 27.77s; loss: 14874.8613; acc: 60617.0/65546.0=0.9248
+     Instance: 3821; Time: 25.14s; loss: 12622.1426; acc: 114744.0/124099.0=0.9246
+Epoch: 5 training finished. Time: 52.91s, speed: 72.22st/s,  total loss: tensor(27497.0078, device='cuda:0')
+gold_num =  1497  pred_num =  1453  right_num =  1215
+Dev: time: 4.07s, speed: 114.41st/s; acc: 0.9421, p: 0.8362, r: 0.8116, f: 0.8237
+Exceed previous best f score: 0.8075370121130553
+gold_num =  1630  pred_num =  1604  right_num =  1396
+Test: time: 4.29s, speed: 112.24st/s; acc: 0.9395, p: 0.8703, r: 0.8564, f: 0.8633
+Test score: p:0.8703241895261845, r:0.8564417177914111, f:0.8633271490414348
+Best dev score: p:0.836200963523744, r:0.811623246492986, f:0.823728813559322
+Epoch: 6/30
+ Learning rate is setted as: 0.0011026378359374996
+     Instance: 2000; Time: 27.27s; loss: 13294.9424; acc: 60185.0/64979.0=0.9262
+     Instance: 3821; Time: 25.76s; loss: 11120.3086; acc: 115316.0/124099.0=0.9292
+Epoch: 6 training finished. Time: 53.03s, speed: 72.05st/s,  total loss: tensor(24415.2559, device='cuda:0')
+gold_num =  1497  pred_num =  1458  right_num =  1255
+Dev: time: 3.97s, speed: 117.46st/s; acc: 0.9473, p: 0.8608, r: 0.8383, f: 0.8494
+Exceed previous best f score: 0.823728813559322
+gold_num =  1630  pred_num =  1605  right_num =  1416
+Test: time: 4.37s, speed: 110.25st/s; acc: 0.9456, p: 0.8822, r: 0.8687, f: 0.8754
+Test score: p:0.8822429906542056, r:0.8687116564417178, f:0.8754250386398763
+Best dev score: p:0.8607681755829903, r:0.8383433533734135, f:0.8494077834179357
+Epoch: 7/30
+ Learning rate is setted as: 0.0010475059441406246
+     Instance: 2000; Time: 28.25s; loss: 11864.6797; acc: 61070.0/65532.0=0.9319
+     Instance: 3821; Time: 24.88s; loss: 10263.7852; acc: 115891.0/124099.0=0.9339
+Epoch: 7 training finished. Time: 53.13s, speed: 71.92st/s,  total loss: tensor(22128.4531, device='cuda:0')
+gold_num =  1497  pred_num =  1486  right_num =  1283
+Dev: time: 4.04s, speed: 115.41st/s; acc: 0.9480, p: 0.8634, r: 0.8570, f: 0.8602
+Exceed previous best f score: 0.8494077834179357
+gold_num =  1630  pred_num =  1614  right_num =  1443
+Test: time: 4.28s, speed: 112.56st/s; acc: 0.9491, p: 0.8941, r: 0.8853, f: 0.8896
+Test score: p:0.8940520446096655, r:0.8852760736196319, f:0.8896424167694204
+Best dev score: p:0.8633916554508748, r:0.8570474281897128, f:0.860207844451894
+Epoch: 8/30
+ Learning rate is setted as: 0.0009951306469335934
+     Instance: 2000; Time: 26.15s; loss: 10130.7422; acc: 59877.0/63646.0=0.9408
+     Instance: 3821; Time: 26.99s; loss: 9759.8496; acc: 116485.0/124099.0=0.9386
+Epoch: 8 training finished. Time: 53.14s, speed: 71.91st/s,  total loss: tensor(19890.5859, device='cuda:0')
+gold_num =  1497  pred_num =  1493  right_num =  1298
+Dev: time: 4.13s, speed: 112.89st/s; acc: 0.9483, p: 0.8694, r: 0.8671, f: 0.8682
+Exceed previous best f score: 0.860207844451894
+gold_num =  1630  pred_num =  1632  right_num =  1468
+Test: time: 4.31s, speed: 111.59st/s; acc: 0.9517, p: 0.8995, r: 0.9006, f: 0.9001
+Test score: p:0.8995098039215687, r:0.9006134969325154, f:0.9000613120784795
+Best dev score: p:0.869390488948426, r:0.8670674682698731, f:0.8682274247491639
+Epoch: 9/30
+ Learning rate is setted as: 0.0009453741145869137
+     Instance: 2000; Time: 27.37s; loss: 9396.4316; acc: 61063.0/64767.0=0.9428
+     Instance: 3821; Time: 25.68s; loss: 8561.8945; acc: 116992.0/124099.0=0.9427
+Epoch: 9 training finished. Time: 53.05s, speed: 72.03st/s,  total loss: tensor(17958.3203, device='cuda:0')
+gold_num =  1497  pred_num =  1478  right_num =  1298
+Dev: time: 3.92s, speed: 119.00st/s; acc: 0.9512, p: 0.8782, r: 0.8671, f: 0.8726
+Exceed previous best f score: 0.8682274247491639
+gold_num =  1630  pred_num =  1617  right_num =  1471
+Test: time: 4.18s, speed: 115.23st/s; acc: 0.9533, p: 0.9097, r: 0.9025, f: 0.9061
+Test score: p:0.9097093382807668, r:0.9024539877300614, f:0.9060671388974438
+Best dev score: p:0.878213802435724, r:0.8670674682698731, f:0.8726050420168068
+Epoch: 10/30
+ Learning rate is setted as: 0.000898105408857568
+     Instance: 2000; Time: 26.02s; loss: 8470.0049; acc: 60526.0/63926.0=0.9468
+     Instance: 3821; Time: 26.13s; loss: 8086.6704; acc: 117367.0/124099.0=0.9458
+Epoch: 10 training finished. Time: 52.15s, speed: 73.27st/s,  total loss: tensor(16556.6797, device='cuda:0')
+gold_num =  1497  pred_num =  1489  right_num =  1328
+Dev: time: 3.96s, speed: 117.85st/s; acc: 0.9561, p: 0.8919, r: 0.8871, f: 0.8895
+Exceed previous best f score: 0.8726050420168068
+gold_num =  1630  pred_num =  1620  right_num =  1480
+Test: time: 4.20s, speed: 114.71st/s; acc: 0.9558, p: 0.9136, r: 0.9080, f: 0.9108
+Test score: p:0.9135802469135802, r:0.9079754601226994, f:0.9107692307692307
+Best dev score: p:0.8918737407656145, r:0.8871075484301937, f:0.8894842598794374
+Epoch: 11/30
+ Learning rate is setted as: 0.0008532001384146896
+     Instance: 2000; Time: 25.88s; loss: 7685.0659; acc: 60571.0/63674.0=0.9513
+     Instance: 3821; Time: 26.07s; loss: 7631.0742; acc: 117732.0/124099.0=0.9487
+Epoch: 11 training finished. Time: 51.96s, speed: 73.54st/s,  total loss: tensor(15316.1436, device='cuda:0')
+gold_num =  1497  pred_num =  1493  right_num =  1344
+Dev: time: 4.02s, speed: 115.97st/s; acc: 0.9582, p: 0.9002, r: 0.8978, f: 0.8990
+Exceed previous best f score: 0.8894842598794374
+gold_num =  1630  pred_num =  1624  right_num =  1503
+Test: time: 4.33s, speed: 111.21st/s; acc: 0.9575, p: 0.9255, r: 0.9221, f: 0.9238
+Test score: p:0.9254926108374384, r:0.9220858895705522, f:0.9237861094038107
+Best dev score: p:0.9002009377093101, r:0.8977955911823647, f:0.8989966555183947
+Epoch: 12/30
+ Learning rate is setted as: 0.000810540131493955
+     Instance: 2000; Time: 28.36s; loss: 8185.1016; acc: 62127.0/65431.0=0.9495
+     Instance: 3821; Time: 25.61s; loss: 6335.9492; acc: 118150.0/124099.0=0.9521
+Epoch: 12 training finished. Time: 53.98s, speed: 70.79st/s,  total loss: tensor(14521.0479, device='cuda:0')
+gold_num =  1497  pred_num =  1503  right_num =  1351
+Dev: time: 4.02s, speed: 115.92st/s; acc: 0.9593, p: 0.8989, r: 0.9025, f: 0.9007
+Exceed previous best f score: 0.8989966555183947
+gold_num =  1630  pred_num =  1638  right_num =  1515
+Test: time: 4.32s, speed: 111.26st/s; acc: 0.9581, p: 0.9249, r: 0.9294, f: 0.9272
+Test score: p:0.924908424908425, r:0.9294478527607362, f:0.927172582619339
+Best dev score: p:0.8988689288090486, r:0.9024716098864396, f:0.9006666666666666
+Epoch: 13/30
+ Learning rate is setted as: 0.0007700131249192573
+     Instance: 2000; Time: 28.16s; loss: 7174.8789; acc: 62538.0/65603.0=0.9533
+     Instance: 3821; Time: 24.68s; loss: 6609.8027; acc: 118153.0/124099.0=0.9521
+Epoch: 13 training finished. Time: 52.84s, speed: 72.32st/s,  total loss: tensor(13784.6846, device='cuda:0')
+gold_num =  1497  pred_num =  1491  right_num =  1343
+Dev: time: 4.01s, speed: 116.19st/s; acc: 0.9587, p: 0.9007, r: 0.8971, f: 0.8989
+gold_num =  1630  pred_num =  1622  right_num =  1506
+Test: time: 4.26s, speed: 112.68st/s; acc: 0.9581, p: 0.9285, r: 0.9239, f: 0.9262
+Test score: p:0.924908424908425, r:0.9294478527607362, f:0.927172582619339
+Best dev score: p:0.8988689288090486, r:0.9024716098864396, f:0.9006666666666666
+Epoch: 14/30
+ Learning rate is setted as: 0.0007315124686732943
+     Instance: 2000; Time: 27.86s; loss: 6919.9395; acc: 62358.0/65430.0=0.9530
+     Instance: 3821; Time: 24.84s; loss: 6105.2217; acc: 118354.0/124099.0=0.9537
+Epoch: 14 training finished. Time: 52.70s, speed: 72.51st/s,  total loss: tensor(13025.1592, device='cuda:0')
+gold_num =  1497  pred_num =  1490  right_num =  1350
+Dev: time: 4.03s, speed: 115.99st/s; acc: 0.9608, p: 0.9060, r: 0.9018, f: 0.9039
+Exceed previous best f score: 0.9006666666666666
+gold_num =  1630  pred_num =  1626  right_num =  1515
+Test: time: 4.25s, speed: 113.15st/s; acc: 0.9602, p: 0.9317, r: 0.9294, f: 0.9306
+Test score: p:0.9317343173431735, r:0.9294478527607362, f:0.9305896805896806
+Best dev score: p:0.9060402684563759, r:0.9018036072144289, f:0.9039169735520588
+Epoch: 15/30
+ Learning rate is setted as: 0.0006949368452396295
+     Instance: 2000; Time: 27.87s; loss: 6719.6133; acc: 61526.0/64655.0=0.9516
+     Instance: 3821; Time: 23.23s; loss: 5972.2373; acc: 118251.0/124099.0=0.9529
+Epoch: 15 training finished. Time: 51.09s, speed: 74.78st/s,  total loss: tensor(12691.8477, device='cuda:0')
+gold_num =  1497  pred_num =  1497  right_num =  1352
+Dev: time: 3.74s, speed: 124.74st/s; acc: 0.9607, p: 0.9031, r: 0.9031, f: 0.9031
+gold_num =  1630  pred_num =  1628  right_num =  1512
+Test: time: 4.04s, speed: 118.83st/s; acc: 0.9592, p: 0.9287, r: 0.9276, f: 0.9282
+Test score: p:0.9317343173431735, r:0.9294478527607362, f:0.9305896805896806
+Best dev score: p:0.9060402684563759, r:0.9018036072144289, f:0.9039169735520588
+Epoch: 16/30
+ Learning rate is setted as: 0.000660190002977648
+     Instance: 2000; Time: 25.73s; loss: 6120.9878; acc: 62201.0/65013.0=0.9567
+     Instance: 3821; Time: 24.78s; loss: 5896.0430; acc: 118545.0/124099.0=0.9552
+Epoch: 16 training finished. Time: 50.51s, speed: 75.64st/s,  total loss: tensor(12017.0303, device='cuda:0')
+gold_num =  1497  pred_num =  1502  right_num =  1357
+Dev: time: 4.07s, speed: 114.66st/s; acc: 0.9602, p: 0.9035, r: 0.9065, f: 0.9050
+Exceed previous best f score: 0.9039169735520588
+gold_num =  1630  pred_num =  1630  right_num =  1516
+Test: time: 4.24s, speed: 113.62st/s; acc: 0.9609, p: 0.9301, r: 0.9301, f: 0.9301
+Test score: p:0.9300613496932515, r:0.9300613496932515, f:0.9300613496932515
+Best dev score: p:0.903462050599201, r:0.9064796259185037, f:0.9049683227742581
+Epoch: 17/30
+ Learning rate is setted as: 0.0006271805028287656
+     Instance: 2000; Time: 27.70s; loss: 5899.5488; acc: 61199.0/63954.0=0.9569
+     Instance: 3821; Time: 25.63s; loss: 5641.0908; acc: 118710.0/124099.0=0.9566
+Epoch: 17 training finished. Time: 53.34s, speed: 71.64st/s,  total loss: tensor(11540.6445, device='cuda:0')
+gold_num =  1497  pred_num =  1500  right_num =  1360
+Dev: time: 4.01s, speed: 116.13st/s; acc: 0.9616, p: 0.9067, r: 0.9085, f: 0.9076
+Exceed previous best f score: 0.9049683227742581
+gold_num =  1630  pred_num =  1626  right_num =  1514
+Test: time: 4.29s, speed: 112.22st/s; acc: 0.9610, p: 0.9311, r: 0.9288, f: 0.9300
+Test score: p:0.931119311193112, r:0.9288343558282208, f:0.9299754299754299
+Best dev score: p:0.9066666666666666, r:0.9084836339345357, f:0.9075742409075743
+Epoch: 18/30
+ Learning rate is setted as: 0.0005958214776873273
+     Instance: 2000; Time: 27.67s; loss: 5898.3369; acc: 61885.0/64632.0=0.9575
+     Instance: 3821; Time: 24.69s; loss: 5413.5752; acc: 118735.0/124099.0=0.9568
+Epoch: 18 training finished. Time: 52.37s, speed: 72.97st/s,  total loss: tensor(11311.9150, device='cuda:0')
+gold_num =  1497  pred_num =  1500  right_num =  1365
+Dev: time: 4.05s, speed: 115.17st/s; acc: 0.9630, p: 0.9100, r: 0.9118, f: 0.9109
+Exceed previous best f score: 0.9075742409075743
+gold_num =  1630  pred_num =  1627  right_num =  1516
+Test: time: 4.30s, speed: 111.84st/s; acc: 0.9603, p: 0.9318, r: 0.9301, f: 0.9309
+Test score: p:0.9317762753534112, r:0.9300613496932515, f:0.9309180227202947
+Best dev score: p:0.91, r:0.9118236472945892, f:0.9109109109109109
+Epoch: 19/30
+ Learning rate is setted as: 0.0005660304038029609
+     Instance: 2000; Time: 27.41s; loss: 5619.7168; acc: 61191.0/63928.0=0.9572
+     Instance: 3821; Time: 26.42s; loss: 5137.8726; acc: 118787.0/124099.0=0.9572
+Epoch: 19 training finished. Time: 53.83s, speed: 70.98st/s,  total loss: tensor(10757.5898, device='cuda:0')
+gold_num =  1497  pred_num =  1502  right_num =  1373
+Dev: time: 4.03s, speed: 115.72st/s; acc: 0.9636, p: 0.9141, r: 0.9172, f: 0.9156
+Exceed previous best f score: 0.9109109109109109
+gold_num =  1630  pred_num =  1622  right_num =  1512
+Test: time: 4.30s, speed: 111.98st/s; acc: 0.9592, p: 0.9322, r: 0.9276, f: 0.9299
+Test score: p:0.9321824907521579, r:0.9276073619631902, f:0.929889298892989
+Best dev score: p:0.9141145139813582, r:0.9171676686706747, f:0.9156385461820608
+Epoch: 20/30
+ Learning rate is setted as: 0.0005377288836128128
+     Instance: 2000; Time: 28.03s; loss: 5286.8379; acc: 62531.0/65111.0=0.9604
+     Instance: 3821; Time: 25.71s; loss: 5317.1343; acc: 118786.0/124099.0=0.9572
+Epoch: 20 training finished. Time: 53.74s, speed: 71.11st/s,  total loss: tensor(10603.9727, device='cuda:0')
+gold_num =  1497  pred_num =  1503  right_num =  1376
+Dev: time: 3.97s, speed: 117.37st/s; acc: 0.9639, p: 0.9155, r: 0.9192, f: 0.9173
+Exceed previous best f score: 0.9156385461820608
+gold_num =  1630  pred_num =  1628  right_num =  1513
+Test: time: 4.24s, speed: 113.42st/s; acc: 0.9595, p: 0.9294, r: 0.9282, f: 0.9288
+Test score: p:0.9293611793611793, r:0.9282208588957055, f:0.9287906691221608
+Best dev score: p:0.9155023286759814, r:0.9191716766867067, f:0.9173333333333332
+Epoch: 21/30
+ Learning rate is setted as: 0.0005108424394321722
+     Instance: 2000; Time: 27.79s; loss: 5451.4707; acc: 62467.0/65307.0=0.9565
+     Instance: 3821; Time: 25.08s; loss: 4657.1577; acc: 118898.0/124099.0=0.9581
+Epoch: 21 training finished. Time: 52.87s, speed: 72.27st/s,  total loss: tensor(10108.6309, device='cuda:0')
+gold_num =  1497  pred_num =  1505  right_num =  1367
+Dev: time: 4.03s, speed: 115.93st/s; acc: 0.9615, p: 0.9083, r: 0.9132, f: 0.9107
+gold_num =  1630  pred_num =  1624  right_num =  1516
+Test: time: 4.28s, speed: 112.20st/s; acc: 0.9603, p: 0.9335, r: 0.9301, f: 0.9318
+Test score: p:0.9293611793611793, r:0.9282208588957055, f:0.9287906691221608
+Best dev score: p:0.9155023286759814, r:0.9191716766867067, f:0.9173333333333332
+Epoch: 22/30
+ Learning rate is setted as: 0.0004853003174605635
+     Instance: 2000; Time: 27.77s; loss: 5172.4766; acc: 62818.0/65442.0=0.9599
+     Instance: 3821; Time: 24.95s; loss: 4699.1855; acc: 119032.0/124099.0=0.9592
+Epoch: 22 training finished. Time: 52.73s, speed: 72.47st/s,  total loss: tensor(9871.6621, device='cuda:0')
+gold_num =  1497  pred_num =  1506  right_num =  1370
+Dev: time: 4.05s, speed: 115.05st/s; acc: 0.9628, p: 0.9097, r: 0.9152, f: 0.9124
+gold_num =  1630  pred_num =  1630  right_num =  1520
+Test: time: 4.30s, speed: 111.58st/s; acc: 0.9614, p: 0.9325, r: 0.9325, f: 0.9325
+Test score: p:0.9293611793611793, r:0.9282208588957055, f:0.9287906691221608
+Best dev score: p:0.9155023286759814, r:0.9191716766867067, f:0.9173333333333332
+Epoch: 23/30
+ Learning rate is setted as: 0.0004610353015875354
+     Instance: 2000; Time: 27.09s; loss: 4958.2583; acc: 60974.0/63471.0=0.9607
+     Instance: 3821; Time: 26.31s; loss: 4660.7686; acc: 119195.0/124099.0=0.9605
+Epoch: 23 training finished. Time: 53.40s, speed: 71.55st/s,  total loss: tensor(9619.0264, device='cuda:0')
+gold_num =  1497  pred_num =  1505  right_num =  1376
+Dev: time: 3.97s, speed: 117.50st/s; acc: 0.9631, p: 0.9143, r: 0.9192, f: 0.9167
+gold_num =  1630  pred_num =  1628  right_num =  1519
+Test: time: 4.19s, speed: 114.57st/s; acc: 0.9606, p: 0.9330, r: 0.9319, f: 0.9325
+Test score: p:0.9293611793611793, r:0.9282208588957055, f:0.9287906691221608
+Best dev score: p:0.9155023286759814, r:0.9191716766867067, f:0.9173333333333332
+Epoch: 24/30
+ Learning rate is setted as: 0.00043798353650815856
+     Instance: 2000; Time: 26.95s; loss: 4814.4341; acc: 61229.0/63758.0=0.9603
+     Instance: 3821; Time: 25.74s; loss: 4551.7827; acc: 119167.0/124099.0=0.9603
+Epoch: 24 training finished. Time: 52.68s, speed: 72.53st/s,  total loss: tensor(9366.2197, device='cuda:0')
+gold_num =  1497  pred_num =  1509  right_num =  1382
+Dev: time: 4.06s, speed: 114.75st/s; acc: 0.9647, p: 0.9158, r: 0.9232, f: 0.9195
+Exceed previous best f score: 0.9173333333333332
+gold_num =  1630  pred_num =  1633  right_num =  1518
+Test: time: 4.48s, speed: 107.25st/s; acc: 0.9589, p: 0.9296, r: 0.9313, f: 0.9304
+Test score: p:0.9295774647887324, r:0.9312883435582822, f:0.9304321176831136
+Best dev score: p:0.9158383035122598, r:0.9231796927187709, f:0.9194943446440453
+Epoch: 25/30
+ Learning rate is setted as: 0.00041608435968275065
+     Instance: 2000; Time: 26.97s; loss: 4964.5176; acc: 62915.0/65556.0=0.9597
+     Instance: 3821; Time: 24.99s; loss: 4294.3462; acc: 119255.0/124099.0=0.9610
+Epoch: 25 training finished. Time: 51.96s, speed: 73.54st/s,  total loss: tensor(9258.8691, device='cuda:0')
+gold_num =  1497  pred_num =  1507  right_num =  1382
+Dev: time: 3.91s, speed: 119.18st/s; acc: 0.9644, p: 0.9171, r: 0.9232, f: 0.9201
+Exceed previous best f score: 0.9194943446440453
+gold_num =  1630  pred_num =  1627  right_num =  1521
+Test: time: 4.18s, speed: 115.22st/s; acc: 0.9619, p: 0.9348, r: 0.9331, f: 0.9340
+Test score: p:0.9348494161032576, r:0.9331288343558283, f:0.933988332821615
+Best dev score: p:0.9170537491705375, r:0.9231796927187709, f:0.9201065246338216
+Epoch: 26/30
+ Learning rate is setted as: 0.00039528014169861304
+     Instance: 2000; Time: 27.83s; loss: 4916.7710; acc: 63791.0/66425.0=0.9603
+     Instance: 3821; Time: 25.39s; loss: 4188.4663; acc: 119208.0/124099.0=0.9606
+Epoch: 26 training finished. Time: 53.22s, speed: 71.79st/s,  total loss: tensor(9105.2363, device='cuda:0')
+gold_num =  1497  pred_num =  1504  right_num =  1376
+Dev: time: 3.98s, speed: 117.07st/s; acc: 0.9635, p: 0.9149, r: 0.9192, f: 0.9170
+gold_num =  1630  pred_num =  1623  right_num =  1518
+Test: time: 4.19s, speed: 114.55st/s; acc: 0.9619, p: 0.9353, r: 0.9313, f: 0.9333
+Test score: p:0.9348494161032576, r:0.9331288343558283, f:0.933988332821615
+Best dev score: p:0.9170537491705375, r:0.9231796927187709, f:0.9201065246338216
+Epoch: 27/30
+ Learning rate is setted as: 0.0003755161346136824
+     Instance: 2000; Time: 28.29s; loss: 4671.2466; acc: 62509.0/64983.0=0.9619
+     Instance: 3821; Time: 24.74s; loss: 4146.0420; acc: 119332.0/124099.0=0.9616
+Epoch: 27 training finished. Time: 53.03s, speed: 72.05st/s,  total loss: tensor(8817.2881, device='cuda:0')
+gold_num =  1497  pred_num =  1504  right_num =  1384
+Dev: time: 3.88s, speed: 120.13st/s; acc: 0.9650, p: 0.9202, r: 0.9245, f: 0.9224
+Exceed previous best f score: 0.9201065246338216
+gold_num =  1630  pred_num =  1624  right_num =  1515
+Test: time: 4.13s, speed: 116.59st/s; acc: 0.9618, p: 0.9329, r: 0.9294, f: 0.9312
+Test score: p:0.9328817733990148, r:0.9294478527607362, f:0.9311616472034419
+Best dev score: p:0.9202127659574468, r:0.9245156980627922, f:0.9223592135954681
+Epoch: 28/30
+ Learning rate is setted as: 0.00035674032788299823
+     Instance: 2000; Time: 23.54s; loss: 4484.7124; acc: 60645.0/63086.0=0.9613
+     Instance: 3821; Time: 22.49s; loss: 4172.7603; acc: 119348.0/124099.0=0.9617
+Epoch: 28 training finished. Time: 46.03s, speed: 83.00st/s,  total loss: tensor(8657.4727, device='cuda:0')
+gold_num =  1497  pred_num =  1506  right_num =  1386
+Dev: time: 3.96s, speed: 117.76st/s; acc: 0.9641, p: 0.9203, r: 0.9259, f: 0.9231
+Exceed previous best f score: 0.9223592135954681
+gold_num =  1630  pred_num =  1627  right_num =  1523
+Test: time: 4.24s, speed: 113.47st/s; acc: 0.9633, p: 0.9361, r: 0.9344, f: 0.9352
+Test score: p:0.9360786724031961, r:0.9343558282208589, f:0.935216456862143
+Best dev score: p:0.9203187250996016, r:0.9258517034068137, f:0.9230769230769231
+Epoch: 29/30
+ Learning rate is setted as: 0.0003389033114888483
+     Instance: 2000; Time: 26.85s; loss: 4472.1416; acc: 61024.0/63416.0=0.9623
+     Instance: 3821; Time: 25.79s; loss: 4202.3242; acc: 119274.0/124099.0=0.9611
+Epoch: 29 training finished. Time: 52.64s, speed: 72.59st/s,  total loss: tensor(8674.4688, device='cuda:0')
+gold_num =  1497  pred_num =  1502  right_num =  1381
+Dev: time: 4.02s, speed: 115.92st/s; acc: 0.9638, p: 0.9194, r: 0.9225, f: 0.9210
+gold_num =  1630  pred_num =  1626  right_num =  1521
+Test: time: 4.28s, speed: 112.08st/s; acc: 0.9616, p: 0.9354, r: 0.9331, f: 0.9343
+Test score: p:0.9360786724031961, r:0.9343558282208589, f:0.935216456862143
+Best dev score: p:0.9203187250996016, r:0.9258517034068137, f:0.9230769230769231
+2021-06-06 17:59:54.987739: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 44324
+gaz alphabet size: 59468
+gaz alphabet size: 70987
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:4063, case_match:0, oov:76, oov%:0.018357487922705314
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:70985, case_match:0, oov:1, oov%:1.4087086367926522e-05
+Dumping data
+data.use_biword= False
+Training with lstm model.
+build batched crf...
+finish building model.
+Epoch: 0/30
+ Learning rate is setted as: 0.0015
+     Instance: 2000; Time: 26.57s; loss: 33904.6172; acc: 58004.0/63633.0=0.9115
+     Instance: 4000; Time: 26.39s; loss: 21202.5273; acc: 114381.0/124699.0=0.9173
+     Instance: 6000; Time: 27.55s; loss: 18522.0293; acc: 172263.0/187509.0=0.9187
+     Instance: 8000; Time: 26.49s; loss: 15349.1748; acc: 231343.0/251194.0=0.9210
+     Instance: 10000; Time: 26.18s; loss: 12969.9668; acc: 289109.0/313044.0=0.9235
+     Instance: 12000; Time: 27.90s; loss: 11668.1318; acc: 348540.0/376076.0=0.9268
+     Instance: 14000; Time: 25.77s; loss: 11258.5615; acc: 406530.0/437832.0=0.9285
+     Instance: 15731; Time: 22.45s; loss: 9435.1035; acc: 457460.0/491903.0=0.9300
+Epoch: 0 training finished. Time: 209.29s, speed: 75.16st/s,  total loss: tensor(134310.0781, device='cuda:0')
+gold_num =  6950  pred_num =  4924  right_num =  3229
+Dev: time: 50.88s, speed: 84.97st/s; acc: 0.9371, p: 0.6558, r: 0.4646, f: 0.5439
+Exceed previous best f score: -1
+gold_num =  7684  pred_num =  5480  right_num =  3617
+Test: time: 52.16s, speed: 83.83st/s; acc: 0.9338, p: 0.6600, r: 0.4707, f: 0.5495
+Test score: p:0.660036496350365, r:0.4707183758459136, f:0.5495290185353995
+Best dev score: p:0.6557676685621446, r:0.4646043165467626, f:0.5438773791477176
+Epoch: 1/30
+ Learning rate is setted as: 0.001425
+     Instance: 2000; Time: 25.27s; loss: 9703.7500; acc: 60755.0/64013.0=0.9491
+     Instance: 4000; Time: 23.19s; loss: 9626.8789; acc: 119311.0/125877.0=0.9478
+     Instance: 6000; Time: 27.21s; loss: 9875.1650; acc: 178848.0/188911.0=0.9467
+     Instance: 8000; Time: 26.44s; loss: 8630.7822; acc: 237780.0/250835.0=0.9480
+     Instance: 10000; Time: 24.58s; loss: 7749.0479; acc: 293776.0/309823.0=0.9482
+     Instance: 12000; Time: 28.27s; loss: 8468.2568; acc: 355179.0/374576.0=0.9482
+     Instance: 14000; Time: 25.88s; loss: 7990.7158; acc: 414641.0/437113.0=0.9486
+     Instance: 15731; Time: 22.63s; loss: 6719.0449; acc: 466777.0/491903.0=0.9489
+Epoch: 1 training finished. Time: 203.47s, speed: 77.31st/s,  total loss: tensor(68763.6172, device='cuda:0')
+gold_num =  6950  pred_num =  6093  right_num =  4131
+Dev: time: 51.01s, speed: 84.78st/s; acc: 0.9470, p: 0.6780, r: 0.5944, f: 0.6334
+Exceed previous best f score: 0.5438773791477176
+gold_num =  7684  pred_num =  6820  right_num =  4625
+Test: time: 52.57s, speed: 83.19st/s; acc: 0.9454, p: 0.6782, r: 0.6019, f: 0.6378
+Test score: p:0.6781524926686217, r:0.6019000520562208, f:0.6377551020408163
+Best dev score: p:0.6779911373707533, r:0.5943884892086331, f:0.6334432262516292
+Epoch: 2/30
+ Learning rate is setted as: 0.00135375
+     Instance: 2000; Time: 27.66s; loss: 7126.5806; acc: 60008.0/62895.0=0.9541
+     Instance: 4000; Time: 26.67s; loss: 7057.8184; acc: 119066.0/125037.0=0.9522
+     Instance: 6000; Time: 27.45s; loss: 7168.4961; acc: 180138.0/189156.0=0.9523
+     Instance: 8000; Time: 27.27s; loss: 6620.3545; acc: 241346.0/253270.0=0.9529
+     Instance: 10000; Time: 24.98s; loss: 5483.7100; acc: 298610.0/312916.0=0.9543
+     Instance: 12000; Time: 25.34s; loss: 6088.9844; acc: 357132.0/374248.0=0.9543
+     Instance: 14000; Time: 28.07s; loss: 6050.5742; acc: 417424.0/437305.0=0.9545
+     Instance: 15731; Time: 23.27s; loss: 5026.0908; acc: 469721.0/491903.0=0.9549
+Epoch: 2 training finished. Time: 210.71s, speed: 74.66st/s,  total loss: tensor(50622.6445, device='cuda:0')
+gold_num =  6950  pred_num =  5864  right_num =  4221
+Dev: time: 51.03s, speed: 84.74st/s; acc: 0.9500, p: 0.7198, r: 0.6073, f: 0.6588
+Exceed previous best f score: 0.6334432262516292
+gold_num =  7684  pred_num =  6575  right_num =  4724
+Test: time: 52.58s, speed: 83.15st/s; acc: 0.9482, p: 0.7185, r: 0.6148, f: 0.6626
+Test score: p:0.7184790874524715, r:0.6147839666840187, f:0.6625990602426538
+Best dev score: p:0.7198158253751705, r:0.6073381294964029, f:0.6588106758233182
+Epoch: 3/30
+ Learning rate is setted as: 0.0012860624999999999
+     Instance: 2000; Time: 26.27s; loss: 5460.3228; acc: 60474.0/63159.0=0.9575
+     Instance: 4000; Time: 26.24s; loss: 5082.9106; acc: 118532.0/123712.0=0.9581
+     Instance: 6000; Time: 26.61s; loss: 5090.0938; acc: 177021.0/184842.0=0.9577
+     Instance: 8000; Time: 27.19s; loss: 5090.3232; acc: 237590.0/248077.0=0.9577
+     Instance: 10000; Time: 27.00s; loss: 4992.2192; acc: 297460.0/310434.0=0.9582
+     Instance: 12000; Time: 25.05s; loss: 4619.4414; acc: 357349.0/372689.0=0.9588
+     Instance: 14000; Time: 26.59s; loss: 5125.5649; acc: 417094.0/435049.0=0.9587
+     Instance: 15731; Time: 19.96s; loss: 4458.0088; acc: 471560.0/491903.0=0.9586
+Epoch: 3 training finished. Time: 204.91s, speed: 76.77st/s,  total loss: tensor(39918.8672, device='cuda:0')
+gold_num =  6950  pred_num =  6402  right_num =  4443
+Dev: time: 52.05s, speed: 83.07st/s; acc: 0.9509, p: 0.6940, r: 0.6393, f: 0.6655
+Exceed previous best f score: 0.6588106758233182
+gold_num =  7684  pred_num =  7144  right_num =  5060
+Test: time: 54.06s, speed: 80.88st/s; acc: 0.9512, p: 0.7083, r: 0.6585, f: 0.6825
+Test score: p:0.7082866741321389, r:0.6585111920874545, f:0.6824925816023738
+Best dev score: p:0.6940018744142455, r:0.6392805755395683, f:0.6655182744158178
+Epoch: 4/30
+ Learning rate is setted as: 0.0012217593749999998
+     Instance: 2000; Time: 27.22s; loss: 4384.5771; acc: 59833.0/62260.0=0.9610
+     Instance: 4000; Time: 26.54s; loss: 4321.3276; acc: 120237.0/125056.0=0.9615
+     Instance: 6000; Time: 27.95s; loss: 4650.0781; acc: 181920.0/189256.0=0.9612
+     Instance: 8000; Time: 26.56s; loss: 4099.1270; acc: 241561.0/251161.0=0.9618
+     Instance: 10000; Time: 26.72s; loss: 4494.7100; acc: 301736.0/313897.0=0.9613
+     Instance: 12000; Time: 27.84s; loss: 4000.7383; acc: 361964.0/376471.0=0.9615
+     Instance: 14000; Time: 26.32s; loss: 3893.1448; acc: 422180.0/438970.0=0.9618
+     Instance: 15731; Time: 22.01s; loss: 3293.5674; acc: 473200.0/491903.0=0.9620
+Epoch: 4 training finished. Time: 211.17s, speed: 74.50st/s,  total loss: tensor(33137.2852, device='cuda:0')
+gold_num =  6950  pred_num =  5568  right_num =  4242
+Dev: time: 51.99s, speed: 83.16st/s; acc: 0.9530, p: 0.7619, r: 0.6104, f: 0.6777
+Exceed previous best f score: 0.6655182744158178
+gold_num =  7684  pred_num =  6227  right_num =  4822
+Test: time: 53.52s, speed: 81.68st/s; acc: 0.9531, p: 0.7744, r: 0.6275, f: 0.6933
+Test score: p:0.7743696804239601, r:0.6275377407600208, f:0.6932643231974696
+Best dev score: p:0.7618534482758621, r:0.6103597122302158, f:0.6777440485700591
+Epoch: 5/30
+ Learning rate is setted as: 0.0011606714062499996
+     Instance: 2000; Time: 25.75s; loss: 3499.4802; acc: 59367.0/61458.0=0.9660
+     Instance: 4000; Time: 28.67s; loss: 3869.5181; acc: 120725.0/125193.0=0.9643
+     Instance: 6000; Time: 25.95s; loss: 3597.5176; acc: 179911.0/186548.0=0.9644
+     Instance: 8000; Time: 26.05s; loss: 3616.8369; acc: 238944.0/247789.0=0.9643
+     Instance: 10000; Time: 27.72s; loss: 4152.9731; acc: 300911.0/312287.0=0.9636
+     Instance: 12000; Time: 26.43s; loss: 3455.9539; acc: 361383.0/374885.0=0.9640
+     Instance: 14000; Time: 26.67s; loss: 3643.6584; acc: 422196.0/438167.0=0.9636
+     Instance: 15731; Time: 24.25s; loss: 2767.2744; acc: 474138.0/491903.0=0.9639
+Epoch: 5 training finished. Time: 211.49s, speed: 74.38st/s,  total loss: tensor(28603.2266, device='cuda:0')
+gold_num =  6950  pred_num =  6112  right_num =  4531
+Dev: time: 50.94s, speed: 84.88st/s; acc: 0.9543, p: 0.7413, r: 0.6519, f: 0.6938
+Exceed previous best f score: 0.6777440485700591
+gold_num =  7684  pred_num =  6788  right_num =  5153
+Test: time: 53.13s, speed: 82.29st/s; acc: 0.9549, p: 0.7591, r: 0.6706, f: 0.7121
+Test score: p:0.7591337654684738, r:0.6706142634044768, f:0.7121337755666114
+Best dev score: p:0.7413285340314136, r:0.6519424460431654, f:0.6937681825141632
+Epoch: 6/30
+ Learning rate is setted as: 0.0011026378359374996
+     Instance: 2000; Time: 23.93s; loss: 3218.2256; acc: 60454.0/62525.0=0.9669
+     Instance: 4000; Time: 21.61s; loss: 3117.9961; acc: 120876.0/125052.0=0.9666
+     Instance: 6000; Time: 26.82s; loss: 3339.4204; acc: 180676.0/186994.0=0.9662
+     Instance: 8000; Time: 25.75s; loss: 3109.3879; acc: 239285.0/247774.0=0.9657
+     Instance: 10000; Time: 26.34s; loss: 3192.0071; acc: 298483.0/309070.0=0.9657
+     Instance: 12000; Time: 28.11s; loss: 3256.0491; acc: 359761.0/372534.0=0.9657
+     Instance: 14000; Time: 27.68s; loss: 3168.5208; acc: 422298.0/437235.0=0.9658
+     Instance: 15731; Time: 24.14s; loss: 2638.7532; acc: 475210.0/491903.0=0.9661
+Epoch: 6 training finished. Time: 204.38s, speed: 76.97st/s,  total loss: tensor(25040.3711, device='cuda:0')
+gold_num =  6950  pred_num =  6609  right_num =  4710
+Dev: time: 51.55s, speed: 83.87st/s; acc: 0.9521, p: 0.7127, r: 0.6777, f: 0.6947
+Exceed previous best f score: 0.6937681825141632
+gold_num =  7684  pred_num =  7444  right_num =  5417
+Test: time: 53.75s, speed: 81.36st/s; acc: 0.9530, p: 0.7277, r: 0.7050, f: 0.7162
+Test score: p:0.727700161203654, r:0.7049713690786049, f:0.7161554732945531
+Best dev score: p:0.7126645483431684, r:0.6776978417266187, f:0.6947415001106276
+Epoch: 7/30
+ Learning rate is setted as: 0.0010475059441406246
+     Instance: 2000; Time: 26.73s; loss: 2924.0422; acc: 61307.0/63411.0=0.9668
+     Instance: 4000; Time: 26.26s; loss: 2925.6492; acc: 121716.0/125847.0=0.9672
+     Instance: 6000; Time: 26.35s; loss: 2893.9536; acc: 182056.0/188277.0=0.9670
+     Instance: 8000; Time: 27.20s; loss: 2828.9609; acc: 243256.0/251449.0=0.9674
+     Instance: 10000; Time: 26.15s; loss: 2963.5000; acc: 303501.0/313801.0=0.9672
+     Instance: 12000; Time: 26.76s; loss: 2951.1963; acc: 363921.0/376345.0=0.9670
+     Instance: 14000; Time: 26.73s; loss: 2826.4307; acc: 423153.0/437517.0=0.9672
+     Instance: 15731; Time: 24.02s; loss: 2467.7981; acc: 475880.0/491903.0=0.9674
+Epoch: 7 training finished. Time: 210.22s, speed: 74.83st/s,  total loss: tensor(22781.5254, device='cuda:0')
+gold_num =  6950  pred_num =  6003  right_num =  4607
+Dev: time: 51.20s, speed: 84.44st/s; acc: 0.9554, p: 0.7674, r: 0.6629, f: 0.7113
+Exceed previous best f score: 0.6947415001106276
+gold_num =  7684  pred_num =  6724  right_num =  5269
+Test: time: 52.55s, speed: 83.20st/s; acc: 0.9561, p: 0.7836, r: 0.6857, f: 0.7314
+Test score: p:0.7836109458655562, r:0.6857105674128058, f:0.7313992226540812
+Best dev score: p:0.7674496085290688, r:0.6628776978417266, f:0.7113410020844592
+Epoch: 8/30
+ Learning rate is setted as: 0.0009951306469335934
+     Instance: 2000; Time: 26.70s; loss: 2503.7822; acc: 61044.0/62857.0=0.9712
+     Instance: 4000; Time: 25.75s; loss: 2702.0322; acc: 120574.0/124466.0=0.9687
+     Instance: 6000; Time: 25.80s; loss: 2725.2432; acc: 180223.0/186089.0=0.9685
+     Instance: 8000; Time: 26.75s; loss: 2674.4614; acc: 240436.0/248261.0=0.9685
+     Instance: 10000; Time: 27.02s; loss: 2707.2178; acc: 301588.0/311449.0=0.9683
+     Instance: 12000; Time: 27.24s; loss: 2689.0879; acc: 363535.0/375483.0=0.9682
+     Instance: 14000; Time: 26.18s; loss: 2458.5015; acc: 423217.0/437009.0=0.9684
+     Instance: 15731; Time: 18.53s; loss: 2191.4500; acc: 476390.0/491903.0=0.9685
+Epoch: 8 training finished. Time: 203.98s, speed: 77.12st/s,  total loss: tensor(20651.7793, device='cuda:0')
+gold_num =  6950  pred_num =  7004  right_num =  4985
+Dev: time: 51.16s, speed: 84.53st/s; acc: 0.9539, p: 0.7117, r: 0.7173, f: 0.7145
+Exceed previous best f score: 0.7113410020844592
+gold_num =  7684  pred_num =  7885  right_num =  5703
+Test: time: 53.99s, speed: 80.98st/s; acc: 0.9549, p: 0.7233, r: 0.7422, f: 0.7326
+Test score: p:0.7232720355104629, r:0.7421915668922436, f:0.7326096730682766
+Best dev score: p:0.711736150770988, r:0.7172661870503597, f:0.7144904686828148
+Epoch: 9/30
+ Learning rate is setted as: 0.0009453741145869137
+     Instance: 2000; Time: 26.43s; loss: 2455.1887; acc: 61316.0/63298.0=0.9687
+     Instance: 4000; Time: 26.50s; loss: 2386.9587; acc: 122735.0/126437.0=0.9707
+     Instance: 6000; Time: 27.22s; loss: 2540.1389; acc: 183288.0/188982.0=0.9699
+     Instance: 8000; Time: 26.51s; loss: 2443.7617; acc: 243338.0/250854.0=0.9700
+     Instance: 10000; Time: 26.07s; loss: 2419.5996; acc: 303345.0/312771.0=0.9699
+     Instance: 12000; Time: 25.60s; loss: 2465.9248; acc: 362917.0/374209.0=0.9698
+     Instance: 14000; Time: 26.83s; loss: 2586.3086; acc: 424116.0/437405.0=0.9696
+     Instance: 15731; Time: 24.56s; loss: 2209.6951; acc: 476958.0/491903.0=0.9696
+Epoch: 9 training finished. Time: 209.72s, speed: 75.01st/s,  total loss: tensor(19507.5781, device='cuda:0')
+gold_num =  6950  pred_num =  6608  right_num =  4867
+Dev: time: 51.45s, speed: 84.04st/s; acc: 0.9566, p: 0.7365, r: 0.7003, f: 0.7180
+Exceed previous best f score: 0.7144904686828148
+gold_num =  7684  pred_num =  7302  right_num =  5509
+Test: time: 52.53s, speed: 83.25st/s; acc: 0.9567, p: 0.7545, r: 0.7169, f: 0.7352
+Test score: p:0.7544508353875651, r:0.7169442998438313, f:0.7352195382356865
+Best dev score: p:0.7365314769975787, r:0.7002877697841726, f:0.717952500368786
+Epoch: 10/30
+ Learning rate is setted as: 0.000898105408857568
+     Instance: 2000; Time: 27.10s; loss: 2136.3564; acc: 60851.0/62431.0=0.9747
+     Instance: 4000; Time: 27.00s; loss: 2442.7896; acc: 121921.0/125419.0=0.9721
+     Instance: 6000; Time: 27.19s; loss: 2412.8550; acc: 182658.0/188041.0=0.9714
+     Instance: 8000; Time: 24.24s; loss: 2274.8906; acc: 243674.0/250798.0=0.9716
+     Instance: 10000; Time: 28.47s; loss: 2241.7603; acc: 304785.0/313682.0=0.9716
+     Instance: 12000; Time: 26.06s; loss: 2220.3328; acc: 366312.0/376978.0=0.9717
+     Instance: 14000; Time: 26.79s; loss: 2155.9443; acc: 426552.0/438918.0=0.9718
+     Instance: 15731; Time: 22.66s; loss: 1996.2303; acc: 477903.0/491903.0=0.9715
+Epoch: 10 training finished. Time: 209.51s, speed: 75.09st/s,  total loss: tensor(17881.1562, device='cuda:0')
+gold_num =  6950  pred_num =  6574  right_num =  4914
+Dev: time: 51.00s, speed: 84.79st/s; acc: 0.9564, p: 0.7475, r: 0.7071, f: 0.7267
+Exceed previous best f score: 0.717952500368786
+gold_num =  7684  pred_num =  7313  right_num =  5573
+Test: time: 52.37s, speed: 83.49st/s; acc: 0.9567, p: 0.7621, r: 0.7253, f: 0.7432
+Test score: p:0.7620675509366881, r:0.7252732951587715, f:0.7432153097286124
+Best dev score: p:0.7474901125646486, r:0.7070503597122302, f:0.7267080745341615
+Epoch: 11/30
+ Learning rate is setted as: 0.0008532001384146896
+     Instance: 2000; Time: 25.73s; loss: 2222.9685; acc: 61056.0/62837.0=0.9717
+     Instance: 4000; Time: 23.07s; loss: 2231.9629; acc: 122715.0/126216.0=0.9723
+     Instance: 6000; Time: 25.05s; loss: 2055.0955; acc: 183435.0/188646.0=0.9724
+     Instance: 8000; Time: 28.46s; loss: 2361.7476; acc: 245505.0/252563.0=0.9721
+     Instance: 10000; Time: 27.40s; loss: 2304.6963; acc: 307121.0/315962.0=0.9720
+     Instance: 12000; Time: 26.65s; loss: 2051.3894; acc: 366725.0/377216.0=0.9722
+     Instance: 14000; Time: 25.34s; loss: 2050.6575; acc: 425777.0/438046.0=0.9720
+     Instance: 15731; Time: 21.79s; loss: 1829.6664; acc: 478253.0/491903.0=0.9723
+Epoch: 11 training finished. Time: 203.49s, speed: 77.30st/s,  total loss: tensor(17108.1699, device='cuda:0')
+gold_num =  6950  pred_num =  6582  right_num =  4860
+Dev: time: 50.75s, speed: 85.22st/s; acc: 0.9543, p: 0.7384, r: 0.6993, f: 0.7183
+gold_num =  7684  pred_num =  7253  right_num =  5511
+Test: time: 52.53s, speed: 83.18st/s; acc: 0.9559, p: 0.7598, r: 0.7172, f: 0.7379
+Test score: p:0.7620675509366881, r:0.7252732951587715, f:0.7432153097286124
+Best dev score: p:0.7474901125646486, r:0.7070503597122302, f:0.7267080745341615
+Epoch: 12/30
+ Learning rate is setted as: 0.000810540131493955
+     Instance: 2000; Time: 25.96s; loss: 1998.0131; acc: 60987.0/62617.0=0.9740
+     Instance: 4000; Time: 26.37s; loss: 2131.6230; acc: 121839.0/125180.0=0.9733
+     Instance: 6000; Time: 26.88s; loss: 2125.0808; acc: 183783.0/188860.0=0.9731
+     Instance: 8000; Time: 26.47s; loss: 2118.1135; acc: 244322.0/251146.0=0.9728
+     Instance: 10000; Time: 25.64s; loss: 2000.2156; acc: 304366.0/312886.0=0.9728
+     Instance: 12000; Time: 26.34s; loss: 2055.7388; acc: 365803.0/375977.0=0.9729
+     Instance: 14000; Time: 26.44s; loss: 1991.8586; acc: 426487.0/438319.0=0.9730
+     Instance: 15731; Time: 23.51s; loss: 1822.0662; acc: 478564.0/491903.0=0.9729
+Epoch: 12 training finished. Time: 207.61s, speed: 75.77st/s,  total loss: tensor(16242.7246, device='cuda:0')
+gold_num =  6950  pred_num =  6869  right_num =  4993
+Dev: time: 50.81s, speed: 85.11st/s; acc: 0.9554, p: 0.7269, r: 0.7184, f: 0.7226
+gold_num =  7684  pred_num =  7603  right_num =  5627
+Test: time: 53.47s, speed: 81.72st/s; acc: 0.9550, p: 0.7401, r: 0.7323, f: 0.7362
+Test score: p:0.7620675509366881, r:0.7252732951587715, f:0.7432153097286124
+Best dev score: p:0.7474901125646486, r:0.7070503597122302, f:0.7267080745341615
+Epoch: 13/30
+ Learning rate is setted as: 0.0007700131249192573
+     Instance: 2000; Time: 26.38s; loss: 1921.5569; acc: 60897.0/62568.0=0.9733
+     Instance: 4000; Time: 25.19s; loss: 1945.3512; acc: 120854.0/124088.0=0.9739
+     Instance: 6000; Time: 26.12s; loss: 1908.3628; acc: 181224.0/186141.0=0.9736
+     Instance: 8000; Time: 26.06s; loss: 2079.6055; acc: 243306.0/249912.0=0.9736
+     Instance: 10000; Time: 26.81s; loss: 2034.7802; acc: 303812.0/312105.0=0.9734
+     Instance: 12000; Time: 25.55s; loss: 1952.8101; acc: 364487.0/374374.0=0.9736
+     Instance: 14000; Time: 26.17s; loss: 2103.3999; acc: 426506.0/438259.0=0.9732
+     Instance: 15731; Time: 19.14s; loss: 1757.8953; acc: 478663.0/491903.0=0.9731
+Epoch: 13 training finished. Time: 201.42s, speed: 78.10st/s,  total loss: tensor(15703.7539, device='cuda:0')
+gold_num =  6950  pred_num =  6856  right_num =  4951
+Dev: time: 51.18s, speed: 84.50st/s; acc: 0.9544, p: 0.7221, r: 0.7124, f: 0.7172
+gold_num =  7684  pred_num =  7668  right_num =  5672
+Test: time: 52.57s, speed: 83.13st/s; acc: 0.9555, p: 0.7397, r: 0.7382, f: 0.7389
+Test score: p:0.7620675509366881, r:0.7252732951587715, f:0.7432153097286124
+Best dev score: p:0.7474901125646486, r:0.7070503597122302, f:0.7267080745341615
+Epoch: 14/30
+ Learning rate is setted as: 0.0007315124686732943
+     Instance: 2000; Time: 25.61s; loss: 1974.6359; acc: 60306.0/62031.0=0.9722
+     Instance: 4000; Time: 25.75s; loss: 1938.9716; acc: 120854.0/124243.0=0.9727
+     Instance: 6000; Time: 26.68s; loss: 1938.2816; acc: 182365.0/187409.0=0.9731
+     Instance: 8000; Time: 26.63s; loss: 1920.6799; acc: 244013.0/250723.0=0.9732
+     Instance: 10000; Time: 25.28s; loss: 1652.0337; acc: 305027.0/313110.0=0.9742
+     Instance: 12000; Time: 25.52s; loss: 1894.3274; acc: 366385.0/375980.0=0.9745
+     Instance: 14000; Time: 25.57s; loss: 2028.4529; acc: 426301.0/437586.0=0.9742
+     Instance: 15731; Time: 22.68s; loss: 1683.1276; acc: 479215.0/491903.0=0.9742
+Epoch: 14 training finished. Time: 203.73s, speed: 77.21st/s,  total loss: tensor(15030.5049, device='cuda:0')
+gold_num =  6950  pred_num =  6458  right_num =  4873
+Dev: time: 52.25s, speed: 82.77st/s; acc: 0.9564, p: 0.7546, r: 0.7012, f: 0.7269
+Exceed previous best f score: 0.7267080745341615
+gold_num =  7684  pred_num =  7199  right_num =  5499
+Test: time: 53.68s, speed: 81.44st/s; acc: 0.9562, p: 0.7639, r: 0.7156, f: 0.7390
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 15/30
+ Learning rate is setted as: 0.0006949368452396295
+     Instance: 2000; Time: 25.41s; loss: 1800.2987; acc: 60534.0/62000.0=0.9764
+     Instance: 4000; Time: 27.14s; loss: 1866.4703; acc: 121526.0/124490.0=0.9762
+     Instance: 6000; Time: 26.38s; loss: 1979.8708; acc: 182831.0/187551.0=0.9748
+     Instance: 8000; Time: 24.87s; loss: 1659.4246; acc: 243263.0/249402.0=0.9754
+     Instance: 10000; Time: 26.22s; loss: 1776.6981; acc: 304143.0/311793.0=0.9755
+     Instance: 12000; Time: 26.08s; loss: 1790.2087; acc: 366686.0/375909.0=0.9755
+     Instance: 14000; Time: 25.79s; loss: 1962.6074; acc: 426359.0/437266.0=0.9751
+     Instance: 15731; Time: 22.78s; loss: 1663.9823; acc: 479666.0/491903.0=0.9751
+Epoch: 15 training finished. Time: 204.69s, speed: 76.85st/s,  total loss: tensor(14499.5635, device='cuda:0')
+gold_num =  6950  pred_num =  6342  right_num =  4788
+Dev: time: 51.75s, speed: 83.55st/s; acc: 0.9562, p: 0.7550, r: 0.6889, f: 0.7204
+gold_num =  7684  pred_num =  7177  right_num =  5489
+Test: time: 53.53s, speed: 81.62st/s; acc: 0.9560, p: 0.7648, r: 0.7143, f: 0.7387
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 16/30
+ Learning rate is setted as: 0.000660190002977648
+     Instance: 2000; Time: 25.51s; loss: 1777.8459; acc: 61788.0/63243.0=0.9770
+     Instance: 4000; Time: 20.86s; loss: 1809.0466; acc: 123710.0/126689.0=0.9765
+     Instance: 6000; Time: 24.77s; loss: 1739.0366; acc: 184743.0/189160.0=0.9766
+     Instance: 8000; Time: 26.45s; loss: 1832.9324; acc: 246712.0/252825.0=0.9758
+     Instance: 10000; Time: 25.78s; loss: 1676.2925; acc: 306186.0/313855.0=0.9756
+     Instance: 12000; Time: 26.50s; loss: 1932.0479; acc: 366341.0/375636.0=0.9753
+     Instance: 14000; Time: 26.45s; loss: 1799.9749; acc: 428176.0/438947.0=0.9755
+     Instance: 15731; Time: 21.89s; loss: 1501.6304; acc: 479761.0/491903.0=0.9753
+Epoch: 16 training finished. Time: 198.21s, speed: 79.36st/s,  total loss: tensor(14068.8037, device='cuda:0')
+gold_num =  6950  pred_num =  6565  right_num =  4893
+Dev: time: 52.20s, speed: 82.83st/s; acc: 0.9567, p: 0.7453, r: 0.7040, f: 0.7241
+gold_num =  7684  pred_num =  7343  right_num =  5570
+Test: time: 53.43s, speed: 81.77st/s; acc: 0.9566, p: 0.7585, r: 0.7249, f: 0.7413
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 17/30
+ Learning rate is setted as: 0.0006271805028287656
+     Instance: 2000; Time: 26.10s; loss: 1696.4746; acc: 60930.0/62424.0=0.9761
+     Instance: 4000; Time: 27.01s; loss: 1725.7250; acc: 123531.0/126477.0=0.9767
+     Instance: 6000; Time: 25.07s; loss: 1610.3965; acc: 183414.0/187754.0=0.9769
+     Instance: 8000; Time: 27.57s; loss: 1814.6438; acc: 244441.0/250382.0=0.9763
+     Instance: 10000; Time: 25.61s; loss: 1610.5940; acc: 305145.0/312461.0=0.9766
+     Instance: 12000; Time: 25.48s; loss: 1691.5049; acc: 364536.0/373311.0=0.9765
+     Instance: 14000; Time: 26.87s; loss: 1826.2303; acc: 426559.0/436924.0=0.9763
+     Instance: 15731; Time: 22.90s; loss: 1542.6436; acc: 480137.0/491903.0=0.9761
+Epoch: 17 training finished. Time: 206.63s, speed: 76.13st/s,  total loss: tensor(13518.2100, device='cuda:0')
+gold_num =  6950  pred_num =  6692  right_num =  4949
+Dev: time: 51.75s, speed: 83.55st/s; acc: 0.9566, p: 0.7395, r: 0.7121, f: 0.7256
+gold_num =  7684  pred_num =  7506  right_num =  5649
+Test: time: 53.35s, speed: 81.89st/s; acc: 0.9571, p: 0.7526, r: 0.7352, f: 0.7438
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 18/30
+ Learning rate is setted as: 0.0005958214776873273
+     Instance: 2000; Time: 26.52s; loss: 1612.1219; acc: 60223.0/61593.0=0.9778
+     Instance: 4000; Time: 26.76s; loss: 1745.2102; acc: 121042.0/123905.0=0.9769
+     Instance: 6000; Time: 25.71s; loss: 1640.5898; acc: 181828.0/186119.0=0.9769
+     Instance: 8000; Time: 25.09s; loss: 1622.1421; acc: 243548.0/249296.0=0.9769
+     Instance: 10000; Time: 26.43s; loss: 1843.4215; acc: 303546.0/310926.0=0.9763
+     Instance: 12000; Time: 26.06s; loss: 1573.2236; acc: 365612.0/374411.0=0.9765
+     Instance: 14000; Time: 24.58s; loss: 1644.3101; acc: 426057.0/436401.0=0.9763
+     Instance: 15731; Time: 18.73s; loss: 1544.1199; acc: 480116.0/491903.0=0.9760
+Epoch: 18 training finished. Time: 199.89s, speed: 78.70st/s,  total loss: tensor(13225.1270, device='cuda:0')
+gold_num =  6950  pred_num =  6711  right_num =  4962
+Dev: time: 51.68s, speed: 83.67st/s; acc: 0.9561, p: 0.7394, r: 0.7140, f: 0.7264
+gold_num =  7684  pred_num =  7487  right_num =  5646
+Test: time: 53.27s, speed: 82.02st/s; acc: 0.9567, p: 0.7541, r: 0.7348, f: 0.7443
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 19/30
+ Learning rate is setted as: 0.0005660304038029609
+     Instance: 2000; Time: 24.51s; loss: 1471.9410; acc: 60475.0/61767.0=0.9791
+     Instance: 4000; Time: 25.85s; loss: 1655.7922; acc: 120448.0/123157.0=0.9780
+     Instance: 6000; Time: 26.35s; loss: 1759.4490; acc: 182015.0/186282.0=0.9771
+     Instance: 8000; Time: 26.63s; loss: 1734.4607; acc: 243035.0/248788.0=0.9769
+     Instance: 10000; Time: 26.12s; loss: 1643.5420; acc: 305050.0/312228.0=0.9770
+     Instance: 12000; Time: 27.12s; loss: 1557.1873; acc: 366119.0/374631.0=0.9773
+     Instance: 14000; Time: 26.21s; loss: 1640.7874; acc: 427316.0/437355.0=0.9770
+     Instance: 15731; Time: 22.48s; loss: 1449.0814; acc: 480647.0/491903.0=0.9771
+Epoch: 19 training finished. Time: 205.27s, speed: 76.64st/s,  total loss: tensor(12912.2422, device='cuda:0')
+gold_num =  6950  pred_num =  6447  right_num =  4846
+Dev: time: 50.92s, speed: 84.92st/s; acc: 0.9554, p: 0.7517, r: 0.6973, f: 0.7234
+gold_num =  7684  pred_num =  7224  right_num =  5513
+Test: time: 52.38s, speed: 83.42st/s; acc: 0.9555, p: 0.7632, r: 0.7175, f: 0.7396
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 20/30
+ Learning rate is setted as: 0.0005377288836128128
+     Instance: 2000; Time: 25.81s; loss: 1547.4500; acc: 59851.0/61210.0=0.9778
+     Instance: 4000; Time: 27.04s; loss: 1719.1406; acc: 121499.0/124282.0=0.9776
+     Instance: 6000; Time: 26.28s; loss: 1628.3883; acc: 183189.0/187386.0=0.9776
+     Instance: 8000; Time: 25.26s; loss: 1584.9290; acc: 244232.0/249791.0=0.9777
+     Instance: 10000; Time: 26.61s; loss: 1582.2583; acc: 307181.0/314088.0=0.9780
+     Instance: 12000; Time: 25.04s; loss: 1473.0562; acc: 368261.0/376408.0=0.9784
+     Instance: 14000; Time: 26.10s; loss: 1669.0396; acc: 428864.0/438441.0=0.9782
+     Instance: 15731; Time: 22.09s; loss: 1370.3054; acc: 481141.0/491903.0=0.9781
+Epoch: 20 training finished. Time: 204.23s, speed: 77.03st/s,  total loss: tensor(12574.5703, device='cuda:0')
+gold_num =  6950  pred_num =  7048  right_num =  5051
+Dev: time: 51.91s, speed: 83.29st/s; acc: 0.9538, p: 0.7167, r: 0.7268, f: 0.7217
+gold_num =  7684  pred_num =  7772  right_num =  5735
+Test: time: 53.04s, speed: 82.37st/s; acc: 0.9553, p: 0.7379, r: 0.7464, f: 0.7421
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 21/30
+ Learning rate is setted as: 0.0005108424394321722
+     Instance: 2000; Time: 24.01s; loss: 1469.4199; acc: 61071.0/62306.0=0.9802
+     Instance: 4000; Time: 22.04s; loss: 1575.2385; acc: 122248.0/124914.0=0.9787
+     Instance: 6000; Time: 26.14s; loss: 1586.1951; acc: 182285.0/186330.0=0.9783
+     Instance: 8000; Time: 25.17s; loss: 1570.9851; acc: 242594.0/247995.0=0.9782
+     Instance: 10000; Time: 27.00s; loss: 1501.0779; acc: 305949.0/312679.0=0.9785
+     Instance: 12000; Time: 26.62s; loss: 1604.3478; acc: 367725.0/375893.0=0.9783
+     Instance: 14000; Time: 26.38s; loss: 1399.4170; acc: 428315.0/437714.0=0.9785
+     Instance: 15731; Time: 23.14s; loss: 1425.4680; acc: 481298.0/491903.0=0.9784
+Epoch: 21 training finished. Time: 200.51s, speed: 78.45st/s,  total loss: tensor(12132.1504, device='cuda:0')
+gold_num =  6950  pred_num =  6761  right_num =  4983
+Dev: time: 51.74s, speed: 83.57st/s; acc: 0.9564, p: 0.7370, r: 0.7170, f: 0.7269
+gold_num =  7684  pred_num =  7552  right_num =  5687
+Test: time: 52.84s, speed: 82.69st/s; acc: 0.9568, p: 0.7530, r: 0.7401, f: 0.7465
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 22/30
+ Learning rate is setted as: 0.0004853003174605635
+     Instance: 2000; Time: 25.25s; loss: 1527.4780; acc: 60635.0/61969.0=0.9785
+     Instance: 4000; Time: 26.15s; loss: 1405.6179; acc: 122199.0/124686.0=0.9801
+     Instance: 6000; Time: 27.19s; loss: 1589.2625; acc: 183475.0/187339.0=0.9794
+     Instance: 8000; Time: 25.14s; loss: 1508.3823; acc: 245619.0/250784.0=0.9794
+     Instance: 10000; Time: 26.87s; loss: 1617.8040; acc: 306971.0/313558.0=0.9790
+     Instance: 12000; Time: 25.07s; loss: 1554.3420; acc: 366618.0/374608.0=0.9787
+     Instance: 14000; Time: 25.61s; loss: 1493.1790; acc: 427475.0/436792.0=0.9787
+     Instance: 15731; Time: 23.31s; loss: 1273.1340; acc: 481469.0/491903.0=0.9788
+Epoch: 22 training finished. Time: 204.59s, speed: 76.89st/s,  total loss: tensor(11969.2090, device='cuda:0')
+gold_num =  6950  pred_num =  6566  right_num =  4873
+Dev: time: 51.87s, speed: 83.37st/s; acc: 0.9552, p: 0.7422, r: 0.7012, f: 0.7211
+gold_num =  7684  pred_num =  7374  right_num =  5548
+Test: time: 53.33s, speed: 81.92st/s; acc: 0.9557, p: 0.7524, r: 0.7220, f: 0.7369
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 23/30
+ Learning rate is setted as: 0.0004610353015875354
+     Instance: 2000; Time: 25.90s; loss: 1579.8690; acc: 61391.0/62739.0=0.9785
+     Instance: 4000; Time: 25.90s; loss: 1485.5642; acc: 123428.0/126109.0=0.9787
+     Instance: 6000; Time: 25.51s; loss: 1429.9154; acc: 184029.0/188054.0=0.9786
+     Instance: 8000; Time: 27.19s; loss: 1656.8566; acc: 246942.0/252394.0=0.9784
+     Instance: 10000; Time: 26.13s; loss: 1422.8579; acc: 307657.0/314292.0=0.9789
+     Instance: 12000; Time: 25.76s; loss: 1455.1006; acc: 368177.0/376152.0=0.9788
+     Instance: 14000; Time: 24.19s; loss: 1485.1852; acc: 430066.0/439320.0=0.9789
+     Instance: 15731; Time: 18.54s; loss: 1168.3932; acc: 481712.0/491903.0=0.9793
+Epoch: 23 training finished. Time: 199.12s, speed: 79.00st/s,  total loss: tensor(11683.7422, device='cuda:0')
+gold_num =  6950  pred_num =  6945  right_num =  5013
+Dev: time: 52.18s, speed: 82.87st/s; acc: 0.9549, p: 0.7218, r: 0.7213, f: 0.7216
+gold_num =  7684  pred_num =  7749  right_num =  5718
+Test: time: 53.69s, speed: 81.38st/s; acc: 0.9563, p: 0.7379, r: 0.7441, f: 0.7410
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 24/30
+ Learning rate is setted as: 0.00043798353650815856
+     Instance: 2000; Time: 28.22s; loss: 1641.0354; acc: 63188.0/64608.0=0.9780
+     Instance: 4000; Time: 24.64s; loss: 1377.1276; acc: 123315.0/125962.0=0.9790
+     Instance: 6000; Time: 26.91s; loss: 1636.5027; acc: 186080.0/190186.0=0.9784
+     Instance: 8000; Time: 26.07s; loss: 1385.2668; acc: 246879.0/252172.0=0.9790
+     Instance: 10000; Time: 26.10s; loss: 1411.8120; acc: 306638.0/313194.0=0.9791
+     Instance: 12000; Time: 25.89s; loss: 1355.7268; acc: 367259.0/375100.0=0.9791
+     Instance: 14000; Time: 26.28s; loss: 1379.1868; acc: 428364.0/437452.0=0.9792
+     Instance: 15731; Time: 22.49s; loss: 1194.5083; acc: 481715.0/491903.0=0.9793
+Epoch: 24 training finished. Time: 206.60s, speed: 76.14st/s,  total loss: tensor(11381.1670, device='cuda:0')
+gold_num =  6950  pred_num =  6474  right_num =  4859
+Dev: time: 50.63s, speed: 85.42st/s; acc: 0.9558, p: 0.7505, r: 0.6991, f: 0.7239
+gold_num =  7684  pred_num =  7274  right_num =  5560
+Test: time: 52.18s, speed: 83.75st/s; acc: 0.9565, p: 0.7644, r: 0.7236, f: 0.7434
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 25/30
+ Learning rate is setted as: 0.00041608435968275065
+     Instance: 2000; Time: 26.23s; loss: 1352.9854; acc: 60816.0/62011.0=0.9807
+     Instance: 4000; Time: 26.04s; loss: 1372.9792; acc: 120750.0/123145.0=0.9806
+     Instance: 6000; Time: 25.23s; loss: 1323.5967; acc: 181504.0/185106.0=0.9805
+     Instance: 8000; Time: 26.57s; loss: 1449.6453; acc: 243907.0/248869.0=0.9801
+     Instance: 10000; Time: 26.34s; loss: 1346.9598; acc: 306147.0/312363.0=0.9801
+     Instance: 12000; Time: 27.81s; loss: 1305.6543; acc: 369127.0/376559.0=0.9803
+     Instance: 14000; Time: 25.35s; loss: 1557.0342; acc: 429253.0/438041.0=0.9799
+     Instance: 15731; Time: 22.09s; loss: 1241.0007; acc: 481989.0/491903.0=0.9798
+Epoch: 25 training finished. Time: 205.66s, speed: 76.49st/s,  total loss: tensor(10949.8584, device='cuda:0')
+gold_num =  6950  pred_num =  6843  right_num =  4989
+Dev: time: 51.79s, speed: 83.49st/s; acc: 0.9559, p: 0.7291, r: 0.7178, f: 0.7234
+gold_num =  7684  pred_num =  7721  right_num =  5716
+Test: time: 53.05s, speed: 82.36st/s; acc: 0.9566, p: 0.7403, r: 0.7439, f: 0.7421
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 26/30
+ Learning rate is setted as: 0.00039528014169861304
+     Instance: 2000; Time: 20.78s; loss: 1457.8003; acc: 60193.0/61442.0=0.9797
+     Instance: 4000; Time: 25.45s; loss: 1384.1438; acc: 123375.0/125896.0=0.9800
+     Instance: 6000; Time: 24.88s; loss: 1243.4731; acc: 183175.0/186882.0=0.9802
+     Instance: 8000; Time: 25.55s; loss: 1476.4202; acc: 243842.0/248809.0=0.9800
+     Instance: 10000; Time: 25.41s; loss: 1378.1077; acc: 304328.0/310480.0=0.9802
+     Instance: 12000; Time: 26.73s; loss: 1543.4619; acc: 366681.0/374172.0=0.9800
+     Instance: 14000; Time: 24.60s; loss: 1311.3435; acc: 428180.0/436832.0=0.9802
+     Instance: 15731; Time: 21.56s; loss: 1251.0637; acc: 482148.0/491903.0=0.9802
+Epoch: 26 training finished. Time: 194.96s, speed: 80.69st/s,  total loss: tensor(11045.8174, device='cuda:0')
+gold_num =  6950  pred_num =  6901  right_num =  4970
+Dev: time: 50.89s, speed: 84.97st/s; acc: 0.9535, p: 0.7202, r: 0.7151, f: 0.7176
+gold_num =  7684  pred_num =  7737  right_num =  5743
+Test: time: 52.21s, speed: 83.71st/s; acc: 0.9563, p: 0.7423, r: 0.7474, f: 0.7448
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 27/30
+ Learning rate is setted as: 0.0003755161346136824
+     Instance: 2000; Time: 25.23s; loss: 1316.2434; acc: 62366.0/63499.0=0.9822
+     Instance: 4000; Time: 25.58s; loss: 1378.5558; acc: 122122.0/124479.0=0.9811
+     Instance: 6000; Time: 26.90s; loss: 1382.6248; acc: 183635.0/187363.0=0.9801
+     Instance: 8000; Time: 25.39s; loss: 1351.3715; acc: 244678.0/249619.0=0.9802
+     Instance: 10000; Time: 26.51s; loss: 1439.6111; acc: 305444.0/311740.0=0.9798
+     Instance: 12000; Time: 26.66s; loss: 1292.5479; acc: 367434.0/374919.0=0.9800
+     Instance: 14000; Time: 26.76s; loss: 1391.0817; acc: 429215.0/437939.0=0.9801
+     Instance: 15731; Time: 22.38s; loss: 1136.2184; acc: 482156.0/491903.0=0.9802
+Epoch: 27 training finished. Time: 205.39s, speed: 76.59st/s,  total loss: tensor(10688.2510, device='cuda:0')
+gold_num =  6950  pred_num =  6988  right_num =  4993
+Dev: time: 50.78s, speed: 85.15st/s; acc: 0.9543, p: 0.7145, r: 0.7184, f: 0.7165
+gold_num =  7684  pred_num =  7800  right_num =  5700
+Test: time: 53.15s, speed: 82.21st/s; acc: 0.9559, p: 0.7308, r: 0.7418, f: 0.7362
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 28/30
+ Learning rate is setted as: 0.00035674032788299823
+     Instance: 2000; Time: 25.85s; loss: 1352.7445; acc: 63596.0/64729.0=0.9825
+     Instance: 4000; Time: 26.49s; loss: 1350.0188; acc: 126560.0/128821.0=0.9824
+     Instance: 6000; Time: 25.76s; loss: 1343.0862; acc: 186838.0/190215.0=0.9822
+     Instance: 8000; Time: 25.70s; loss: 1391.8120; acc: 247007.0/251609.0=0.9817
+     Instance: 10000; Time: 25.57s; loss: 1247.1191; acc: 307517.0/313226.0=0.9818
+     Instance: 12000; Time: 25.96s; loss: 1389.7905; acc: 369197.0/376198.0=0.9814
+     Instance: 14000; Time: 23.96s; loss: 1306.3730; acc: 430390.0/438569.0=0.9814
+     Instance: 15731; Time: 19.33s; loss: 1304.7789; acc: 482447.0/491903.0=0.9808
+Epoch: 28 training finished. Time: 198.63s, speed: 79.20st/s,  total loss: tensor(10685.7295, device='cuda:0')
+gold_num =  6950  pred_num =  6849  right_num =  4912
+Dev: time: 51.94s, speed: 83.25st/s; acc: 0.9530, p: 0.7172, r: 0.7068, f: 0.7119
+gold_num =  7684  pred_num =  7649  right_num =  5650
+Test: time: 53.80s, speed: 81.22st/s; acc: 0.9549, p: 0.7387, r: 0.7353, f: 0.7370
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+Epoch: 29/30
+ Learning rate is setted as: 0.0003389033114888483
+     Instance: 2000; Time: 26.52s; loss: 1280.3433; acc: 61540.0/62657.0=0.9822
+     Instance: 4000; Time: 25.82s; loss: 1201.5854; acc: 120931.0/123049.0=0.9828
+     Instance: 6000; Time: 27.72s; loss: 1425.2000; acc: 184164.0/187507.0=0.9822
+     Instance: 8000; Time: 24.39s; loss: 1365.0309; acc: 244491.0/249075.0=0.9816
+     Instance: 10000; Time: 26.61s; loss: 1409.8770; acc: 307449.0/313306.0=0.9813
+     Instance: 12000; Time: 25.69s; loss: 1303.9924; acc: 368650.0/375739.0=0.9811
+     Instance: 14000; Time: 24.86s; loss: 1433.6722; acc: 429182.0/437582.0=0.9808
+     Instance: 15731; Time: 22.58s; loss: 1096.3220; acc: 482513.0/491903.0=0.9809
+Epoch: 29 training finished. Time: 204.18s, speed: 77.05st/s,  total loss: tensor(10516.0156, device='cuda:0')
+gold_num =  6950  pred_num =  6942  right_num =  4999
+Dev: time: 50.70s, speed: 85.29st/s; acc: 0.9537, p: 0.7201, r: 0.7193, f: 0.7197
+gold_num =  7684  pred_num =  7708  right_num =  5701
+Test: time: 52.68s, speed: 82.95st/s; acc: 0.9552, p: 0.7396, r: 0.7419, f: 0.7408
+Test score: p:0.7638560911237672, r:0.7156428943258719, f:0.7389639185648054
+Best dev score: p:0.754567977702075, r:0.7011510791366906, f:0.7268794749403341
+2021-06-06 20:43:40.009453: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Load gaz file:  /home/mist/NLP/corpus/embedding/chinese/lexicon/ctb.704k.50d.vec  total size: 704369
+gaz alphabet size: 112458
+gaz alphabet size: 116562
+gaz alphabet size: 116562
+build word pretrain emb...
+Embedding:
+     pretrain word:11327, prefect match:4750, case_match:0, oov:70, oov%:0.014519809168222361
+build gaz pretrain emb...
+Embedding:
+     pretrain word:704368, prefect match:116560, case_match:0, oov:1, oov%:8.579125272387228e-06
+Dumping data
+data.use_biword= False
+Training with lstm model.
+build batched crf...
+finish building model.
+Epoch: 0/30
+ Learning rate is setted as: 0.0015
+     Instance: 2000; Time: 30.43s; loss: 52720.0781; acc: 81721.0/92395.0=0.8845
+     Instance: 4000; Time: 32.55s; loss: 31077.6348; acc: 166673.0/186373.0=0.8943
+     Instance: 6000; Time: 31.20s; loss: 23341.2695; acc: 254906.0/281739.0=0.9048
+     Instance: 8000; Time: 31.22s; loss: 19986.5898; acc: 341827.0/375046.0=0.9114
+     Instance: 10000; Time: 31.70s; loss: 17425.4609; acc: 429638.0/468680.0=0.9167
+     Instance: 12000; Time: 31.19s; loss: 15803.9434; acc: 518508.0/562736.0=0.9214
+     Instance: 14000; Time: 30.98s; loss: 14135.6221; acc: 607117.0/656199.0=0.9252
+     Instance: 16000; Time: 31.36s; loss: 14011.1895; acc: 696933.0/750909.0=0.9281
+     Instance: 18000; Time: 31.39s; loss: 11964.0547; acc: 786461.0/844755.0=0.9310
+     Instance: 20000; Time: 30.62s; loss: 12455.1084; acc: 874902.0/937810.0=0.9329
+     Instance: 22000; Time: 26.90s; loss: 11195.7305; acc: 964491.0/1031626.0=0.9349
+     Instance: 24000; Time: 31.38s; loss: 10232.6992; acc: 1052483.0/1123647.0=0.9367
+     Instance: 26000; Time: 32.09s; loss: 10474.1914; acc: 1141966.0/1217287.0=0.9381
+     Instance: 28000; Time: 31.54s; loss: 9709.4414; acc: 1229935.0/1309233.0=0.9394
+     Instance: 30000; Time: 31.30s; loss: 9565.4121; acc: 1319567.0/1402887.0=0.9406
+     Instance: 32000; Time: 30.71s; loss: 8743.4287; acc: 1408314.0/1495469.0=0.9417
+     Instance: 34000; Time: 30.25s; loss: 9378.0547; acc: 1496861.0/1587869.0=0.9427
+     Instance: 36000; Time: 30.29s; loss: 7940.3008; acc: 1584102.0/1678666.0=0.9437
+     Instance: 38000; Time: 30.17s; loss: 7721.9189; acc: 1673185.0/1771107.0=0.9447
+     Instance: 40000; Time: 30.62s; loss: 7701.9370; acc: 1762647.0/1864013.0=0.9456
+     Instance: 42000; Time: 32.13s; loss: 7126.9390; acc: 1853355.0/1958083.0=0.9465
+     Instance: 44000; Time: 31.67s; loss: 7915.9106; acc: 1944432.0/2052934.0=0.9471
+     Instance: 46000; Time: 30.89s; loss: 6945.6909; acc: 2034253.0/2146229.0=0.9478
+     Instance: 46508; Time: 8.32s; loss: 1559.9829; acc: 2057100.0/2169879.0=0.9480
+Epoch: 0 training finished. Time: 720.92s, speed: 64.51st/s,  total loss: tensor(329132.8438, device='cuda:0')
+gold_num =  6181  pred_num =  5713  right_num =  4765
+Dev: time: 46.02s, speed: 96.42st/s; acc: 0.9710, p: 0.8341, r: 0.7709, f: 0.8012
+Exceed previous best f score: -1
+gold_num =  6181  pred_num =  5713  right_num =  4765
+Test: time: 46.30s, speed: 96.16st/s; acc: 0.9710, p: 0.8341, r: 0.7709, f: 0.8012
+Test score: p:0.8340626640994224, r:0.7709108558485682, f:0.8012443248696822
+Best dev score: p:0.8340626640994224, r:0.7709108558485682, f:0.8012443248696822
+Epoch: 1/30
+ Learning rate is setted as: 0.001425
+     Instance: 2000; Time: 30.76s; loss: 6365.2871; acc: 90010.0/93230.0=0.9655
+     Instance: 4000; Time: 33.03s; loss: 6120.5010; acc: 183651.0/190061.0=0.9663
+     Instance: 6000; Time: 30.18s; loss: 6494.3906; acc: 272929.0/282641.0=0.9656
+     Instance: 8000; Time: 29.92s; loss: 5892.7876; acc: 361853.0/374651.0=0.9658
+     Instance: 10000; Time: 30.57s; loss: 5624.2349; acc: 452863.0/468793.0=0.9660
+     Instance: 12000; Time: 30.95s; loss: 5437.6748; acc: 542387.0/561336.0=0.9662
+     Instance: 14000; Time: 31.04s; loss: 5594.9829; acc: 631549.0/653696.0=0.9661
+     Instance: 16000; Time: 30.77s; loss: 5402.1689; acc: 722242.0/747416.0=0.9663
+     Instance: 18000; Time: 27.28s; loss: 5380.8794; acc: 813223.0/841584.0=0.9663
+     Instance: 20000; Time: 28.19s; loss: 5254.0557; acc: 901676.0/933098.0=0.9663
+     Instance: 22000; Time: 30.37s; loss: 5081.8071; acc: 992754.0/1027114.0=0.9665
+     Instance: 24000; Time: 31.98s; loss: 4922.1655; acc: 1082614.0/1119971.0=0.9666
+     Instance: 26000; Time: 30.53s; loss: 4616.1465; acc: 1172437.0/1212679.0=0.9668
+     Instance: 28000; Time: 29.98s; loss: 4557.3750; acc: 1261692.0/1304820.0=0.9669
+     Instance: 30000; Time: 30.65s; loss: 4484.0737; acc: 1352225.0/1398182.0=0.9671
+     Instance: 32000; Time: 30.41s; loss: 4383.0869; acc: 1444616.0/1493376.0=0.9673
+     Instance: 34000; Time: 30.10s; loss: 4430.2876; acc: 1533310.0/1584915.0=0.9674
+     Instance: 36000; Time: 30.76s; loss: 4335.6968; acc: 1623116.0/1677582.0=0.9675
+     Instance: 38000; Time: 32.79s; loss: 4296.5918; acc: 1715785.0/1772986.0=0.9677
+     Instance: 40000; Time: 31.25s; loss: 4186.6714; acc: 1807299.0/1867411.0=0.9678
+     Instance: 42000; Time: 31.76s; loss: 3878.9375; acc: 1897951.0/1960657.0=0.9680
+     Instance: 44000; Time: 30.61s; loss: 4044.0430; acc: 1989458.0/2054841.0=0.9682
+     Instance: 46000; Time: 30.46s; loss: 3998.6431; acc: 2078397.0/2146524.0=0.9683
+     Instance: 46508; Time: 7.94s; loss: 986.7406; acc: 2101054.0/2169879.0=0.9683
+Epoch: 1 training finished. Time: 712.30s, speed: 65.29st/s,  total loss: tensor(115769.2344, device='cuda:0')
+gold_num =  6181  pred_num =  5905  right_num =  5144
+Dev: time: 45.09s, speed: 98.40st/s; acc: 0.9786, p: 0.8711, r: 0.8322, f: 0.8512
+Exceed previous best f score: 0.8012443248696822
+gold_num =  6181  pred_num =  5905  right_num =  5144
+Test: time: 45.13s, speed: 98.58st/s; acc: 0.9786, p: 0.8711, r: 0.8322, f: 0.8512
+Test score: p:0.8711261642675698, r:0.8322277948552014, f:0.8512328313751447
+Best dev score: p:0.8711261642675698, r:0.8322277948552014, f:0.8512328313751447
+Epoch: 2/30
+ Learning rate is setted as: 0.00135375
+     Instance: 2000; Time: 29.67s; loss: 3665.6421; acc: 89870.0/92484.0=0.9717
+     Instance: 4000; Time: 29.80s; loss: 3569.3408; acc: 180428.0/185592.0=0.9722
+     Instance: 6000; Time: 29.92s; loss: 3779.1819; acc: 272637.0/280561.0=0.9718
+     Instance: 8000; Time: 31.64s; loss: 3759.3435; acc: 365549.0/376186.0=0.9717
+     Instance: 10000; Time: 32.53s; loss: 3645.2295; acc: 458795.0/472140.0=0.9717
+     Instance: 12000; Time: 29.64s; loss: 3702.3652; acc: 548601.0/564857.0=0.9712
+     Instance: 14000; Time: 30.52s; loss: 3301.5005; acc: 639176.0/657858.0=0.9716
+     Instance: 16000; Time: 25.59s; loss: 3257.1558; acc: 729279.0/750259.0=0.9720
+     Instance: 18000; Time: 30.01s; loss: 3309.0981; acc: 821632.0/845075.0=0.9723
+     Instance: 20000; Time: 29.70s; loss: 3415.0452; acc: 912275.0/938307.0=0.9723
+     Instance: 22000; Time: 29.52s; loss: 3275.9976; acc: 999924.0/1028466.0=0.9722
+     Instance: 24000; Time: 31.98s; loss: 3435.1086; acc: 1090220.0/1121394.0=0.9722
+     Instance: 26000; Time: 30.82s; loss: 3529.9785; acc: 1179729.0/1213532.0=0.9721
+     Instance: 28000; Time: 31.31s; loss: 3574.1660; acc: 1270547.0/1307144.0=0.9720
+     Instance: 30000; Time: 31.14s; loss: 3318.6167; acc: 1361929.0/1401015.0=0.9721
+     Instance: 32000; Time: 32.61s; loss: 3641.2275; acc: 1454556.0/1496499.0=0.9720
+     Instance: 34000; Time: 30.91s; loss: 3155.6692; acc: 1545311.0/1589768.0=0.9720
+     Instance: 36000; Time: 30.66s; loss: 3190.1711; acc: 1636304.0/1683234.0=0.9721
+     Instance: 38000; Time: 31.61s; loss: 2927.2771; acc: 1726815.0/1776139.0=0.9722
+     Instance: 40000; Time: 30.12s; loss: 2949.1924; acc: 1816018.0/1867743.0=0.9723
+     Instance: 42000; Time: 30.75s; loss: 2988.8110; acc: 1907698.0/1961864.0=0.9724
+     Instance: 44000; Time: 31.08s; loss: 2888.6819; acc: 1997308.0/2053905.0=0.9724
+     Instance: 46000; Time: 31.74s; loss: 2995.3999; acc: 2087949.0/2147035.0=0.9725
+     Instance: 46508; Time: 7.66s; loss: 708.5577; acc: 2110293.0/2169879.0=0.9725
+Epoch: 2 training finished. Time: 710.93s, speed: 65.42st/s,  total loss: tensor(77982.8125, device='cuda:0')
+gold_num =  6181  pred_num =  5838  right_num =  5186
+Dev: time: 45.98s, speed: 96.49st/s; acc: 0.9792, p: 0.8883, r: 0.8390, f: 0.8630
+Exceed previous best f score: 0.8512328313751447
+gold_num =  6181  pred_num =  5838  right_num =  5186
+Test: time: 45.23s, speed: 98.34st/s; acc: 0.9792, p: 0.8883, r: 0.8390, f: 0.8630
+Test score: p:0.8883179170948955, r:0.8390228118427439, f:0.862966968965804
+Best dev score: p:0.8883179170948955, r:0.8390228118427439, f:0.862966968965804
+Epoch: 3/30
+ Learning rate is setted as: 0.0012860624999999999
+     Instance: 2000; Time: 32.53s; loss: 2661.1758; acc: 91314.0/93444.0=0.9772
+     Instance: 4000; Time: 29.62s; loss: 2758.7483; acc: 181499.0/185763.0=0.9770
+     Instance: 6000; Time: 29.96s; loss: 2874.0659; acc: 271209.0/277715.0=0.9766
+     Instance: 8000; Time: 31.49s; loss: 2946.4683; acc: 363781.0/372737.0=0.9760
+     Instance: 10000; Time: 31.05s; loss: 2638.4800; acc: 454568.0/465643.0=0.9762
+     Instance: 12000; Time: 30.54s; loss: 2551.5781; acc: 546666.0/559829.0=0.9765
+     Instance: 14000; Time: 27.26s; loss: 2901.8359; acc: 637163.0/652652.0=0.9763
+     Instance: 16000; Time: 30.52s; loss: 2607.3716; acc: 727527.0/745188.0=0.9763
+     Instance: 18000; Time: 29.61s; loss: 2726.6733; acc: 816943.0/837020.0=0.9760
+     Instance: 20000; Time: 30.83s; loss: 2506.8872; acc: 907470.0/929657.0=0.9761
+     Instance: 22000; Time: 31.45s; loss: 2484.4395; acc: 999303.0/1023421.0=0.9764
+     Instance: 24000; Time: 31.15s; loss: 2429.5713; acc: 1090009.0/1116249.0=0.9765
+     Instance: 26000; Time: 30.82s; loss: 2830.5547; acc: 1182538.0/1211133.0=0.9764
+     Instance: 28000; Time: 31.40s; loss: 2694.7122; acc: 1273910.0/1304785.0=0.9763
+     Instance: 30000; Time: 31.42s; loss: 2746.6909; acc: 1365201.0/1398384.0=0.9763
+     Instance: 32000; Time: 30.23s; loss: 2611.2681; acc: 1455168.0/1490601.0=0.9762
+     Instance: 34000; Time: 32.67s; loss: 2793.7302; acc: 1546733.0/1584605.0=0.9761
+     Instance: 36000; Time: 32.24s; loss: 2665.8020; acc: 1638321.0/1678479.0=0.9761
+     Instance: 38000; Time: 30.68s; loss: 2607.6260; acc: 1730373.0/1772648.0=0.9762
+     Instance: 40000; Time: 31.36s; loss: 2583.6094; acc: 1821946.0/1866521.0=0.9761
+     Instance: 42000; Time: 31.02s; loss: 2550.4634; acc: 1912640.0/1959343.0=0.9762
+     Instance: 44000; Time: 30.62s; loss: 2578.3740; acc: 2002899.0/2051842.0=0.9761
+     Instance: 46000; Time: 32.07s; loss: 2647.3530; acc: 2094882.0/2146175.0=0.9761
+     Instance: 46508; Time: 8.06s; loss: 546.0836; acc: 2118103.0/2169879.0=0.9761
+Epoch: 3 training finished. Time: 718.61s, speed: 64.72st/s,  total loss: tensor(61943.5703, device='cuda:0')
+gold_num =  6181  pred_num =  5933  right_num =  5370
+Dev: time: 45.75s, speed: 96.96st/s; acc: 0.9835, p: 0.9051, r: 0.8688, f: 0.8866
+Exceed previous best f score: 0.862966968965804
+gold_num =  6181  pred_num =  5933  right_num =  5370
+Test: time: 46.08s, speed: 96.54st/s; acc: 0.9835, p: 0.9051, r: 0.8688, f: 0.8866
+Test score: p:0.9051070284847463, r:0.86879145769293, f:0.8865775136206043
+Best dev score: p:0.9051070284847463, r:0.86879145769293, f:0.8865775136206043
+Epoch: 4/30
+ Learning rate is setted as: 0.0012217593749999998
+     Instance: 2000; Time: 32.40s; loss: 2401.7715; acc: 91158.0/93254.0=0.9775
+     Instance: 4000; Time: 30.43s; loss: 2208.1934; acc: 181611.0/185564.0=0.9787
+     Instance: 6000; Time: 31.85s; loss: 2435.8220; acc: 273698.0/279737.0=0.9784
+     Instance: 8000; Time: 30.21s; loss: 2319.2644; acc: 364486.0/372624.0=0.9782
+     Instance: 10000; Time: 25.34s; loss: 2315.9910; acc: 455055.0/465213.0=0.9782
+     Instance: 12000; Time: 31.35s; loss: 2658.3896; acc: 546945.0/559345.0=0.9778
+     Instance: 14000; Time: 32.10s; loss: 2235.3169; acc: 638366.0/652826.0=0.9779
+     Instance: 16000; Time: 31.58s; loss: 2386.1838; acc: 729032.0/745507.0=0.9779
+     Instance: 18000; Time: 30.51s; loss: 2252.8931; acc: 822677.0/841001.0=0.9782
+     Instance: 20000; Time: 30.98s; loss: 2469.7446; acc: 914639.0/935142.0=0.9781
+     Instance: 22000; Time: 30.42s; loss: 2290.1821; acc: 1005822.0/1028342.0=0.9781
+     Instance: 24000; Time: 30.26s; loss: 2309.2800; acc: 1096779.0/1121391.0=0.9781
+     Instance: 26000; Time: 30.77s; loss: 2121.1897; acc: 1186687.0/1213127.0=0.9782
+     Instance: 28000; Time: 30.67s; loss: 2345.2246; acc: 1278452.0/1306997.0=0.9782
+     Instance: 30000; Time: 33.12s; loss: 2304.0925; acc: 1371848.0/1402500.0=0.9781
+     Instance: 32000; Time: 30.64s; loss: 2239.3557; acc: 1462632.0/1495380.0=0.9781
+     Instance: 34000; Time: 30.25s; loss: 2038.6895; acc: 1553577.0/1588180.0=0.9782
+     Instance: 36000; Time: 32.47s; loss: 2231.2717; acc: 1644002.0/1680648.0=0.9782
+     Instance: 38000; Time: 32.74s; loss: 2347.4504; acc: 1736476.0/1775166.0=0.9782
+     Instance: 40000; Time: 30.87s; loss: 2101.0989; acc: 1826966.0/1867593.0=0.9782
+     Instance: 42000; Time: 30.96s; loss: 2269.1008; acc: 1918391.0/1961007.0=0.9783
+     Instance: 44000; Time: 31.05s; loss: 2252.5913; acc: 2009212.0/2053920.0=0.9782
+     Instance: 46000; Time: 29.49s; loss: 2212.1685; acc: 2099560.0/2146208.0=0.9783
+     Instance: 46508; Time: 8.84s; loss: 548.4091; acc: 2122748.0/2169879.0=0.9783
+Epoch: 4 training finished. Time: 719.29s, speed: 64.66st/s,  total loss: tensor(53293.7344, device='cuda:0')
+gold_num =  6181  pred_num =  5923  right_num =  5404
+Dev: time: 44.89s, speed: 98.83st/s; acc: 0.9843, p: 0.9124, r: 0.8743, f: 0.8929
+Exceed previous best f score: 0.8865775136206043
+gold_num =  6181  pred_num =  5923  right_num =  5404
+Test: time: 45.11s, speed: 98.66st/s; acc: 0.9843, p: 0.9124, r: 0.8743, f: 0.8929
+Test score: p:0.9123754853959143, r:0.8742921857304643, f:0.8929279576999339
+Best dev score: p:0.9123754853959143, r:0.8742921857304643, f:0.8929279576999339
+Epoch: 5/30
+ Learning rate is setted as: 0.0011606714062499996
+     Instance: 2000; Time: 30.20s; loss: 2111.2273; acc: 93286.0/95169.0=0.9802
+     Instance: 4000; Time: 29.11s; loss: 1923.6951; acc: 183425.0/187025.0=0.9808
+     Instance: 6000; Time: 29.32s; loss: 2069.6250; acc: 275116.0/280500.0=0.9808
+     Instance: 8000; Time: 26.90s; loss: 2103.2146; acc: 364733.0/372036.0=0.9804
+     Instance: 10000; Time: 31.05s; loss: 1978.3557; acc: 456119.0/465171.0=0.9805
+     Instance: 12000; Time: 31.09s; loss: 2100.9822; acc: 547227.0/558242.0=0.9803
+     Instance: 14000; Time: 32.07s; loss: 2139.8906; acc: 639523.0/652440.0=0.9802
+     Instance: 16000; Time: 30.16s; loss: 2041.9492; acc: 731744.0/746412.0=0.9803
+     Instance: 18000; Time: 31.84s; loss: 1992.3040; acc: 823784.0/840352.0=0.9803
+     Instance: 20000; Time: 32.79s; loss: 2058.7173; acc: 916343.0/934813.0=0.9802
+     Instance: 22000; Time: 31.55s; loss: 2051.6663; acc: 1009470.0/1029681.0=0.9804
+     Instance: 24000; Time: 30.57s; loss: 2111.7134; acc: 1100228.0/1122345.0=0.9803
+     Instance: 26000; Time: 33.33s; loss: 2038.1289; acc: 1193470.0/1217451.0=0.9803
+     Instance: 28000; Time: 31.85s; loss: 2064.8167; acc: 1284146.0/1309964.0=0.9803
+     Instance: 30000; Time: 33.08s; loss: 2196.4402; acc: 1377330.0/1405100.0=0.9802
+     Instance: 32000; Time: 31.74s; loss: 1841.8838; acc: 1468444.0/1497933.0=0.9803
+     Instance: 34000; Time: 32.18s; loss: 1976.9047; acc: 1560844.0/1592153.0=0.9803
+     Instance: 36000; Time: 31.19s; loss: 2082.4241; acc: 1653006.0/1686250.0=0.9803
+     Instance: 38000; Time: 33.05s; loss: 1926.7977; acc: 1745922.0/1780817.0=0.9804
+     Instance: 40000; Time: 31.09s; loss: 2079.6243; acc: 1836222.0/1872969.0=0.9804
+     Instance: 42000; Time: 30.14s; loss: 2024.7507; acc: 1924258.0/1962780.0=0.9804
+     Instance: 44000; Time: 31.57s; loss: 2248.2754; acc: 2014365.0/2054808.0=0.9803
+     Instance: 46000; Time: 30.92s; loss: 1985.2328; acc: 2104314.0/2146467.0=0.9804
+     Instance: 46508; Time: 7.24s; loss: 432.5162; acc: 2127347.0/2169879.0=0.9804
+Epoch: 5 training finished. Time: 724.04s, speed: 64.23st/s,  total loss: tensor(47581.1289, device='cuda:0')
+gold_num =  6181  pred_num =  5916  right_num =  5417
+Dev: time: 45.93s, speed: 96.59st/s; acc: 0.9851, p: 0.9157, r: 0.8764, f: 0.8956
+Exceed previous best f score: 0.8929279576999339
+gold_num =  6181  pred_num =  5916  right_num =  5417
+Test: time: 45.91s, speed: 96.91st/s; acc: 0.9851, p: 0.9157, r: 0.8764, f: 0.8956
+Test score: p:0.9156524678837052, r:0.8763954052742274, f:0.8955939489129536
+Best dev score: p:0.9156524678837052, r:0.8763954052742274, f:0.8955939489129536
+Epoch: 6/30
+ Learning rate is setted as: 0.0011026378359374996
+     Instance: 2000; Time: 31.60s; loss: 1847.5681; acc: 92115.0/93749.0=0.9826
+     Instance: 4000; Time: 26.36s; loss: 1956.5796; acc: 182829.0/186223.0=0.9818
+     Instance: 6000; Time: 29.79s; loss: 1835.7429; acc: 274065.0/279102.0=0.9820
+     Instance: 8000; Time: 31.39s; loss: 1859.4281; acc: 364585.0/371265.0=0.9820
+     Instance: 10000; Time: 30.93s; loss: 1998.3325; acc: 453894.0/462381.0=0.9816
+     Instance: 12000; Time: 32.57s; loss: 1917.9575; acc: 547358.0/557562.0=0.9817
+     Instance: 14000; Time: 32.04s; loss: 1995.3247; acc: 638947.0/650932.0=0.9816
+     Instance: 16000; Time: 32.09s; loss: 1947.1609; acc: 730512.0/744221.0=0.9816
+     Instance: 18000; Time: 30.93s; loss: 1733.9685; acc: 822428.0/837807.0=0.9816
+     Instance: 20000; Time: 31.09s; loss: 2025.2556; acc: 913126.0/930214.0=0.9816
+     Instance: 22000; Time: 32.48s; loss: 2057.6130; acc: 1005699.0/1024597.0=0.9816
+     Instance: 24000; Time: 31.25s; loss: 1999.1635; acc: 1096045.0/1116809.0=0.9814
+     Instance: 26000; Time: 32.36s; loss: 1872.4817; acc: 1188845.0/1211276.0=0.9815
+     Instance: 28000; Time: 32.78s; loss: 1870.1678; acc: 1280744.0/1304861.0=0.9815
+     Instance: 30000; Time: 33.17s; loss: 1911.7494; acc: 1373022.0/1398942.0=0.9815
+     Instance: 32000; Time: 31.86s; loss: 1794.5280; acc: 1466486.0/1494155.0=0.9815
+     Instance: 34000; Time: 32.47s; loss: 1892.6505; acc: 1559784.0/1589124.0=0.9815
+     Instance: 36000; Time: 31.52s; loss: 1855.0769; acc: 1650592.0/1681599.0=0.9816
+     Instance: 38000; Time: 30.73s; loss: 1782.1868; acc: 1741466.0/1774032.0=0.9816
+     Instance: 40000; Time: 31.15s; loss: 1788.2714; acc: 1831422.0/1865624.0=0.9817
+     Instance: 42000; Time: 31.48s; loss: 1847.1963; acc: 1924488.0/1960187.0=0.9818
+     Instance: 44000; Time: 32.72s; loss: 1727.2744; acc: 2015245.0/2052538.0=0.9818
+     Instance: 46000; Time: 32.40s; loss: 1884.9209; acc: 2107889.0/2146876.0=0.9818
+     Instance: 46508; Time: 7.57s; loss: 391.3471; acc: 2130588.0/2169879.0=0.9819
+Epoch: 6 training finished. Time: 732.70s, speed: 63.47st/s,  total loss: tensor(43791.9180, device='cuda:0')
+gold_num =  6181  pred_num =  5899  right_num =  5415
+Dev: time: 46.06s, speed: 96.32st/s; acc: 0.9848, p: 0.9180, r: 0.8761, f: 0.8965
+Exceed previous best f score: 0.8955939489129536
+gold_num =  6181  pred_num =  5899  right_num =  5415
+Test: time: 45.68s, speed: 97.42st/s; acc: 0.9848, p: 0.9180, r: 0.8761, f: 0.8965
+Test score: p:0.9179521952873368, r:0.8760718330367254, f:0.8965231788079471
+Best dev score: p:0.9179521952873368, r:0.8760718330367254, f:0.8965231788079471
+Epoch: 7/30
+ Learning rate is setted as: 0.0010475059441406246
+     Instance: 2000; Time: 24.21s; loss: 1722.7379; acc: 91620.0/93270.0=0.9823
+     Instance: 4000; Time: 34.14s; loss: 1899.1451; acc: 186075.0/189425.0=0.9823
+     Instance: 6000; Time: 30.48s; loss: 1753.3386; acc: 275663.0/280613.0=0.9824
+     Instance: 8000; Time: 35.08s; loss: 1835.7246; acc: 368964.0/375540.0=0.9825
+     Instance: 10000; Time: 33.20s; loss: 1604.5291; acc: 460879.0/468964.0=0.9828
+     Instance: 12000; Time: 31.57s; loss: 1735.7998; acc: 551927.0/561609.0=0.9828
+     Instance: 14000; Time: 31.09s; loss: 1774.5979; acc: 642060.0/653397.0=0.9826
+     Instance: 16000; Time: 32.88s; loss: 1829.2006; acc: 733515.0/746514.0=0.9826
+     Instance: 18000; Time: 30.92s; loss: 1763.9955; acc: 825543.0/840156.0=0.9826
+     Instance: 20000; Time: 33.34s; loss: 1787.7672; acc: 917944.0/934354.0=0.9824
+     Instance: 22000; Time: 32.24s; loss: 1823.5044; acc: 1011095.0/1029245.0=0.9824
+     Instance: 24000; Time: 32.11s; loss: 1756.0564; acc: 1104290.0/1124008.0=0.9825
+     Instance: 26000; Time: 32.08s; loss: 1722.9559; acc: 1197502.0/1218811.0=0.9825
+     Instance: 28000; Time: 30.87s; loss: 1588.8987; acc: 1289472.0/1312248.0=0.9826
+     Instance: 30000; Time: 30.67s; loss: 1719.7869; acc: 1379934.0/1404292.0=0.9827
+     Instance: 32000; Time: 31.54s; loss: 1616.8213; acc: 1471257.0/1497084.0=0.9827
+     Instance: 34000; Time: 30.99s; loss: 1587.0381; acc: 1561922.0/1589268.0=0.9828
+     Instance: 36000; Time: 32.08s; loss: 1772.1187; acc: 1653290.0/1682329.0=0.9827
+     Instance: 38000; Time: 31.92s; loss: 1786.3093; acc: 1746289.0/1777012.0=0.9827
+     Instance: 40000; Time: 31.66s; loss: 1859.4398; acc: 1838081.0/1870502.0=0.9827
+     Instance: 42000; Time: 31.20s; loss: 1871.2494; acc: 1928135.0/1962075.0=0.9827
+     Instance: 44000; Time: 32.27s; loss: 1679.5831; acc: 2018483.0/2053991.0=0.9827
+     Instance: 46000; Time: 31.29s; loss: 1487.5620; acc: 2109100.0/2145952.0=0.9828
+     Instance: 46508; Time: 8.22s; loss: 460.4919; acc: 2132578.0/2169879.0=0.9828
+Epoch: 7 training finished. Time: 736.04s, speed: 63.19st/s,  total loss: tensor(40438.6289, device='cuda:0')
+gold_num =  6181  pred_num =  5923  right_num =  5472
+Dev: time: 46.33s, speed: 95.76st/s; acc: 0.9863, p: 0.9239, r: 0.8853, f: 0.9042
+Exceed previous best f score: 0.8965231788079471
+gold_num =  6181  pred_num =  5923  right_num =  5472
+Test: time: 44.92s, speed: 99.02st/s; acc: 0.9863, p: 0.9239, r: 0.8853, f: 0.9042
+Test score: p:0.9238561539760257, r:0.885293641805533, f:0.9041639127561137
+Best dev score: p:0.9238561539760257, r:0.885293641805533, f:0.9041639127561137
+Epoch: 8/30
+ Learning rate is setted as: 0.0009951306469335934
+     Instance: 2000; Time: 33.35s; loss: 1817.6781; acc: 93810.0/95489.0=0.9824
+     Instance: 4000; Time: 32.02s; loss: 1541.1340; acc: 184824.0/187855.0=0.9839
+     Instance: 6000; Time: 30.04s; loss: 1671.6803; acc: 274194.0/278695.0=0.9838
+     Instance: 8000; Time: 32.28s; loss: 1614.6973; acc: 365171.0/371103.0=0.9840
+     Instance: 10000; Time: 29.92s; loss: 1574.4258; acc: 456056.0/463501.0=0.9839
+     Instance: 12000; Time: 31.78s; loss: 1544.5420; acc: 548430.0/557285.0=0.9841
+     Instance: 14000; Time: 32.77s; loss: 1584.9844; acc: 640712.0/651066.0=0.9841
+     Instance: 16000; Time: 31.47s; loss: 1596.7406; acc: 732574.0/744436.0=0.9841
+     Instance: 18000; Time: 31.27s; loss: 1598.4384; acc: 824976.0/838312.0=0.9841
+     Instance: 20000; Time: 30.34s; loss: 1535.2838; acc: 915523.0/930363.0=0.9840
+     Instance: 22000; Time: 33.41s; loss: 1602.6399; acc: 1008400.0/1024714.0=0.9841
+     Instance: 24000; Time: 28.74s; loss: 1759.2229; acc: 1099853.0/1117925.0=0.9838
+     Instance: 26000; Time: 31.46s; loss: 1602.0802; acc: 1191625.0/1211257.0=0.9838
+     Instance: 28000; Time: 32.83s; loss: 1526.6820; acc: 1283484.0/1304609.0=0.9838
+     Instance: 30000; Time: 31.25s; loss: 1600.6473; acc: 1375092.0/1397747.0=0.9838
+     Instance: 32000; Time: 31.97s; loss: 1741.6448; acc: 1468452.0/1492813.0=0.9837
+     Instance: 34000; Time: 31.99s; loss: 1701.4301; acc: 1560987.0/1587025.0=0.9836
+     Instance: 36000; Time: 31.42s; loss: 1578.1833; acc: 1651562.0/1679069.0=0.9836
+     Instance: 38000; Time: 31.61s; loss: 1563.2482; acc: 1743267.0/1772133.0=0.9837
+     Instance: 40000; Time: 31.19s; loss: 1643.5676; acc: 1834238.0/1864646.0=0.9837
+     Instance: 42000; Time: 31.98s; loss: 1605.3879; acc: 1925527.0/1957429.0=0.9837
+     Instance: 44000; Time: 34.39s; loss: 1613.0303; acc: 2018386.0/2051798.0=0.9837
+     Instance: 46000; Time: 30.37s; loss: 1697.2732; acc: 2111058.0/2146128.0=0.9837
+     Instance: 46508; Time: 8.50s; loss: 391.8018; acc: 2134410.0/2169879.0=0.9837
+Epoch: 8 training finished. Time: 736.35s, speed: 63.16st/s,  total loss: tensor(37706.4414, device='cuda:0')
+gold_num =  6181  pred_num =  5981  right_num =  5526
+Dev: time: 44.74s, speed: 99.18st/s; acc: 0.9868, p: 0.9239, r: 0.8940, f: 0.9087
+Exceed previous best f score: 0.9041639127561137
+gold_num =  6181  pred_num =  5981  right_num =  5526
+Test: time: 44.91s, speed: 99.10st/s; acc: 0.9868, p: 0.9239, r: 0.8940, f: 0.9087
+Test score: p:0.9239257649222538, r:0.8940300922180877, f:0.908732116428219
+Best dev score: p:0.9239257649222538, r:0.8940300922180877, f:0.908732116428219
+Epoch: 9/30
+ Learning rate is setted as: 0.0009453741145869137
+     Instance: 2000; Time: 33.33s; loss: 1572.5973; acc: 92526.0/93962.0=0.9847
+     Instance: 4000; Time: 32.14s; loss: 1516.6829; acc: 184088.0/186861.0=0.9852
+     Instance: 6000; Time: 32.50s; loss: 1563.8943; acc: 275188.0/279498.0=0.9846
+     Instance: 8000; Time: 32.85s; loss: 1352.9021; acc: 368341.0/373966.0=0.9850
+     Instance: 10000; Time: 32.80s; loss: 1471.1864; acc: 462529.0/469467.0=0.9852
+     Instance: 12000; Time: 30.52s; loss: 1571.3041; acc: 553386.0/561730.0=0.9851
+     Instance: 14000; Time: 32.17s; loss: 1609.7242; acc: 643352.0/653215.0=0.9849
+     Instance: 16000; Time: 31.98s; loss: 1601.4696; acc: 735338.0/746677.0=0.9848
+     Instance: 18000; Time: 31.51s; loss: 1482.7056; acc: 828518.0/841187.0=0.9849
+     Instance: 20000; Time: 32.45s; loss: 1521.2694; acc: 919878.0/933957.0=0.9849
+     Instance: 22000; Time: 31.73s; loss: 1476.6731; acc: 1010074.0/1025532.0=0.9849
+     Instance: 24000; Time: 32.52s; loss: 1525.6648; acc: 1102822.0/1119691.0=0.9849
+     Instance: 26000; Time: 32.10s; loss: 1513.4050; acc: 1195397.0/1213773.0=0.9849
+     Instance: 28000; Time: 32.19s; loss: 1471.1865; acc: 1286855.0/1306636.0=0.9849
+     Instance: 30000; Time: 30.40s; loss: 1475.4846; acc: 1376487.0/1397648.0=0.9849
+     Instance: 32000; Time: 32.14s; loss: 1443.4673; acc: 1468360.0/1490802.0=0.9849
+     Instance: 34000; Time: 31.24s; loss: 1578.6735; acc: 1558613.0/1582591.0=0.9848
+     Instance: 36000; Time: 31.49s; loss: 1584.8741; acc: 1651460.0/1677097.0=0.9847
+     Instance: 38000; Time: 32.11s; loss: 1484.1089; acc: 1744067.0/1771148.0=0.9847
+     Instance: 40000; Time: 32.28s; loss: 1475.5349; acc: 1837080.0/1865530.0=0.9847
+     Instance: 42000; Time: 31.82s; loss: 1557.8251; acc: 1928006.0/1957959.0=0.9847
+     Instance: 44000; Time: 31.84s; loss: 1546.3013; acc: 2020933.0/2052299.0=0.9847
+     Instance: 46000; Time: 30.99s; loss: 1579.6436; acc: 2113134.0/2146036.0=0.9847
+     Instance: 46508; Time: 6.16s; loss: 441.7410; acc: 2136546.0/2169879.0=0.9846
+Epoch: 9 training finished. Time: 741.26s, speed: 62.74st/s,  total loss: tensor(35418.3398, device='cuda:0')
+gold_num =  6181  pred_num =  6024  right_num =  5561
+Dev: time: 45.35s, speed: 97.83st/s; acc: 0.9868, p: 0.9231, r: 0.8997, f: 0.9113
+Exceed previous best f score: 0.908732116428219
+gold_num =  6181  pred_num =  6024  right_num =  5561
+Test: time: 45.92s, speed: 96.89st/s; acc: 0.9868, p: 0.9231, r: 0.8997, f: 0.9113
+Test score: p:0.923140770252324, r:0.8996926063743731, f:0.9112658746415404
+Best dev score: p:0.923140770252324, r:0.8996926063743731, f:0.9112658746415404
+Epoch: 10/30
+ Learning rate is setted as: 0.000898105408857568
+     Instance: 2000; Time: 30.70s; loss: 1444.1788; acc: 91865.0/93238.0=0.9853
+     Instance: 4000; Time: 30.70s; loss: 1378.3201; acc: 184170.0/186837.0=0.9857
+     Instance: 6000; Time: 31.06s; loss: 1498.9950; acc: 275226.0/279227.0=0.9857
+     Instance: 8000; Time: 32.93s; loss: 1301.9768; acc: 367949.0/373258.0=0.9858
+     Instance: 10000; Time: 32.39s; loss: 1356.2578; acc: 459831.0/466497.0=0.9857
+     Instance: 12000; Time: 32.62s; loss: 1522.1472; acc: 552299.0/560423.0=0.9855
+     Instance: 14000; Time: 33.87s; loss: 1463.6348; acc: 645835.0/655309.0=0.9855
+     Instance: 16000; Time: 32.07s; loss: 1615.7258; acc: 739302.0/750257.0=0.9854
+     Instance: 18000; Time: 32.15s; loss: 1476.0741; acc: 830750.0/843028.0=0.9854
+     Instance: 20000; Time: 31.76s; loss: 1417.9775; acc: 921897.0/935428.0=0.9855
+     Instance: 22000; Time: 31.27s; loss: 1377.1361; acc: 1011999.0/1026828.0=0.9856
+     Instance: 24000; Time: 31.79s; loss: 1461.2125; acc: 1103821.0/1119933.0=0.9856
+     Instance: 26000; Time: 32.82s; loss: 1328.2192; acc: 1195516.0/1212814.0=0.9857
+     Instance: 28000; Time: 32.01s; loss: 1308.0278; acc: 1286206.0/1304675.0=0.9858
+     Instance: 30000; Time: 31.47s; loss: 1546.4722; acc: 1378315.0/1398229.0=0.9858
+     Instance: 32000; Time: 33.02s; loss: 1475.9946; acc: 1469872.0/1491132.0=0.9857
+     Instance: 34000; Time: 33.10s; loss: 1416.4503; acc: 1562477.0/1585028.0=0.9858
+     Instance: 36000; Time: 32.56s; loss: 1447.1300; acc: 1656855.0/1680771.0=0.9858
+     Instance: 38000; Time: 31.11s; loss: 1370.2018; acc: 1748361.0/1773594.0=0.9858
+     Instance: 40000; Time: 30.66s; loss: 1258.4983; acc: 1838799.0/1865157.0=0.9859
+     Instance: 42000; Time: 30.95s; loss: 1381.8677; acc: 1929466.0/1957072.0=0.9859
+     Instance: 44000; Time: 29.24s; loss: 1482.5656; acc: 2023176.0/2052222.0=0.9858
+     Instance: 46000; Time: 26.78s; loss: 1459.2000; acc: 2116008.0/2146457.0=0.9858
+     Instance: 46508; Time: 6.49s; loss: 371.4616; acc: 2139035.0/2169879.0=0.9858
+Epoch: 10 training finished. Time: 733.51s, speed: 63.40st/s,  total loss: tensor(33159.7344, device='cuda:0')
+gold_num =  6181  pred_num =  6050  right_num =  5618
+Dev: time: 42.31s, speed: 104.91st/s; acc: 0.9879, p: 0.9286, r: 0.9089, f: 0.9186
+Exceed previous best f score: 0.9112658746415404
+gold_num =  6181  pred_num =  6050  right_num =  5618
+Test: time: 42.94s, speed: 103.69st/s; acc: 0.9879, p: 0.9286, r: 0.9089, f: 0.9186
+Test score: p:0.9285950413223141, r:0.9089144151431807, f:0.9186493336603712
+Best dev score: p:0.9285950413223141, r:0.9089144151431807, f:0.9186493336603712
+Epoch: 11/30
+ Learning rate is setted as: 0.0008532001384146896
+     Instance: 2000; Time: 25.16s; loss: 1287.6890; acc: 93696.0/94908.0=0.9872
+     Instance: 4000; Time: 25.57s; loss: 1366.8839; acc: 185131.0/187715.0=0.9862
+     Instance: 6000; Time: 26.32s; loss: 1391.6682; acc: 279350.0/283229.0=0.9863
+     Instance: 8000; Time: 26.54s; loss: 1355.3403; acc: 372151.0/377308.0=0.9863
+     Instance: 10000; Time: 26.06s; loss: 1340.1875; acc: 465172.0/471580.0=0.9864
+     Instance: 12000; Time: 25.46s; loss: 1454.9257; acc: 556563.0/564341.0=0.9862
+     Instance: 14000; Time: 23.74s; loss: 1302.3016; acc: 649007.0/658084.0=0.9862
+     Instance: 16000; Time: 25.08s; loss: 1320.3582; acc: 739902.0/750164.0=0.9863
+     Instance: 18000; Time: 24.35s; loss: 1455.4773; acc: 831662.0/843296.0=0.9862
+     Instance: 20000; Time: 25.18s; loss: 1334.1395; acc: 923538.0/936450.0=0.9862
+     Instance: 22000; Time: 23.03s; loss: 1462.0354; acc: 1014675.0/1029053.0=0.9860
+     Instance: 24000; Time: 24.30s; loss: 1327.7119; acc: 1104552.0/1120278.0=0.9860
+     Instance: 26000; Time: 26.03s; loss: 1280.0959; acc: 1197972.0/1214933.0=0.9860
+     Instance: 28000; Time: 26.18s; loss: 1611.3652; acc: 1291929.0/1310576.0=0.9858
+     Instance: 30000; Time: 25.84s; loss: 1298.3176; acc: 1382951.0/1402780.0=0.9859
+     Instance: 32000; Time: 25.33s; loss: 1419.9834; acc: 1476186.0/1497352.0=0.9859
+     Instance: 34000; Time: 23.57s; loss: 1382.3754; acc: 1568028.0/1590423.0=0.9859
+     Instance: 36000; Time: 24.32s; loss: 1228.8695; acc: 1659960.0/1683558.0=0.9860
+     Instance: 38000; Time: 23.77s; loss: 1313.1438; acc: 1751725.0/1776597.0=0.9860
+     Instance: 40000; Time: 24.79s; loss: 1381.8442; acc: 1843107.0/1869431.0=0.9859
+     Instance: 42000; Time: 23.97s; loss: 1245.8970; acc: 1933289.0/1960734.0=0.9860
+     Instance: 44000; Time: 22.55s; loss: 1461.3386; acc: 2023818.0/2052501.0=0.9860
+     Instance: 46000; Time: 25.50s; loss: 1267.8971; acc: 2116501.0/2146364.0=0.9861
+     Instance: 46508; Time: 6.62s; loss: 330.5479; acc: 2139706.0/2169879.0=0.9861
+Epoch: 11 training finished. Time: 579.25s, speed: 80.29st/s,  total loss: tensor(31620.4238, device='cuda:0')
+gold_num =  6181  pred_num =  6100  right_num =  5612
+Dev: time: 40.71s, speed: 109.04st/s; acc: 0.9872, p: 0.9200, r: 0.9079, f: 0.9139
+gold_num =  6181  pred_num =  6100  right_num =  5612
+Test: time: 40.72s, speed: 109.01st/s; acc: 0.9872, p: 0.9200, r: 0.9079, f: 0.9139
+Test score: p:0.9285950413223141, r:0.9089144151431807, f:0.9186493336603712
+Best dev score: p:0.9285950413223141, r:0.9089144151431807, f:0.9186493336603712
+Epoch: 12/30
+ Learning rate is setted as: 0.000810540131493955
+     Instance: 2000; Time: 25.89s; loss: 1319.9205; acc: 92633.0/93825.0=0.9873
+     Instance: 4000; Time: 24.90s; loss: 1334.0330; acc: 185255.0/187620.0=0.9874
+     Instance: 6000; Time: 24.21s; loss: 1232.2467; acc: 275380.0/278942.0=0.9872
+     Instance: 8000; Time: 26.90s; loss: 1420.5074; acc: 370329.0/375235.0=0.9869
+     Instance: 10000; Time: 26.24s; loss: 1273.5869; acc: 463678.0/469815.0=0.9869
+     Instance: 12000; Time: 25.02s; loss: 1260.4993; acc: 555471.0/562850.0=0.9869
+     Instance: 14000; Time: 26.17s; loss: 1347.8898; acc: 647525.0/656172.0=0.9868
+     Instance: 16000; Time: 25.79s; loss: 1320.1587; acc: 738396.0/748365.0=0.9867
+     Instance: 18000; Time: 24.85s; loss: 1237.7872; acc: 830569.0/841715.0=0.9868
+     Instance: 20000; Time: 24.94s; loss: 1378.3674; acc: 921350.0/933741.0=0.9867
+     Instance: 22000; Time: 24.83s; loss: 1253.3069; acc: 1013534.0/1027097.0=0.9868
+     Instance: 24000; Time: 26.10s; loss: 1379.6761; acc: 1107290.0/1122317.0=0.9866
+     Instance: 26000; Time: 24.39s; loss: 1303.7198; acc: 1200114.0/1216367.0=0.9866
+     Instance: 28000; Time: 24.62s; loss: 1292.0310; acc: 1290113.0/1307652.0=0.9866
+     Instance: 30000; Time: 26.49s; loss: 1301.4825; acc: 1382486.0/1401310.0=0.9866
+     Instance: 32000; Time: 24.46s; loss: 1234.0903; acc: 1473102.0/1493044.0=0.9866
+     Instance: 34000; Time: 24.90s; loss: 1159.1936; acc: 1564570.0/1585604.0=0.9867
+     Instance: 36000; Time: 24.53s; loss: 1396.6178; acc: 1655942.0/1678289.0=0.9867
+     Instance: 38000; Time: 21.63s; loss: 1177.3381; acc: 1748754.0/1772168.0=0.9868
+     Instance: 40000; Time: 22.49s; loss: 1228.1012; acc: 1841654.0/1866227.0=0.9868
+     Instance: 42000; Time: 24.73s; loss: 1233.3801; acc: 1932602.0/1958475.0=0.9868
+     Instance: 44000; Time: 25.62s; loss: 1407.5989; acc: 2024251.0/2051401.0=0.9868
+     Instance: 46000; Time: 24.05s; loss: 1340.0121; acc: 2117214.0/2145677.0=0.9867
+     Instance: 46508; Time: 6.56s; loss: 363.9808; acc: 2141027.0/2169879.0=0.9867
+Epoch: 12 training finished. Time: 580.30s, speed: 80.14st/s,  total loss: tensor(30195.5137, device='cuda:0')
+gold_num =  6181  pred_num =  5952  right_num =  5571
+Dev: time: 42.06s, speed: 105.52st/s; acc: 0.9880, p: 0.9360, r: 0.9013, f: 0.9183
+gold_num =  6181  pred_num =  5952  right_num =  5571
+Test: time: 41.97s, speed: 105.76st/s; acc: 0.9880, p: 0.9360, r: 0.9013, f: 0.9183
+Test score: p:0.9285950413223141, r:0.9089144151431807, f:0.9186493336603712
+Best dev score: p:0.9285950413223141, r:0.9089144151431807, f:0.9186493336603712
+Epoch: 13/30
+ Learning rate is setted as: 0.0007700131249192573
+     Instance: 2000; Time: 23.93s; loss: 1101.4728; acc: 91156.0/92256.0=0.9881
+     Instance: 4000; Time: 26.10s; loss: 1169.5203; acc: 185458.0/187721.0=0.9879
+     Instance: 6000; Time: 23.49s; loss: 1207.4563; acc: 278037.0/281399.0=0.9881
+     Instance: 8000; Time: 24.13s; loss: 1099.3467; acc: 369575.0/374044.0=0.9881
+     Instance: 10000; Time: 23.60s; loss: 1126.8290; acc: 458888.0/464456.0=0.9880
+     Instance: 12000; Time: 25.75s; loss: 1242.8990; acc: 551817.0/558578.0=0.9879
+     Instance: 14000; Time: 25.45s; loss: 1185.3167; acc: 644501.0/652478.0=0.9878
+     Instance: 16000; Time: 25.13s; loss: 1271.7047; acc: 736967.0/746083.0=0.9878
+     Instance: 18000; Time: 25.86s; loss: 1303.4252; acc: 829839.0/840146.0=0.9877
+     Instance: 20000; Time: 23.72s; loss: 1238.1274; acc: 920784.0/932327.0=0.9876
+     Instance: 22000; Time: 24.92s; loss: 1222.1938; acc: 1012971.0/1025647.0=0.9876
+     Instance: 24000; Time: 25.99s; loss: 1212.4006; acc: 1107354.0/1121218.0=0.9876
+     Instance: 26000; Time: 24.29s; loss: 1289.2117; acc: 1197961.0/1213053.0=0.9876
+     Instance: 28000; Time: 25.74s; loss: 1315.7078; acc: 1290367.0/1306689.0=0.9875
+     Instance: 30000; Time: 25.25s; loss: 1221.1189; acc: 1382659.0/1400114.0=0.9875
+     Instance: 32000; Time: 25.75s; loss: 1221.3423; acc: 1473593.0/1492163.0=0.9876
+     Instance: 34000; Time: 26.27s; loss: 1289.7745; acc: 1565892.0/1585696.0=0.9875
+     Instance: 36000; Time: 24.96s; loss: 1286.9667; acc: 1658855.0/1679806.0=0.9875
+     Instance: 38000; Time: 24.62s; loss: 1218.6621; acc: 1750940.0/1773142.0=0.9875
+     Instance: 40000; Time: 25.20s; loss: 1396.1758; acc: 1843131.0/1866566.0=0.9874
+     Instance: 42000; Time: 26.18s; loss: 1318.9949; acc: 1936145.0/1960900.0=0.9874
+     Instance: 44000; Time: 25.83s; loss: 1250.4747; acc: 2027996.0/2053891.0=0.9874
+     Instance: 46000; Time: 26.35s; loss: 1256.8467; acc: 2118829.0/2145980.0=0.9873
+     Instance: 46508; Time: 6.44s; loss: 287.5167; acc: 2142406.0/2169879.0=0.9873
+Epoch: 13 training finished. Time: 584.94s, speed: 79.51st/s,  total loss: tensor(28733.4727, device='cuda:0')
+gold_num =  6181  pred_num =  5981  right_num =  5592
+Dev: time: 40.76s, speed: 108.90st/s; acc: 0.9885, p: 0.9350, r: 0.9047, f: 0.9196
+Exceed previous best f score: 0.9186493336603712
+gold_num =  6181  pred_num =  5981  right_num =  5592
+Test: time: 41.68s, speed: 106.83st/s; acc: 0.9885, p: 0.9350, r: 0.9047, f: 0.9196
+Test score: p:0.9349607089115533, r:0.9047079760556545, f:0.9195855944745931
+Best dev score: p:0.9349607089115533, r:0.9047079760556545, f:0.9195855944745931
+Epoch: 14/30
+ Learning rate is setted as: 0.0007315124686732943
+     Instance: 2000; Time: 25.27s; loss: 1169.5493; acc: 91913.0/93112.0=0.9871
+     Instance: 4000; Time: 24.71s; loss: 1172.2064; acc: 183996.0/186315.0=0.9876
+     Instance: 6000; Time: 25.47s; loss: 1283.2554; acc: 277517.0/281150.0=0.9871
+     Instance: 8000; Time: 22.79s; loss: 1174.1238; acc: 367719.0/372399.0=0.9874
+     Instance: 10000; Time: 25.61s; loss: 1171.0449; acc: 460283.0/466060.0=0.9876
+     Instance: 12000; Time: 23.88s; loss: 1141.6959; acc: 552083.0/558993.0=0.9876
+     Instance: 14000; Time: 26.65s; loss: 1256.7080; acc: 644716.0/652881.0=0.9875
+     Instance: 16000; Time: 23.59s; loss: 1157.3794; acc: 734915.0/744267.0=0.9874
+     Instance: 18000; Time: 26.02s; loss: 1245.2050; acc: 828160.0/838601.0=0.9875
+     Instance: 20000; Time: 26.03s; loss: 1039.7238; acc: 920772.0/932217.0=0.9877
+     Instance: 22000; Time: 24.70s; loss: 1178.6560; acc: 1012049.0/1024610.0=0.9877
+     Instance: 24000; Time: 25.56s; loss: 1173.4370; acc: 1104446.0/1118168.0=0.9877
+     Instance: 26000; Time: 26.26s; loss: 1224.4318; acc: 1195292.0/1210159.0=0.9877
+     Instance: 28000; Time: 25.55s; loss: 1306.8583; acc: 1288423.0/1304496.0=0.9877
+     Instance: 30000; Time: 25.74s; loss: 1177.9265; acc: 1382292.0/1399480.0=0.9877
+     Instance: 32000; Time: 24.10s; loss: 1221.2040; acc: 1473286.0/1491649.0=0.9877
+     Instance: 34000; Time: 23.83s; loss: 1306.4160; acc: 1564523.0/1584189.0=0.9876
+     Instance: 36000; Time: 26.38s; loss: 1161.9534; acc: 1658044.0/1678912.0=0.9876
+     Instance: 38000; Time: 25.92s; loss: 1236.8276; acc: 1750757.0/1772794.0=0.9876
+     Instance: 40000; Time: 25.88s; loss: 1253.1499; acc: 1843777.0/1866976.0=0.9876
+     Instance: 42000; Time: 24.81s; loss: 1119.1011; acc: 1936224.0/1960433.0=0.9877
+     Instance: 44000; Time: 24.50s; loss: 1183.3252; acc: 2027730.0/2053060.0=0.9877
+     Instance: 46000; Time: 24.66s; loss: 1202.4583; acc: 2120098.0/2146628.0=0.9876
+     Instance: 46508; Time: 6.59s; loss: 319.1770; acc: 2143069.0/2169879.0=0.9876
+Epoch: 14 training finished. Time: 584.50s, speed: 79.57st/s,  total loss: tensor(27875.8086, device='cuda:0')
+gold_num =  6181  pred_num =  5992  right_num =  5599
+Dev: time: 40.99s, speed: 108.30st/s; acc: 0.9888, p: 0.9344, r: 0.9058, f: 0.9199
+Exceed previous best f score: 0.9195855944745931
+gold_num =  6181  pred_num =  5992  right_num =  5599
+Test: time: 41.11s, speed: 108.34st/s; acc: 0.9888, p: 0.9344, r: 0.9058, f: 0.9199
+Test score: p:0.9344125500667557, r:0.9058404788869115, f:0.9199047071387498
+Best dev score: p:0.9344125500667557, r:0.9058404788869115, f:0.9199047071387498
+Epoch: 15/30
+ Learning rate is setted as: 0.0006949368452396295
+     Instance: 2000; Time: 25.88s; loss: 1082.3116; acc: 93749.0/94866.0=0.9882
+     Instance: 4000; Time: 24.88s; loss: 1318.6387; acc: 185652.0/188057.0=0.9872
+     Instance: 6000; Time: 24.47s; loss: 1228.3685; acc: 276025.0/279609.0=0.9872
+     Instance: 8000; Time: 25.23s; loss: 1347.2687; acc: 366689.0/371487.0=0.9871
+     Instance: 10000; Time: 24.54s; loss: 1033.9944; acc: 457698.0/463434.0=0.9876
+     Instance: 12000; Time: 24.85s; loss: 1080.1033; acc: 548872.0/555665.0=0.9878
+     Instance: 14000; Time: 24.98s; loss: 1147.4077; acc: 640236.0/648149.0=0.9878
+     Instance: 16000; Time: 27.17s; loss: 1156.0520; acc: 733776.0/742910.0=0.9877
+     Instance: 18000; Time: 25.28s; loss: 1202.7115; acc: 826348.0/836589.0=0.9878
+     Instance: 20000; Time: 26.53s; loss: 1210.9111; acc: 919203.0/930531.0=0.9878
+     Instance: 22000; Time: 25.26s; loss: 1135.5371; acc: 1013129.0/1025470.0=0.9880
+     Instance: 24000; Time: 24.15s; loss: 1175.7433; acc: 1103458.0/1116938.0=0.9879
+     Instance: 26000; Time: 26.17s; loss: 1119.6931; acc: 1196727.0/1211281.0=0.9880
+     Instance: 28000; Time: 25.89s; loss: 1202.1188; acc: 1290137.0/1305834.0=0.9880
+     Instance: 30000; Time: 25.99s; loss: 1200.1899; acc: 1383549.0/1400379.0=0.9880
+     Instance: 32000; Time: 24.66s; loss: 1201.4399; acc: 1475029.0/1492998.0=0.9880
+     Instance: 34000; Time: 24.79s; loss: 1203.7189; acc: 1567600.0/1586733.0=0.9879
+     Instance: 36000; Time: 25.84s; loss: 1059.3490; acc: 1659220.0/1679353.0=0.9880
+     Instance: 38000; Time: 26.14s; loss: 1194.0170; acc: 1753314.0/1774593.0=0.9880
+     Instance: 40000; Time: 24.75s; loss: 1170.4902; acc: 1845829.0/1868238.0=0.9880
+     Instance: 42000; Time: 24.18s; loss: 1218.2949; acc: 1935366.0/1958924.0=0.9880
+     Instance: 44000; Time: 24.71s; loss: 1205.0682; acc: 2026357.0/2051076.0=0.9879
+     Instance: 46000; Time: 26.34s; loss: 1139.3395; acc: 2120248.0/2146100.0=0.9880
+     Instance: 46508; Time: 6.65s; loss: 233.0891; acc: 2143826.0/2169879.0=0.9880
+Epoch: 15 training finished. Time: 589.32s, speed: 78.92st/s,  total loss: tensor(27265.8340, device='cuda:0')
+gold_num =  6181  pred_num =  6038  right_num =  5642
+Dev: time: 42.00s, speed: 105.67st/s; acc: 0.9890, p: 0.9344, r: 0.9128, f: 0.9235
+Exceed previous best f score: 0.9199047071387498
+gold_num =  6181  pred_num =  6038  right_num =  5642
+Test: time: 41.89s, speed: 106.30st/s; acc: 0.9890, p: 0.9344, r: 0.9128, f: 0.9235
+Test score: p:0.934415369327592, r:0.912797281993205, f:0.9234798264997136
+Best dev score: p:0.934415369327592, r:0.912797281993205, f:0.9234798264997136
+Epoch: 16/30
+ Learning rate is setted as: 0.000660190002977648
+     Instance: 2000; Time: 24.71s; loss: 1163.8121; acc: 91615.0/92675.0=0.9886
+     Instance: 4000; Time: 25.78s; loss: 1117.8312; acc: 184919.0/187102.0=0.9883
+     Instance: 6000; Time: 25.68s; loss: 1153.4607; acc: 276584.0/279972.0=0.9879
+     Instance: 8000; Time: 25.62s; loss: 1070.6865; acc: 368350.0/372829.0=0.9880
+     Instance: 10000; Time: 25.23s; loss: 1048.0697; acc: 460027.0/465529.0=0.9882
+     Instance: 12000; Time: 24.98s; loss: 1088.8597; acc: 552440.0/559007.0=0.9883
+     Instance: 14000; Time: 25.68s; loss: 1284.9149; acc: 644753.0/652495.0=0.9881
+     Instance: 16000; Time: 25.58s; loss: 1097.9701; acc: 736780.0/745595.0=0.9882
+     Instance: 18000; Time: 26.34s; loss: 1080.3308; acc: 830648.0/840480.0=0.9883
+     Instance: 20000; Time: 25.69s; loss: 1017.8209; acc: 922982.0/933810.0=0.9884
+     Instance: 22000; Time: 24.95s; loss: 1050.1274; acc: 1015209.0/1026983.0=0.9885
+     Instance: 24000; Time: 25.88s; loss: 1058.5205; acc: 1108292.0/1121061.0=0.9886
+     Instance: 26000; Time: 25.03s; loss: 1178.8990; acc: 1200899.0/1214822.0=0.9885
+     Instance: 28000; Time: 26.04s; loss: 1251.9927; acc: 1293766.0/1308877.0=0.9885
+     Instance: 30000; Time: 25.03s; loss: 1108.4949; acc: 1385956.0/1402000.0=0.9886
+     Instance: 32000; Time: 26.24s; loss: 1142.9952; acc: 1478106.0/1495252.0=0.9885
+     Instance: 34000; Time: 24.02s; loss: 1189.0471; acc: 1568896.0/1587265.0=0.9884
+     Instance: 36000; Time: 24.41s; loss: 1272.7585; acc: 1659932.0/1679484.0=0.9884
+     Instance: 38000; Time: 26.21s; loss: 1137.3242; acc: 1752969.0/1773592.0=0.9884
+     Instance: 40000; Time: 23.48s; loss: 1161.3241; acc: 1843714.0/1865388.0=0.9884
+     Instance: 42000; Time: 25.76s; loss: 1126.0480; acc: 1936571.0/1959320.0=0.9884
+     Instance: 44000; Time: 25.45s; loss: 1068.5631; acc: 2029912.0/2053642.0=0.9884
+     Instance: 46000; Time: 25.28s; loss: 1091.4707; acc: 2121656.0/2146402.0=0.9885
+     Instance: 46508; Time: 6.17s; loss: 267.4739; acc: 2144852.0/2169879.0=0.9885
+Epoch: 16 training finished. Time: 589.22s, speed: 78.93st/s,  total loss: tensor(26228.8418, device='cuda:0')
+gold_num =  6181  pred_num =  6012  right_num =  5648
+Dev: time: 41.02s, speed: 108.21st/s; acc: 0.9896, p: 0.9395, r: 0.9138, f: 0.9264
+Exceed previous best f score: 0.9234798264997136
+gold_num =  6181  pred_num =  6012  right_num =  5648
+Test: time: 41.30s, speed: 107.81st/s; acc: 0.9896, p: 0.9395, r: 0.9138, f: 0.9264
+Test score: p:0.9394544244843646, r:0.913767998705711, f:0.9264331993766916
+Best dev score: p:0.9394544244843646, r:0.913767998705711, f:0.9264331993766916
+Epoch: 17/30
+ Learning rate is setted as: 0.0006271805028287656
+     Instance: 2000; Time: 24.49s; loss: 1178.1830; acc: 92205.0/93297.0=0.9883
+     Instance: 4000; Time: 26.13s; loss: 1029.6914; acc: 183902.0/185970.0=0.9889
+     Instance: 6000; Time: 25.06s; loss: 1114.6941; acc: 274596.0/277689.0=0.9889
+     Instance: 8000; Time: 25.31s; loss: 1034.9647; acc: 365631.0/369704.0=0.9890
+     Instance: 10000; Time: 24.46s; loss: 1050.6906; acc: 456433.0/461534.0=0.9889
+     Instance: 12000; Time: 25.83s; loss: 1207.0601; acc: 548205.0/554484.0=0.9887
+     Instance: 14000; Time: 25.17s; loss: 1135.1907; acc: 641018.0/648318.0=0.9887
+     Instance: 16000; Time: 25.38s; loss: 1024.5792; acc: 733150.0/741495.0=0.9887
+     Instance: 18000; Time: 25.25s; loss: 1010.9659; acc: 825989.0/835274.0=0.9889
+     Instance: 20000; Time: 25.70s; loss: 1099.7648; acc: 920120.0/930532.0=0.9888
+     Instance: 22000; Time: 26.20s; loss: 1101.9409; acc: 1013997.0/1025501.0=0.9888
+     Instance: 24000; Time: 25.09s; loss: 1131.1008; acc: 1106508.0/1118954.0=0.9889
+     Instance: 26000; Time: 25.20s; loss: 1089.3705; acc: 1199829.0/1213346.0=0.9889
+     Instance: 28000; Time: 24.72s; loss: 1085.9611; acc: 1291395.0/1305952.0=0.9889
+     Instance: 30000; Time: 23.23s; loss: 1112.2405; acc: 1384951.0/1400728.0=0.9887
+     Instance: 32000; Time: 23.83s; loss: 1126.5186; acc: 1477386.0/1494243.0=0.9887
+     Instance: 34000; Time: 24.61s; loss: 983.7477; acc: 1566219.0/1584018.0=0.9888
+     Instance: 36000; Time: 24.64s; loss: 1040.0295; acc: 1659057.0/1677791.0=0.9888
+     Instance: 38000; Time: 25.57s; loss: 1116.7725; acc: 1751333.0/1771147.0=0.9888
+     Instance: 40000; Time: 25.81s; loss: 1172.4856; acc: 1845102.0/1866002.0=0.9888
+     Instance: 42000; Time: 25.51s; loss: 1049.6389; acc: 1939060.0/1960946.0=0.9888
+     Instance: 44000; Time: 23.95s; loss: 1023.6603; acc: 2030730.0/2053632.0=0.9888
+     Instance: 46000; Time: 24.63s; loss: 1203.0754; acc: 2122532.0/2146556.0=0.9888
+     Instance: 46508; Time: 6.08s; loss: 216.0813; acc: 2145631.0/2169879.0=0.9888
+Epoch: 17 training finished. Time: 581.85s, speed: 79.93st/s,  total loss: tensor(25338.4336, device='cuda:0')
+gold_num =  6181  pred_num =  6051  right_num =  5655
+Dev: time: 41.66s, speed: 106.55st/s; acc: 0.9892, p: 0.9346, r: 0.9149, f: 0.9246
+gold_num =  6181  pred_num =  6051  right_num =  5655
+Test: time: 41.55s, speed: 106.82st/s; acc: 0.9892, p: 0.9346, r: 0.9149, f: 0.9246
+Test score: p:0.9394544244843646, r:0.913767998705711, f:0.9264331993766916
+Best dev score: p:0.9394544244843646, r:0.913767998705711, f:0.9264331993766916
+Epoch: 18/30
+ Learning rate is setted as: 0.0005958214776873273
+     Instance: 2000; Time: 25.24s; loss: 1019.9850; acc: 92802.0/93785.0=0.9895
+     Instance: 4000; Time: 25.03s; loss: 1022.9750; acc: 185018.0/186957.0=0.9896
+     Instance: 6000; Time: 25.60s; loss: 1118.8625; acc: 276825.0/279798.0=0.9894
+     Instance: 8000; Time: 24.35s; loss: 1118.4990; acc: 368603.0/372577.0=0.9893
+     Instance: 10000; Time: 24.62s; loss: 1000.8696; acc: 460213.0/465131.0=0.9894
+     Instance: 12000; Time: 25.74s; loss: 1106.3214; acc: 553628.0/559694.0=0.9892
+     Instance: 14000; Time: 24.61s; loss: 1131.8522; acc: 646633.0/653752.0=0.9891
+     Instance: 16000; Time: 25.13s; loss: 998.5087; acc: 739842.0/747894.0=0.9892
+     Instance: 18000; Time: 24.56s; loss: 912.6865; acc: 831360.0/840278.0=0.9894
+     Instance: 20000; Time: 25.66s; loss: 1063.6074; acc: 924848.0/934693.0=0.9895
+     Instance: 22000; Time: 25.26s; loss: 1089.1461; acc: 1019344.0/1030216.0=0.9894
+     Instance: 24000; Time: 25.52s; loss: 1005.7533; acc: 1109853.0/1121660.0=0.9895
+     Instance: 26000; Time: 25.54s; loss: 936.3857; acc: 1204127.0/1216846.0=0.9895
+     Instance: 28000; Time: 25.30s; loss: 1068.2621; acc: 1297330.0/1311025.0=0.9896
+     Instance: 30000; Time: 26.23s; loss: 1096.0955; acc: 1391630.0/1406318.0=0.9896
+     Instance: 32000; Time: 24.80s; loss: 980.8768; acc: 1482684.0/1498244.0=0.9896
+     Instance: 34000; Time: 25.85s; loss: 893.4739; acc: 1574572.0/1590977.0=0.9897
+     Instance: 36000; Time: 24.85s; loss: 1068.2188; acc: 1666153.0/1683604.0=0.9896
+     Instance: 38000; Time: 26.53s; loss: 1150.6952; acc: 1757805.0/1776324.0=0.9896
+     Instance: 40000; Time: 25.42s; loss: 1073.2858; acc: 1851179.0/1870733.0=0.9895
+     Instance: 42000; Time: 24.72s; loss: 988.3303; acc: 1941738.0/1962260.0=0.9895
+     Instance: 44000; Time: 24.68s; loss: 1022.6804; acc: 2034010.0/2055561.0=0.9895
+     Instance: 46000; Time: 24.27s; loss: 986.6300; acc: 2124857.0/2147316.0=0.9895
+     Instance: 46508; Time: 5.89s; loss: 260.3173; acc: 2147187.0/2169879.0=0.9895
+Epoch: 18 training finished. Time: 585.40s, speed: 79.45st/s,  total loss: tensor(24114.3379, device='cuda:0')
+gold_num =  6181  pred_num =  6030  right_num =  5652
+Dev: time: 41.74s, speed: 106.33st/s; acc: 0.9890, p: 0.9373, r: 0.9144, f: 0.9257
+gold_num =  6181  pred_num =  6030  right_num =  5652
+Test: time: 41.68s, speed: 106.49st/s; acc: 0.9890, p: 0.9373, r: 0.9144, f: 0.9257
+Test score: p:0.9394544244843646, r:0.913767998705711, f:0.9264331993766916
+Best dev score: p:0.9394544244843646, r:0.913767998705711, f:0.9264331993766916
+Epoch: 19/30
+ Learning rate is setted as: 0.0005660304038029609
+     Instance: 2000; Time: 24.34s; loss: 949.1126; acc: 90716.0/91650.0=0.9898
+     Instance: 4000; Time: 26.03s; loss: 959.2729; acc: 183915.0/185856.0=0.9896
+     Instance: 6000; Time: 24.96s; loss: 967.5790; acc: 275975.0/278887.0=0.9896
+     Instance: 8000; Time: 27.02s; loss: 940.0342; acc: 371306.0/375151.0=0.9898
+     Instance: 10000; Time: 24.48s; loss: 1028.4391; acc: 463702.0/468664.0=0.9894
+     Instance: 12000; Time: 25.01s; loss: 1009.5765; acc: 555292.0/561193.0=0.9895
+     Instance: 14000; Time: 24.52s; loss: 988.6451; acc: 647366.0/654193.0=0.9896
+     Instance: 16000; Time: 26.51s; loss: 1061.2612; acc: 741199.0/749060.0=0.9895
+     Instance: 18000; Time: 25.49s; loss: 1153.8850; acc: 834907.0/843804.0=0.9895
+     Instance: 20000; Time: 24.97s; loss: 1037.1909; acc: 927708.0/937564.0=0.9895
+     Instance: 22000; Time: 24.76s; loss: 972.9201; acc: 1019116.0/1029830.0=0.9896
+     Instance: 24000; Time: 25.72s; loss: 964.0997; acc: 1111309.0/1122994.0=0.9896
+     Instance: 26000; Time: 25.20s; loss: 922.3493; acc: 1202658.0/1215179.0=0.9897
+     Instance: 28000; Time: 26.11s; loss: 1108.1024; acc: 1294924.0/1308462.0=0.9897
+     Instance: 30000; Time: 25.80s; loss: 1062.8206; acc: 1387118.0/1401758.0=0.9896
+     Instance: 32000; Time: 25.86s; loss: 1039.5619; acc: 1480368.0/1495996.0=0.9896
+     Instance: 34000; Time: 24.33s; loss: 1007.4713; acc: 1572442.0/1589059.0=0.9895
+     Instance: 36000; Time: 24.97s; loss: 1066.4128; acc: 1665173.0/1682688.0=0.9896
+     Instance: 38000; Time: 25.55s; loss: 1070.9392; acc: 1757967.0/1776489.0=0.9896
+     Instance: 40000; Time: 24.46s; loss: 986.7571; acc: 1849818.0/1869356.0=0.9895
+     Instance: 42000; Time: 23.63s; loss: 885.5892; acc: 1939687.0/1960087.0=0.9896
+     Instance: 44000; Time: 25.10s; loss: 1095.9183; acc: 2031466.0/2052920.0=0.9895
+     Instance: 46000; Time: 24.23s; loss: 1082.5615; acc: 2123571.0/2146045.0=0.9895
+     Instance: 46508; Time: 5.42s; loss: 300.8225; acc: 2147116.0/2169879.0=0.9895
+Epoch: 19 training finished. Time: 584.47s, speed: 79.57st/s,  total loss: tensor(23661.3438, device='cuda:0')
+gold_num =  6181  pred_num =  6018  right_num =  5652
+Dev: time: 41.10s, speed: 108.00st/s; acc: 0.9895, p: 0.9392, r: 0.9144, f: 0.9266
+Exceed previous best f score: 0.9264331993766916
+gold_num =  6181  pred_num =  6018  right_num =  5652
+Test: time: 40.93s, speed: 108.80st/s; acc: 0.9895, p: 0.9392, r: 0.9144, f: 0.9266
+Test score: p:0.9391824526420738, r:0.914415143180715, f:0.9266333306008689
+Best dev score: p:0.9391824526420738, r:0.914415143180715, f:0.9266333306008689
+Epoch: 20/30
+ Learning rate is setted as: 0.0005377288836128128
+     Instance: 2000; Time: 25.99s; loss: 924.9785; acc: 92979.0/93878.0=0.9904
+     Instance: 4000; Time: 24.38s; loss: 996.5536; acc: 183422.0/185264.0=0.9901
+     Instance: 6000; Time: 25.44s; loss: 894.8546; acc: 276395.0/279083.0=0.9904
+     Instance: 8000; Time: 25.96s; loss: 828.7274; acc: 370165.0/373673.0=0.9906
+     Instance: 10000; Time: 25.97s; loss: 1023.5759; acc: 463403.0/467884.0=0.9904
+     Instance: 12000; Time: 25.18s; loss: 1010.5907; acc: 556105.0/561646.0=0.9901
+     Instance: 14000; Time: 26.12s; loss: 914.1312; acc: 648160.0/654575.0=0.9902
+     Instance: 16000; Time: 24.22s; loss: 950.0171; acc: 741247.0/748483.0=0.9903
+     Instance: 18000; Time: 26.22s; loss: 1012.1388; acc: 833376.0/841576.0=0.9903
+     Instance: 20000; Time: 25.27s; loss: 1103.7101; acc: 925807.0/935022.0=0.9901
+     Instance: 22000; Time: 25.50s; loss: 1003.7615; acc: 1019630.0/1029920.0=0.9900
+     Instance: 24000; Time: 24.15s; loss: 962.6539; acc: 1109661.0/1120887.0=0.9900
+     Instance: 26000; Time: 26.29s; loss: 916.3170; acc: 1203927.0/1216011.0=0.9901
+     Instance: 28000; Time: 25.70s; loss: 979.2527; acc: 1297289.0/1310271.0=0.9901
+     Instance: 30000; Time: 24.31s; loss: 1067.6624; acc: 1389060.0/1403201.0=0.9899
+     Instance: 32000; Time: 24.29s; loss: 1037.2063; acc: 1482051.0/1497172.0=0.9899
+     Instance: 34000; Time: 23.67s; loss: 1060.9286; acc: 1572857.0/1588978.0=0.9899
+     Instance: 36000; Time: 25.29s; loss: 982.1104; acc: 1665201.0/1682263.0=0.9899
+     Instance: 38000; Time: 24.77s; loss: 1050.8993; acc: 1757252.0/1775341.0=0.9898
+     Instance: 40000; Time: 25.49s; loss: 983.3972; acc: 1848521.0/1867509.0=0.9898
+     Instance: 42000; Time: 25.12s; loss: 960.3575; acc: 1940553.0/1960563.0=0.9898
+     Instance: 44000; Time: 24.91s; loss: 907.7323; acc: 2032431.0/2053299.0=0.9898
+     Instance: 46000; Time: 24.64s; loss: 1004.2921; acc: 2125543.0/2147468.0=0.9898
+     Instance: 46508; Time: 5.33s; loss: 260.4108; acc: 2147735.0/2169879.0=0.9898
+Epoch: 20 training finished. Time: 584.19s, speed: 79.61st/s,  total loss: tensor(22836.2871, device='cuda:0')
+gold_num =  6181  pred_num =  6022  right_num =  5669
+Dev: time: 41.68s, speed: 106.49st/s; acc: 0.9898, p: 0.9414, r: 0.9172, f: 0.9291
+Exceed previous best f score: 0.9266333306008689
+gold_num =  6181  pred_num =  6022  right_num =  5669
+Test: time: 42.13s, speed: 105.64st/s; acc: 0.9898, p: 0.9414, r: 0.9172, f: 0.9291
+Test score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Best dev score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Epoch: 21/30
+ Learning rate is setted as: 0.0005108424394321722
+     Instance: 2000; Time: 24.39s; loss: 908.0524; acc: 91371.0/92296.0=0.9900
+     Instance: 4000; Time: 25.15s; loss: 909.4180; acc: 184666.0/186493.0=0.9902
+     Instance: 6000; Time: 26.37s; loss: 947.7701; acc: 277912.0/280572.0=0.9905
+     Instance: 8000; Time: 24.05s; loss: 937.2369; acc: 370211.0/373751.0=0.9905
+     Instance: 10000; Time: 25.00s; loss: 972.6504; acc: 462852.0/467331.0=0.9904
+     Instance: 12000; Time: 24.32s; loss: 986.9981; acc: 554054.0/559587.0=0.9901
+     Instance: 14000; Time: 24.80s; loss: 991.0117; acc: 646754.0/653253.0=0.9901
+     Instance: 16000; Time: 25.97s; loss: 924.9722; acc: 739761.0/747172.0=0.9901
+     Instance: 18000; Time: 24.99s; loss: 935.0431; acc: 831527.0/839831.0=0.9901
+     Instance: 20000; Time: 26.80s; loss: 1085.1500; acc: 923671.0/932929.0=0.9901
+     Instance: 22000; Time: 26.53s; loss: 1103.0631; acc: 1017458.0/1027791.0=0.9899
+     Instance: 24000; Time: 24.35s; loss: 997.3026; acc: 1108825.0/1120142.0=0.9899
+     Instance: 26000; Time: 24.84s; loss: 1052.7859; acc: 1200971.0/1213297.0=0.9898
+     Instance: 28000; Time: 25.53s; loss: 1004.0963; acc: 1293745.0/1307029.0=0.9898
+     Instance: 30000; Time: 25.78s; loss: 946.8296; acc: 1385649.0/1399898.0=0.9898
+     Instance: 32000; Time: 26.01s; loss: 956.6254; acc: 1478598.0/1493682.0=0.9899
+     Instance: 34000; Time: 25.25s; loss: 943.0806; acc: 1571434.0/1587418.0=0.9899
+     Instance: 36000; Time: 25.21s; loss: 974.6460; acc: 1662903.0/1679763.0=0.9900
+     Instance: 38000; Time: 25.26s; loss: 1063.6262; acc: 1755484.0/1773415.0=0.9899
+     Instance: 40000; Time: 25.52s; loss: 883.0819; acc: 1848869.0/1867685.0=0.9899
+     Instance: 42000; Time: 25.20s; loss: 982.0513; acc: 1941054.0/1960867.0=0.9899
+     Instance: 44000; Time: 23.57s; loss: 835.7865; acc: 2033331.0/2053940.0=0.9900
+     Instance: 46000; Time: 24.72s; loss: 949.3538; acc: 2124415.0/2145888.0=0.9900
+     Instance: 46508; Time: 6.94s; loss: 243.0793; acc: 2148136.0/2169879.0=0.9900
+Epoch: 21 training finished. Time: 586.52s, speed: 79.30st/s,  total loss: tensor(22533.7070, device='cuda:0')
+gold_num =  6181  pred_num =  6005  right_num =  5651
+Dev: time: 42.03s, speed: 105.60st/s; acc: 0.9893, p: 0.9410, r: 0.9143, f: 0.9275
+gold_num =  6181  pred_num =  6005  right_num =  5651
+Test: time: 42.15s, speed: 105.31st/s; acc: 0.9893, p: 0.9410, r: 0.9143, f: 0.9275
+Test score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Best dev score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Epoch: 22/30
+ Learning rate is setted as: 0.0004853003174605635
+     Instance: 2000; Time: 24.42s; loss: 927.3171; acc: 92337.0/93227.0=0.9905
+     Instance: 4000; Time: 26.12s; loss: 930.9473; acc: 185744.0/187455.0=0.9909
+     Instance: 6000; Time: 25.36s; loss: 950.5738; acc: 279304.0/281898.0=0.9908
+     Instance: 8000; Time: 25.11s; loss: 848.0284; acc: 370683.0/374095.0=0.9909
+     Instance: 10000; Time: 25.65s; loss: 880.6522; acc: 462317.0/466607.0=0.9908
+     Instance: 12000; Time: 25.49s; loss: 1027.8939; acc: 555389.0/560666.0=0.9906
+     Instance: 14000; Time: 25.84s; loss: 927.9229; acc: 650378.0/656529.0=0.9906
+     Instance: 16000; Time: 23.48s; loss: 902.1262; acc: 742851.0/749872.0=0.9906
+     Instance: 18000; Time: 20.77s; loss: 860.5040; acc: 835654.0/843488.0=0.9907
+     Instance: 20000; Time: 25.31s; loss: 898.2454; acc: 927551.0/936231.0=0.9907
+     Instance: 22000; Time: 23.50s; loss: 905.3854; acc: 1017908.0/1027491.0=0.9907
+     Instance: 24000; Time: 24.23s; loss: 1003.8272; acc: 1109503.0/1120124.0=0.9905
+     Instance: 26000; Time: 25.82s; loss: 953.9955; acc: 1202940.0/1214520.0=0.9905
+     Instance: 28000; Time: 24.39s; loss: 984.5854; acc: 1294287.0/1306788.0=0.9904
+     Instance: 30000; Time: 24.87s; loss: 982.1496; acc: 1387221.0/1400633.0=0.9904
+     Instance: 32000; Time: 25.13s; loss: 983.5243; acc: 1478579.0/1493012.0=0.9903
+     Instance: 34000; Time: 26.09s; loss: 874.7557; acc: 1572449.0/1587760.0=0.9904
+     Instance: 36000; Time: 25.00s; loss: 920.9753; acc: 1664792.0/1680915.0=0.9904
+     Instance: 38000; Time: 26.54s; loss: 995.8882; acc: 1758278.0/1775411.0=0.9903
+     Instance: 40000; Time: 25.69s; loss: 947.8566; acc: 1851060.0/1869122.0=0.9903
+     Instance: 42000; Time: 23.91s; loss: 964.0589; acc: 1943918.0/1962913.0=0.9903
+     Instance: 44000; Time: 24.05s; loss: 888.6406; acc: 2034312.0/2054216.0=0.9903
+     Instance: 46000; Time: 24.43s; loss: 882.7888; acc: 2125834.0/2146607.0=0.9903
+     Instance: 46508; Time: 6.08s; loss: 198.1420; acc: 2148965.0/2169879.0=0.9904
+Epoch: 22 training finished. Time: 577.28s, speed: 80.56st/s,  total loss: tensor(21640.7871, device='cuda:0')
+gold_num =  6181  pred_num =  6032  right_num =  5659
+Dev: time: 41.75s, speed: 106.31st/s; acc: 0.9896, p: 0.9382, r: 0.9155, f: 0.9267
+gold_num =  6181  pred_num =  6032  right_num =  5659
+Test: time: 41.71s, speed: 106.42st/s; acc: 0.9896, p: 0.9382, r: 0.9155, f: 0.9267
+Test score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Best dev score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Epoch: 23/30
+ Learning rate is setted as: 0.0004610353015875354
+     Instance: 2000; Time: 24.99s; loss: 931.5660; acc: 92174.0/93030.0=0.9908
+     Instance: 4000; Time: 24.22s; loss: 915.5700; acc: 185446.0/187224.0=0.9905
+     Instance: 6000; Time: 25.58s; loss: 924.4444; acc: 277428.0/280090.0=0.9905
+     Instance: 8000; Time: 25.48s; loss: 973.1806; acc: 370353.0/373931.0=0.9904
+     Instance: 10000; Time: 25.39s; loss: 1079.9861; acc: 462797.0/467353.0=0.9903
+     Instance: 12000; Time: 24.52s; loss: 905.9977; acc: 553802.0/559293.0=0.9902
+     Instance: 14000; Time: 25.38s; loss: 846.6058; acc: 647769.0/654091.0=0.9903
+     Instance: 16000; Time: 24.65s; loss: 922.3327; acc: 739221.0/746421.0=0.9904
+     Instance: 18000; Time: 25.12s; loss: 888.4731; acc: 831360.0/839415.0=0.9904
+     Instance: 20000; Time: 23.25s; loss: 962.9659; acc: 924332.0/933296.0=0.9904
+     Instance: 22000; Time: 24.79s; loss: 989.1153; acc: 1017077.0/1026956.0=0.9904
+     Instance: 24000; Time: 24.46s; loss: 878.5709; acc: 1107643.0/1118367.0=0.9904
+     Instance: 26000; Time: 25.06s; loss: 915.5153; acc: 1198810.0/1210419.0=0.9904
+     Instance: 28000; Time: 24.94s; loss: 929.8522; acc: 1291766.0/1304289.0=0.9904
+     Instance: 30000; Time: 25.86s; loss: 829.7922; acc: 1385918.0/1399281.0=0.9905
+     Instance: 32000; Time: 25.59s; loss: 980.3762; acc: 1480426.0/1494725.0=0.9904
+     Instance: 34000; Time: 26.13s; loss: 928.2268; acc: 1573978.0/1589191.0=0.9904
+     Instance: 36000; Time: 24.30s; loss: 982.9789; acc: 1666254.0/1682358.0=0.9904
+     Instance: 38000; Time: 26.17s; loss: 957.7155; acc: 1759846.0/1776863.0=0.9904
+     Instance: 40000; Time: 25.16s; loss: 986.4219; acc: 1851949.0/1869956.0=0.9904
+     Instance: 42000; Time: 24.56s; loss: 816.8038; acc: 1943535.0/1962321.0=0.9904
+     Instance: 44000; Time: 23.34s; loss: 819.8927; acc: 2032418.0/2052059.0=0.9904
+     Instance: 46000; Time: 25.58s; loss: 977.9412; acc: 2125291.0/2145843.0=0.9904
+     Instance: 46508; Time: 6.37s; loss: 263.1457; acc: 2149054.0/2169879.0=0.9904
+Epoch: 23 training finished. Time: 580.89s, speed: 80.06st/s,  total loss: tensor(21607.4922, device='cuda:0')
+gold_num =  6181  pred_num =  6030  right_num =  5660
+Dev: time: 42.14s, speed: 105.32st/s; acc: 0.9894, p: 0.9386, r: 0.9157, f: 0.9270
+gold_num =  6181  pred_num =  6030  right_num =  5660
+Test: time: 41.92s, speed: 105.88st/s; acc: 0.9894, p: 0.9386, r: 0.9157, f: 0.9270
+Test score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Best dev score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Epoch: 24/30
+ Learning rate is setted as: 0.00043798353650815856
+     Instance: 2000; Time: 22.96s; loss: 831.5558; acc: 91630.0/92460.0=0.9910
+     Instance: 4000; Time: 24.58s; loss: 866.1647; acc: 183933.0/185656.0=0.9907
+     Instance: 6000; Time: 27.03s; loss: 817.2152; acc: 278121.0/280656.0=0.9910
+     Instance: 8000; Time: 23.93s; loss: 828.2369; acc: 369869.0/373130.0=0.9913
+     Instance: 10000; Time: 25.80s; loss: 879.4393; acc: 462494.0/466593.0=0.9912
+     Instance: 12000; Time: 23.80s; loss: 897.8356; acc: 554193.0/559140.0=0.9912
+     Instance: 14000; Time: 23.78s; loss: 988.8746; acc: 645214.0/651121.0=0.9909
+     Instance: 16000; Time: 25.43s; loss: 900.2123; acc: 739701.0/746491.0=0.9909
+     Instance: 18000; Time: 24.28s; loss: 881.9978; acc: 830947.0/838451.0=0.9911
+     Instance: 20000; Time: 25.17s; loss: 966.6934; acc: 925512.0/933884.0=0.9910
+     Instance: 22000; Time: 25.08s; loss: 885.3201; acc: 1018131.0/1027389.0=0.9910
+     Instance: 24000; Time: 25.11s; loss: 936.7291; acc: 1109575.0/1119797.0=0.9909
+     Instance: 26000; Time: 25.50s; loss: 878.0550; acc: 1203082.0/1214193.0=0.9908
+     Instance: 28000; Time: 25.44s; loss: 966.1984; acc: 1295543.0/1307649.0=0.9907
+     Instance: 30000; Time: 25.21s; loss: 902.4224; acc: 1386177.0/1399145.0=0.9907
+     Instance: 32000; Time: 24.91s; loss: 919.4243; acc: 1479666.0/1493511.0=0.9907
+     Instance: 34000; Time: 24.69s; loss: 894.0515; acc: 1572184.0/1586881.0=0.9907
+     Instance: 36000; Time: 25.40s; loss: 860.6072; acc: 1663582.0/1679168.0=0.9907
+     Instance: 38000; Time: 25.01s; loss: 919.4188; acc: 1756129.0/1772678.0=0.9907
+     Instance: 40000; Time: 26.30s; loss: 1010.8111; acc: 1849450.0/1866948.0=0.9906
+     Instance: 42000; Time: 25.06s; loss: 855.9708; acc: 1941166.0/1959493.0=0.9906
+     Instance: 44000; Time: 26.23s; loss: 892.8080; acc: 2032872.0/2052108.0=0.9906
+     Instance: 46000; Time: 25.38s; loss: 1002.4098; acc: 2125911.0/2146136.0=0.9906
+     Instance: 46508; Time: 6.57s; loss: 234.8604; acc: 2149416.0/2169879.0=0.9906
+Epoch: 24 training finished. Time: 582.66s, speed: 79.82st/s,  total loss: tensor(21017.3066, device='cuda:0')
+gold_num =  6181  pred_num =  6029  right_num =  5634
+Dev: time: 41.75s, speed: 106.30st/s; acc: 0.9883, p: 0.9345, r: 0.9115, f: 0.9229
+gold_num =  6181  pred_num =  6029  right_num =  5634
+Test: time: 41.74s, speed: 106.37st/s; acc: 0.9883, p: 0.9345, r: 0.9115, f: 0.9229
+Test score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Best dev score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Epoch: 25/30
+ Learning rate is setted as: 0.00041608435968275065
+     Instance: 2000; Time: 26.34s; loss: 878.2744; acc: 93731.0/94549.0=0.9913
+     Instance: 4000; Time: 23.94s; loss: 800.0829; acc: 185676.0/187290.0=0.9914
+     Instance: 6000; Time: 25.85s; loss: 835.8727; acc: 279859.0/282316.0=0.9913
+     Instance: 8000; Time: 26.04s; loss: 941.4898; acc: 373801.0/377199.0=0.9910
+     Instance: 10000; Time: 24.98s; loss: 806.6987; acc: 465865.0/470081.0=0.9910
+     Instance: 12000; Time: 24.89s; loss: 872.0365; acc: 557726.0/562765.0=0.9910
+     Instance: 14000; Time: 24.76s; loss: 891.9088; acc: 649819.0/655721.0=0.9910
+     Instance: 16000; Time: 24.92s; loss: 862.0089; acc: 743578.0/750276.0=0.9911
+     Instance: 18000; Time: 25.90s; loss: 910.2361; acc: 836637.0/844238.0=0.9910
+     Instance: 20000; Time: 25.34s; loss: 814.0355; acc: 928852.0/937319.0=0.9910
+     Instance: 22000; Time: 24.23s; loss: 887.7628; acc: 1023706.0/1033031.0=0.9910
+     Instance: 24000; Time: 23.50s; loss: 862.9180; acc: 1114448.0/1124645.0=0.9909
+     Instance: 26000; Time: 24.82s; loss: 878.5899; acc: 1206760.0/1217823.0=0.9909
+     Instance: 28000; Time: 23.19s; loss: 839.2191; acc: 1297635.0/1309522.0=0.9909
+     Instance: 30000; Time: 23.16s; loss: 1003.7672; acc: 1388570.0/1401424.0=0.9908
+     Instance: 32000; Time: 26.42s; loss: 928.1072; acc: 1482045.0/1495846.0=0.9908
+     Instance: 34000; Time: 25.89s; loss: 856.2123; acc: 1576503.0/1591057.0=0.9909
+     Instance: 36000; Time: 24.58s; loss: 873.9466; acc: 1666985.0/1682398.0=0.9908
+     Instance: 38000; Time: 26.80s; loss: 884.8403; acc: 1759730.0/1775933.0=0.9909
+     Instance: 40000; Time: 25.60s; loss: 916.6117; acc: 1852448.0/1869509.0=0.9909
+     Instance: 42000; Time: 25.10s; loss: 861.9739; acc: 1943399.0/1961323.0=0.9909
+     Instance: 44000; Time: 25.11s; loss: 919.4645; acc: 2033978.0/2052785.0=0.9908
+     Instance: 46000; Time: 24.85s; loss: 809.0769; acc: 2125918.0/2145450.0=0.9909
+     Instance: 46508; Time: 6.79s; loss: 199.0242; acc: 2150145.0/2169879.0=0.9909
+Epoch: 25 training finished. Time: 583.01s, speed: 79.77st/s,  total loss: tensor(20334.1562, device='cuda:0')
+gold_num =  6181  pred_num =  6040  right_num =  5666
+Dev: time: 42.08s, speed: 105.46st/s; acc: 0.9893, p: 0.9381, r: 0.9167, f: 0.9273
+gold_num =  6181  pred_num =  6040  right_num =  5666
+Test: time: 41.80s, speed: 106.19st/s; acc: 0.9893, p: 0.9381, r: 0.9167, f: 0.9273
+Test score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Best dev score: p:0.9413816007970773, r:0.9171655071994823, f:0.9291157911988854
+Epoch: 26/30
+ Learning rate is setted as: 0.00039528014169861304
+     Instance: 2000; Time: 25.15s; loss: 900.2486; acc: 93480.0/94327.0=0.9910
+     Instance: 4000; Time: 27.03s; loss: 904.4081; acc: 188154.0/189883.0=0.9909
+     Instance: 6000; Time: 25.75s; loss: 781.6292; acc: 280910.0/283387.0=0.9913
+     Instance: 8000; Time: 24.41s; loss: 849.0617; acc: 373086.0/376355.0=0.9913
+     Instance: 10000; Time: 24.37s; loss: 849.6438; acc: 464696.0/468800.0=0.9912
+     Instance: 12000; Time: 25.66s; loss: 779.3155; acc: 557479.0/562288.0=0.9914
+     Instance: 14000; Time: 24.96s; loss: 844.3055; acc: 648140.0/653773.0=0.9914
+     Instance: 16000; Time: 25.42s; loss: 972.7195; acc: 742613.0/749262.0=0.9911
+     Instance: 18000; Time: 25.69s; loss: 927.6269; acc: 837611.0/845187.0=0.9910
+     Instance: 20000; Time: 25.41s; loss: 825.9879; acc: 929914.0/938296.0=0.9911
+     Instance: 22000; Time: 25.50s; loss: 859.8716; acc: 1022156.0/1031411.0=0.9910
+     Instance: 24000; Time: 25.71s; loss: 810.8270; acc: 1115215.0/1125249.0=0.9911
+     Instance: 26000; Time: 24.87s; loss: 811.5154; acc: 1206307.0/1217198.0=0.9911
+     Instance: 28000; Time: 24.96s; loss: 816.0922; acc: 1299649.0/1311332.0=0.9911
+     Instance: 30000; Time: 24.83s; loss: 886.4316; acc: 1390841.0/1403341.0=0.9911
+     Instance: 32000; Time: 24.24s; loss: 865.3187; acc: 1481647.0/1494910.0=0.9911
+     Instance: 34000; Time: 24.31s; loss: 931.1911; acc: 1573366.0/1587510.0=0.9911
+     Instance: 36000; Time: 25.72s; loss: 900.6865; acc: 1667616.0/1682650.0=0.9911
+     Instance: 38000; Time: 24.50s; loss: 876.2018; acc: 1759566.0/1775481.0=0.9910
+     Instance: 40000; Time: 25.71s; loss: 970.3294; acc: 1852719.0/1869489.0=0.9910
+     Instance: 42000; Time: 24.61s; loss: 777.9211; acc: 1944796.0/1962253.0=0.9911
+     Instance: 44000; Time: 25.60s; loss: 831.5391; acc: 2037457.0/2055735.0=0.9911
+     Instance: 46000; Time: 25.47s; loss: 785.2983; acc: 2127695.0/2146825.0=0.9911
+     Instance: 46508; Time: 6.21s; loss: 226.5974; acc: 2150546.0/2169879.0=0.9911
+Epoch: 26 training finished. Time: 586.09s, speed: 79.35st/s,  total loss: tensor(19984.7676, device='cuda:0')
+gold_num =  6181  pred_num =  6003  right_num =  5663
+Dev: time: 41.34s, speed: 107.39st/s; acc: 0.9899, p: 0.9434, r: 0.9162, f: 0.9296
+Exceed previous best f score: 0.9291157911988854
+gold_num =  6181  pred_num =  6003  right_num =  5663
+Test: time: 40.86s, speed: 108.98st/s; acc: 0.9899, p: 0.9434, r: 0.9162, f: 0.9296
+Test score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Best dev score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Epoch: 27/30
+ Learning rate is setted as: 0.0003755161346136824
+     Instance: 2000; Time: 25.67s; loss: 817.1015; acc: 92603.0/93358.0=0.9919
+     Instance: 4000; Time: 25.12s; loss: 904.4021; acc: 186954.0/188525.0=0.9917
+     Instance: 6000; Time: 25.13s; loss: 842.7661; acc: 280064.0/282450.0=0.9916
+     Instance: 8000; Time: 24.87s; loss: 791.9775; acc: 373084.0/376204.0=0.9917
+     Instance: 10000; Time: 25.58s; loss: 883.7816; acc: 467775.0/471743.0=0.9916
+     Instance: 12000; Time: 24.56s; loss: 911.6995; acc: 560087.0/564892.0=0.9915
+     Instance: 14000; Time: 24.88s; loss: 784.3309; acc: 651243.0/656817.0=0.9915
+     Instance: 16000; Time: 24.69s; loss: 849.1281; acc: 742604.0/748959.0=0.9915
+     Instance: 18000; Time: 26.56s; loss: 862.2273; acc: 837751.0/844891.0=0.9915
+     Instance: 20000; Time: 24.89s; loss: 817.7034; acc: 931893.0/939866.0=0.9915
+     Instance: 22000; Time: 21.02s; loss: 801.5245; acc: 1023919.0/1032651.0=0.9915
+     Instance: 24000; Time: 21.70s; loss: 703.1263; acc: 1114547.0/1124011.0=0.9916
+     Instance: 26000; Time: 25.80s; loss: 864.9692; acc: 1205843.0/1216155.0=0.9915
+     Instance: 28000; Time: 24.82s; loss: 852.5058; acc: 1297367.0/1308489.0=0.9915
+     Instance: 30000; Time: 25.40s; loss: 798.1333; acc: 1388790.0/1400742.0=0.9915
+     Instance: 32000; Time: 24.21s; loss: 893.7963; acc: 1481252.0/1494040.0=0.9914
+     Instance: 34000; Time: 24.30s; loss: 878.3150; acc: 1573085.0/1586726.0=0.9914
+     Instance: 36000; Time: 25.27s; loss: 876.0410; acc: 1665247.0/1679666.0=0.9914
+     Instance: 38000; Time: 25.00s; loss: 893.9250; acc: 1757766.0/1773057.0=0.9914
+     Instance: 40000; Time: 26.92s; loss: 861.7324; acc: 1852925.0/1868983.0=0.9914
+     Instance: 42000; Time: 24.29s; loss: 834.4784; acc: 1945087.0/1961888.0=0.9914
+     Instance: 44000; Time: 24.10s; loss: 873.7178; acc: 2036471.0/2054109.0=0.9914
+     Instance: 46000; Time: 25.58s; loss: 784.3163; acc: 2127850.0/2146217.0=0.9914
+     Instance: 46508; Time: 5.98s; loss: 259.7697; acc: 2151257.0/2169879.0=0.9914
+Epoch: 27 training finished. Time: 576.34s, speed: 80.70st/s,  total loss: tensor(19641.4629, device='cuda:0')
+gold_num =  6181  pred_num =  6071  right_num =  5674
+Dev: time: 41.78s, speed: 106.22st/s; acc: 0.9894, p: 0.9346, r: 0.9180, f: 0.9262
+gold_num =  6181  pred_num =  6071  right_num =  5674
+Test: time: 41.11s, speed: 107.97st/s; acc: 0.9894, p: 0.9346, r: 0.9180, f: 0.9262
+Test score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Best dev score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Epoch: 28/30
+ Learning rate is setted as: 0.00035674032788299823
+     Instance: 2000; Time: 24.86s; loss: 813.6278; acc: 92136.0/92949.0=0.9913
+     Instance: 4000; Time: 25.14s; loss: 786.7693; acc: 184803.0/186398.0=0.9914
+     Instance: 6000; Time: 25.05s; loss: 849.8472; acc: 276554.0/278981.0=0.9913
+     Instance: 8000; Time: 24.02s; loss: 828.6298; acc: 369248.0/372420.0=0.9915
+     Instance: 10000; Time: 26.41s; loss: 886.6910; acc: 463396.0/467427.0=0.9914
+     Instance: 12000; Time: 24.73s; loss: 847.1854; acc: 554541.0/559395.0=0.9913
+     Instance: 14000; Time: 25.91s; loss: 836.7247; acc: 647430.0/653037.0=0.9914
+     Instance: 16000; Time: 24.46s; loss: 813.5576; acc: 739180.0/745606.0=0.9914
+     Instance: 18000; Time: 25.76s; loss: 794.9918; acc: 832571.0/839767.0=0.9914
+     Instance: 20000; Time: 23.66s; loss: 872.0652; acc: 924379.0/932437.0=0.9914
+     Instance: 22000; Time: 25.14s; loss: 868.6379; acc: 1016482.0/1025411.0=0.9913
+     Instance: 24000; Time: 26.10s; loss: 822.9003; acc: 1109251.0/1118992.0=0.9913
+     Instance: 26000; Time: 24.18s; loss: 896.7034; acc: 1201935.0/1212565.0=0.9912
+     Instance: 28000; Time: 25.34s; loss: 668.8726; acc: 1293438.0/1304737.0=0.9913
+     Instance: 30000; Time: 25.76s; loss: 859.7670; acc: 1386387.0/1398539.0=0.9913
+     Instance: 32000; Time: 24.68s; loss: 853.1276; acc: 1480844.0/1493873.0=0.9913
+     Instance: 34000; Time: 25.26s; loss: 915.6480; acc: 1573675.0/1587588.0=0.9912
+     Instance: 36000; Time: 24.93s; loss: 729.8917; acc: 1663942.0/1678518.0=0.9913
+     Instance: 38000; Time: 25.17s; loss: 915.2485; acc: 1757202.0/1772739.0=0.9912
+     Instance: 40000; Time: 24.85s; loss: 846.9863; acc: 1850513.0/1866879.0=0.9912
+     Instance: 42000; Time: 24.94s; loss: 848.5564; acc: 1944506.0/1961671.0=0.9912
+     Instance: 44000; Time: 25.21s; loss: 925.7492; acc: 2036517.0/2054578.0=0.9912
+     Instance: 46000; Time: 24.60s; loss: 884.5312; acc: 2126568.0/2145474.0=0.9912
+     Instance: 46508; Time: 6.16s; loss: 281.7670; acc: 2150695.0/2169879.0=0.9912
+Epoch: 28 training finished. Time: 582.30s, speed: 79.87st/s,  total loss: tensor(19648.4824, device='cuda:0')
+gold_num =  6181  pred_num =  6115  right_num =  5715
+Dev: time: 40.95s, speed: 108.40st/s; acc: 0.9898, p: 0.9346, r: 0.9246, f: 0.9296
+gold_num =  6181  pred_num =  6115  right_num =  5715
+Test: time: 40.91s, speed: 108.51st/s; acc: 0.9898, p: 0.9346, r: 0.9246, f: 0.9296
+Test score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Best dev score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Epoch: 29/30
+ Learning rate is setted as: 0.0003389033114888483
+     Instance: 2000; Time: 24.38s; loss: 824.1956; acc: 93152.0/93941.0=0.9916
+     Instance: 4000; Time: 25.45s; loss: 782.4745; acc: 187864.0/189442.0=0.9917
+     Instance: 6000; Time: 26.48s; loss: 831.9391; acc: 281642.0/284064.0=0.9915
+     Instance: 8000; Time: 25.84s; loss: 775.7494; acc: 374957.0/378141.0=0.9916
+     Instance: 10000; Time: 25.75s; loss: 827.3250; acc: 467673.0/471658.0=0.9916
+     Instance: 12000; Time: 24.25s; loss: 903.1122; acc: 558229.0/563093.0=0.9914
+     Instance: 14000; Time: 25.56s; loss: 792.6129; acc: 651540.0/657069.0=0.9916
+     Instance: 16000; Time: 24.61s; loss: 802.9854; acc: 743524.0/749830.0=0.9916
+     Instance: 18000; Time: 25.00s; loss: 871.7329; acc: 836187.0/843395.0=0.9915
+     Instance: 20000; Time: 25.76s; loss: 830.1512; acc: 928202.0/936233.0=0.9914
+     Instance: 22000; Time: 24.88s; loss: 778.5746; acc: 1019155.0/1027958.0=0.9914
+     Instance: 24000; Time: 26.37s; loss: 827.1457; acc: 1113531.0/1123123.0=0.9915
+     Instance: 26000; Time: 24.71s; loss: 784.8323; acc: 1204811.0/1215126.0=0.9915
+     Instance: 28000; Time: 24.35s; loss: 915.4995; acc: 1296891.0/1307998.0=0.9915
+     Instance: 30000; Time: 24.37s; loss: 751.9958; acc: 1387560.0/1399423.0=0.9915
+     Instance: 32000; Time: 26.36s; loss: 872.6338; acc: 1480361.0/1492987.0=0.9915
+     Instance: 34000; Time: 24.68s; loss: 839.9033; acc: 1574085.0/1587519.0=0.9915
+     Instance: 36000; Time: 25.82s; loss: 964.2057; acc: 1665677.0/1680054.0=0.9914
+     Instance: 38000; Time: 24.85s; loss: 770.7819; acc: 1758924.0/1774104.0=0.9914
+     Instance: 40000; Time: 23.54s; loss: 850.9429; acc: 1850531.0/1866553.0=0.9914
+     Instance: 42000; Time: 25.18s; loss: 834.3634; acc: 1944408.0/1961223.0=0.9914
+     Instance: 44000; Time: 25.31s; loss: 893.8678; acc: 2037576.0/2055243.0=0.9914
+     Instance: 46000; Time: 24.86s; loss: 742.5066; acc: 2128673.0/2147134.0=0.9914
+     Instance: 46508; Time: 5.77s; loss: 173.6917; acc: 2151233.0/2169879.0=0.9914
+Epoch: 29 training finished. Time: 584.12s, speed: 79.62st/s,  total loss: tensor(19243.2227, device='cuda:0')
+gold_num =  6181  pred_num =  6020  right_num =  5660
+Dev: time: 41.65s, speed: 106.57st/s; acc: 0.9894, p: 0.9402, r: 0.9157, f: 0.9278
+gold_num =  6181  pred_num =  6020  right_num =  5660
+Test: time: 41.72s, speed: 106.40st/s; acc: 0.9894, p: 0.9402, r: 0.9157, f: 0.9278
+Test score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018
+Best dev score: p:0.9433616525070798, r:0.9161947904869762, f:0.9295797767564018

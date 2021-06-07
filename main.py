@@ -25,12 +25,12 @@ from utils.data import Data
 def data_initialization(data, gaz_file, train_file, dev_file, test_file):
     data.build_alphabet(train_file)
     data.build_alphabet(dev_file)
-    if os.path.exist(test_file):
+    if os.path.exists(test_file):
         data.build_alphabet(test_file)
     data.build_gaz_file(gaz_file)
     data.build_gaz_alphabet(train_file,count=True)
     data.build_gaz_alphabet(dev_file,count=True)
-    if os.path.exist(test_file):
+    if os.path.exists(test_file):
         data.build_gaz_alphabet(test_file,count=True)
     data.fix_alphabet()
     return data
@@ -336,6 +336,7 @@ def train(data, save_model_dir, seg=True):
                 optimizer.step()
                 model.zero_grad()
                 batch_loss = 0
+            sys.stdout.flush()
 
         temp_time = time.time()
         temp_cost = temp_time - temp_start
@@ -523,7 +524,7 @@ if __name__ == '__main__':
             data_initialization(data, gaz_file, train_file, dev_file, test_file)
             data.generate_instance_with_gaz(train_file,'train')
             data.generate_instance_with_gaz(dev_file,'dev')
-            if os.path.exist(test_file):
+            if os.path.exists(test_file):
                 data.generate_instance_with_gaz(test_file,'test')
             data.build_word_pretrain_emb(char_emb)
             if args.use_biword:
